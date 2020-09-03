@@ -1,0 +1,35 @@
+h1 { text-align: center; color: rgb(236,107,107); }
+
+img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-color: gray;
+  border-radius: 100px;
+  margin: 10% auto 10% auto;
+  cursor: pointer;
+}
+
+p {
+  cursor: pointer;
+  padding: 10px;
+  text-align: right;
+}
+.parent {
+  width: 80%;
+  height: 500px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.heading { grid-area: 1 / 1 / 2 / 5; background-color: rgb(255,178,45); text-align: center; padding: 25px;}
+.div2 { grid-area: 1 / 5 / 3 / 6; background-color: rgb(191,216,88);}
+.div3 { grid-area: 3 / 5 / 4 / 6; background-color: rgb(191,216,88);}
+.div4 { grid-area: 4 / 5 / 5 / 6; background-color: rgb(191,216,88);}
+.div5 { grid-area: 5 / 5 / 6 / 6; background-color: rgb(191,216,88);}
+.div6 { grid-area: 6 / 5 / 7 / 6; background-color: rgb(191,216,88);}
+.div7 { grid-area: 2 / 1 / 7 / 5; background-color: rgb(255,248,235); padding: 10%;}
