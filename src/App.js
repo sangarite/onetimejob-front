@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserSettings from './components/UserSettings/usersettings.js';
+import question from './question_mark.png';
 
 const initialState = {
   user: {
@@ -10,7 +11,7 @@ const initialState = {
     phone: '',
     rank: 0,
     jobs: 0,
-    img: ''
+    src: question
   }
 }
 
