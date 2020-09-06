@@ -38,7 +38,12 @@ class UserSettings extends React.Component {
         <div className="parent">
           <div className="heading">{this.state.heading}</div>
           <div className="div2">
-            <img src={this.state.src} onClick={this.onImageClick} id='Image' alt="avatar"/>
+            <img
+              src={this.state.src}
+              onClick={this.onImageClick}
+              id='Image'
+              alt="avatar"
+            />
             <input
               type="file"
               name="imageInput"
@@ -46,10 +51,18 @@ class UserSettings extends React.Component {
               onChange={this.onImageChange}
             />
           </div>
-          <div className="div3"><p onClick={this.onButtonClick} id='Basic'>Basic Information</p></div>
-          <div className="div4"><p onClick={this.onButtonClick} id='Password'>Password</p></div>
-          <div className="div5"><p onClick={this.onButtonClick} id="Preference">Preference</p></div>
-          <div className="div6"><p onClick={this.onButtonClick} id="Out">Sign Out</p></div>
+          <div className="div3">
+            <p onClick={this.onButtonClick} id='Basic'>מידע בסיסי</p>
+          </div>
+          <div className="div4">
+            <p onClick={this.onButtonClick} id='Password'>סיסמה</p>
+          </div>
+          <div className="div5">
+            <p onClick={this.onButtonClick} id="Preference">העדפות</p>
+          </div>
+          <div className="div6">
+            <p onClick={this.onButtonClick} id="Out">יציאה</p>
+          </div>
           <div className="div7">
             { this.state.heading === 'Basic'
               ? <Basic user={this.props.user}/>
