@@ -1,3 +1,2 @@
 פה אפשר לפרסם כל מיני קישורים שיכולים לעזור בבנית האתר
 - https://cssgrid-generator.netlify.app/ : מארגן לך את הצורה של הדף
-- just a try to see if it works

@@ -4,17 +4,31 @@ import Basic from './SubComponents/Basic/Basic';
 import Preference from './SubComponents/Preference';
 import Out from './SubComponents/Out';
 import Password from './SubComponents/Password';
-import Image from './SubComponents/Image';
 
 class UserSettings extends React.Component {
 
-  constructor() {
-    super();
-    this.state = { heading: 'Basic' }
+  constructor(props) {
+    super(props);
+    this.state = {
+      heading: 'Basic',
+      src: this.props.user.src
+    }
   }
 
   onButtonClick = (event) => {
     this.setState({ heading: event.target.id })
+  }
+
+  onImageClick = (event) => {
+     document.getElementById('imageInput').click();
+  }
+
+  onImageChange = (event) => {
+    if (event.target.files[0]) {
+			let img = event.target.files[0];
+			this.setState({ src: URL.createObjectURL(img)});
+		}
+    //save image in the data base
   }
 
   render() {
@@ -24,12 +38,31 @@ class UserSettings extends React.Component {
         <div className="parent">
           <div className="heading">{this.state.heading}</div>
           <div className="div2">
-            <img src={this.props.user.src} onClick={this.onButtonClick} id='Image'></img>
+            <img
+              src={this.state.src}
+              onClick={this.onImageClick}
+              id='Image'
+              alt="avatar"
+            />
+            <input
+              type="file"
+              name="imageInput"
+              id="imageInput"
+              onChange={this.onImageChange}
+            />
           </div>
-          <div className="div3"><p onClick={this.onButtonClick} id='Basic'>Basic Information</p></div>
-          <div className="div4"><p onClick={this.onButtonClick} id='Password'>Password</p></div>
-          <div className="div5"><p onClick={this.onButtonClick} id="Preference">Preference</p></div>
-          <div className="div6"><p onClick={this.onButtonClick} id="Out">Sign Out</p></div>
+          <div className="div3">
+            <p onClick={this.onButtonClick} id='Basic'>מידע בסיסי</p>
+          </div>
+          <div className="div4">
+            <p onClick={this.onButtonClick} id='Password'>סיסמה</p>
+          </div>
+          <div className="div5">
+            <p onClick={this.onButtonClick} id="Preference">העדפות</p>
+          </div>
+          <div className="div6">
+            <p onClick={this.onButtonClick} id="Out">יציאה</p>
+          </div>
           <div className="div7">
             { this.state.heading === 'Basic'
               ? <Basic user={this.props.user}/>
@@ -37,10 +70,7 @@ class UserSettings extends React.Component {
                 ? <Password />
                 : (this.state.heading === 'Preference'
                   ? <Preference />
-                  : (this.state.heading === 'Out'
-                    ? <Out />
-                    : <Image />
-                    )
+                  : <Out />
                   )
                 )
             }
