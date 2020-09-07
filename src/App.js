@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <UserSettings user={this.state.user}/>
+        <p>Navigation</p>
       </div>
     );
   }
