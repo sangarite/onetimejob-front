@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import UserSettings from './components/UserSettings/usersettings.js';
 import question from './question_mark.png';
-
+import Navigation from './components/NavigationBar'
+import Basic from './components/UserSettings/SubComponents/Basic/Basic.js';
 const initialState = {
   user: {
     id: '',
@@ -24,7 +25,8 @@ class App extends Component {
   render() {
     return(
       <div>
-        <p>Navigation</p>
+        <Navigation/>
+        
       </div>
     );
   }
