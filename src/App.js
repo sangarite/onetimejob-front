@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import UserSettings from './components/UserSettings/usersettings.js';
-import question from './question_mark.png';
 import Navigation from './components/NavigationBar'
-import Basic from './components/UserSettings/SubComponents/Basic/Basic.js';
+import Entrance from './components/Entrance/Entrance.js';
+import question from './question_mark.png';
+
 const initialState = {
   user: {
     id: '',
     name: '',
     email: '',
     password: '',
+    address: '',
     phone: '',
     rank: 0,
     jobs: 0,
@@ -26,7 +27,7 @@ class App extends Component {
     return(
       <div>
         <Navigation/>
-        
+        <Entrance />
       </div>
     );
   }

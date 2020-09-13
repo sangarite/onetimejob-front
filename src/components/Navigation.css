@@ -1,9 +1,8 @@
-div {
+#navigation {
     background-color: #ec6b6b;
     font-size: 25px;
     height: 70px;
     text-align: right;
-    
   }
   a {
     position: relative;
@@ -13,4 +12,3 @@ div {
     color: black;
     text-decoration-line: none;
   }
-  

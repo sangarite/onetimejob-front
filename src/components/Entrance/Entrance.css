@@ -1,0 +1,28 @@
+#frame {
+  width: 100%;
+  background-color: #fff8eb;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  padding-top: 100px;
+}
+
+img {
+  float: left;
+  grid-area:  1 / 2 / 2 / 3;
+  size: 100%;
+}
+
+#left {
+  grid-area: 1 / 1 / 2 / 2;
+  padding: 100px;
+  margin: auto 0;
+}
+
+#left > button {
+  margin-top: 100px;
+  background-color: #ec6b6b;
+  border: none;
+  width: 100px;
+  height: 50px;
+  margin: 20px;
+}
