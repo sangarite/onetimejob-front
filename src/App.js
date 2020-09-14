@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navigation from './components/NavigationBar'
+import Navigation from './components/Navigation/NavigationBar'
 import Entrance from './components/Entrance/Entrance.js';
 import question from './question_mark.png';
 
@@ -14,7 +14,8 @@ const initialState = {
     rank: 0,
     jobs: 0,
     src: question
-  }
+  },
+  isSignIn: false
 }
 
 class App extends Component {
@@ -26,8 +27,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <Navigation/>
-        <Entrance />
+        <Navigation isSignIn={this.state.isSignIn}/>
       </div>
     );
   }

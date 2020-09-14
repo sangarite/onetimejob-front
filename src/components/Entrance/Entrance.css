@@ -6,7 +6,7 @@
   padding-top: 100px;
 }
 
-img {
+#frame > img {
   float: left;
   grid-area:  1 / 2 / 2 / 3;
   size: 100%;
