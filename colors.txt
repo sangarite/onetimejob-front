@@ -1,7 +1,0 @@
-pink: #ec6b6b rgb(236,107,107)
-background: #fff8eb rgb(255,248,235)
-green: #bfd858 rgb(191,216,88)
-dark blue: #156258 rgb(21,98,88)
-orange: #ffb22d rgb(255,178,45)
-perpule: #854bc7 rgb(133,75,199)
-light blue: #23c2c5 rgb(35,194,197)

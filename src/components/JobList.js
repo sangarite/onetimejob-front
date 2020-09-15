@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {jobs} from "./temp";
 
-export default function JobList() {
-  return(
-    <p>Job List</p>
-  );
+const initialState = {
+    jobs: jobs
 }
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = initialState;
+  }
+
+  render() {
+    return(
+      <div>
+        {
+          (this.state.jobs).map((id, i) => {
+            return(
+              <p>{(this.state.jobs)[i].title}</p>
+            )
+          })
+        }
+      </div>
+    );
+  }
+}
+
+export default App;
