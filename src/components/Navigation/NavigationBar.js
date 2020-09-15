@@ -5,8 +5,11 @@ import About from '../About';
 import Help from '../Help';
 import Register from '../Register';
 import Entrance from '../Entrance/Entrance.js';
+import JobList from '../JobList';
+import PublishJob from '../PublishJob';
+import UserSettings from '../UserSettings/UserSettings.js';
+import Notifications from '../Notifications';
 import  './Navigation.css';
-import Logo from '../../Logo.png';
 
 export default function NavigationBar()
 {
@@ -24,6 +27,10 @@ export default function NavigationBar()
           <Route path="/register"><Register/></Route>
           <Route path="/about"><About/></Route>
           <Route path="/help"><Help/></Route>
+          <Route path="/joblist"><JobList/></Route>
+          <Route path="/publishjob"><PublishJob/></Route>
+          <Route path="/usersettings"><UserSettings/></Route>
+          <Route path="/notifications"><Notifications/></Route>
           <Route path="/"><Entrance/></Route>
         </Switch>
       </div>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/NavigationBar'
-import Entrance from './components/Entrance/Entrance.js';
 import question from './question_mark.png';
 
 const initialState = {

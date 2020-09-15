@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import img from './team_work.png';
 import './Entrance.css';
 
@@ -19,8 +20,8 @@ class Entrance extends Component {
           eget nulla. Class aptent taciti sociosqu ad litora torquent
           per conubia nostra, per inceptos himenaeos. Curabitur sodales
           </p>
-          <button>worker</button>
-          <button>employer</button>
+          <button><Link to="/joblist">חיפוש עבודה</Link></button>
+          <button><Link to="/publishjob">פרסום עבודה</Link></button>
         </div>
       </div>
     );
