@@ -7,6 +7,7 @@
   padding-left: 5%;
   padding-right: 5%;
   grid-column-gap: 20px;
+  background-color: #fff8eb;
 }
 
 @media only screen and (max-width: 992px) {
