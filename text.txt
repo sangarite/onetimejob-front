@@ -13,6 +13,7 @@ light blue: #23c2c5 rgb(35 ,194,197)
 ________________________________________________________________________________
 * https://cssgrid-generator.netlify.app - organizes the layout
 * https://reactrouter.com/web/guides/quick-start - teaches you react router
+* http://ami.responsivedesign.is/ - checks if your website is responsive
 
 
                                  categories

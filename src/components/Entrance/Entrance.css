@@ -1,29 +1,30 @@
 #frame {
-  width: 100%;
-  background-color: #fff8eb;
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  padding-top: 100px;
   height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-content: center;
+  float: right;
+  padding-left: 5%;
+  padding-right: 5%;
+  grid-column-gap: 20px;
+  background-color: #fff8eb;
 }
 
-#frame > img {
-  float: left;
-  grid-area:  1 / 2 / 2 / 3;
-  size: 100%;
-}
-
-#left {
-  grid-area: 1 / 1 / 2 / 2;
-  padding: 100px;
+@media only screen and (max-width: 992px) {
+  #frame { display: block; }
+  #image, #left { width: 100%; }
+  img { max-width: 90vw; }
 }
 
 #left > button {
-  margin-top: 100px;
   background-color: #ec6b6b;
   border: none;
   width: 100px;
   height: 50px;
   margin: 20px;
   padding: 10px;
+}
+
+#left > h1 {
+  text-align: right;
 }

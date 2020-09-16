@@ -71,3 +71,7 @@ p {
   background-color: rgb(255,248,235);
   padding: 10%;
 }
+
+@media only screen and (max-width: 992px) {
+  #Image { width: 70px; height: 70px; }
+}
