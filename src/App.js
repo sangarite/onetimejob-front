@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/NavigationBar'
 import question from './question_mark.png';
-import UserSettings from './components/UserSettings/UserSettings.js';
 
 const initialState = {
   user: {
@@ -27,7 +26,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <UserSettings user={this.state.user}/>
+        <Navigation isSignIn{this.state.isSignIn}/>
       </div>
     );
   }
