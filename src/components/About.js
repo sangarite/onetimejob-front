@@ -3,6 +3,9 @@ import React from 'react'
 export default function About()
 {
     return(
-        <p>About</p>
+        <div className="topSpace">
+          <br />
+          <p>About</p>
+        </div>
     )
 }

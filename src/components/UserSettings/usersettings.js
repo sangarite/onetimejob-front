@@ -33,7 +33,7 @@ class UserSettings extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="topSpace">
         <h1>{this.props.user.name}</h1>
         <div className="parent">
           <div className="heading">{this.state.heading}</div>

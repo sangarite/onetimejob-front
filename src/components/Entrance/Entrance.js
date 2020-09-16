@@ -8,17 +8,14 @@ import './Entrance.css';
 class Entrance extends Component {
   render() {
     return(
-      <div id="frame">
+      <div id="frame" classNaem="topSpace">
         <img src={img} alt="team_work" />
         <div id="left">
-          <h1>choose your type</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Integer nec odio. Praesent libero. Sed cursus ante dapibus
-          diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.
-          Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed
-          augue semper porta. Mauris massa. Vestibulum lacinia arcu
-          eget nulla. Class aptent taciti sociosqu ad litora torquent
-          per conubia nostra, per inceptos himenaeos. Curabitur sodales
+          <h1>רךחמכיהנ גחי סמהד</h1>
+          <p>כחג כיקו כידל שסזע המסיכ החגכלחד כדיחלקיד כוקםכד חגלכךד דחלכד
+          גיכדלחכיד כדךלגםן דםחג עררי חדךמנבי דךלחםן ופןא תפווד 'וקה כחדד
+          כדךח' דבשינו גלדד קודל קפודס רואינם חםוא כחנכחן סמהצתד דיכלדח כיד
+          דיךד קיםן' דיגםכן' דיםכקן דיםקן דלחכ'ם ן נתצבץח נמץב תמילה תד'
           </p>
           <button><Link to="/joblist">חיפוש עבודה</Link></button>
           <button><Link to="/publishjob">פרסום עבודה</Link></button>
