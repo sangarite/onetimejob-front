@@ -8,8 +8,8 @@ import './Entrance.css';
 class Entrance extends Component {
   render() {
     return(
-      <div id="frame" classNaem="topSpace">
-        <img src={img} alt="team_work" />
+      <div id="frame" className="topSpace">
+        <div id="image"><img src={img} alt="team_work" /></div>
         <div id="left">
           <h1>רךחמכיהנ גחי סמהד</h1>
           <p>כחג כיקו כידל שסזע המסיכ החגכלחד כדיחלקיד כוקםכד חגלכךד דחלכד

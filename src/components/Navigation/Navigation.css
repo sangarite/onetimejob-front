@@ -19,6 +19,5 @@
   }
 
 .topSpace {
-  position: absolute;
-  top: 70px;
+  padding-top: 70px;
 }
