@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <Navigation isSignIn{this.state.isSignIn}/>
+        <Navigation isSignIn={this.state.isSignIn}/>
       </div>
     );
   }
