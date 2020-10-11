@@ -16,7 +16,7 @@ import logo from '../../Logo.png'
 export default function NavigationBar(props)
 {
     var sign=props.isSignIn;
-    //how can i get the picture of the user? 
+    //how can i get the picture of the user, I want to assimilate it inside the navigationbar? 
     if(sign==false)
     return(
       <div>
