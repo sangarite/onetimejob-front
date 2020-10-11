@@ -16,11 +16,12 @@ import logo from '../../Logo.png'
 export default function NavigationBar(props)
 {
     var sign=props.isSignIn;
+    //how can i get the picture of the user? 
     if(sign==false)
     return(
       <div>
         <div id="navigation">
-          <Link to="/" > <img src={logo} alt="logo" className="App-logo" ></img> בית</Link>
+          <Link to="/" ><img src={logo} alt="logo" className="App-logo" ></img> בית</Link>
           <Link to="/signin">כניסה</Link>
           <Link to="/register">הרשמה</Link>
           <Link to="/about">עלינו</Link>
@@ -40,23 +41,4 @@ export default function NavigationBar(props)
         </Switch>
       </div>
     );
-   else
-    {
-      return(
-          <div> 
-         <Switch>
-        <Route path="/signin"><Signin/></Route>
-        <Route path="/register"><Register/></Route>
-        <Route path="/about"><About/></Route>
-        <Route path="/help"><Help/></Route>
-        <Route path="/joblist"><JobList/></Route>
-        <Route path="/publishjob"><PublishJob/></Route>
-        <Route path="/usersettings"><UserSettings/></Route>
-        <Route path="/notifications"><Notifications/></Route>
-        <Route path="/"><Entrance/></Route>
-      </Switch>
-             </div>
-
-      );
-    }
 }
