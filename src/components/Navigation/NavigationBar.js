@@ -7,7 +7,7 @@ import Help from '../Help';
 import Register from '../Register';
 import Entrance from '../Entrance/Entrance.js';
 import JobList from '../JobList';
-import PublishJob from '../PublishJob';
+import PublishJob from '../PublishJob/PublishJob.js';
 import UserSettings from '../UserSettings/UserSettings.js';
 import Notifications from '../Notifications';
 import  './Navigation.css';
@@ -16,8 +16,9 @@ import logo from '../../Logo.png'
 export default function NavigationBar(props)
 {
     var sign=props.isSignIn;
-    //how can i get the picture of the user, I want to assimilate it inside the navigationbar? 
-    if(sign==false)
+    var user = props.user;
+    //how can i get the picture of the user, I want to assimilate it inside the navigationbar?
+    if(sign===false)
     return(
       <div>
         <div id="navigation">
@@ -26,7 +27,7 @@ export default function NavigationBar(props)
           <Link to="/register">הרשמה</Link>
           <Link to="/about">עלינו</Link>
           <Link to="/help">עזרה</Link>
-        
+
         </div>
         <Switch>
           <Route path="/signin"><Signin/></Route>
@@ -34,7 +35,10 @@ export default function NavigationBar(props)
           <Route path="/about"><About/></Route>
           <Route path="/help"><Help/></Route>
           <Route path="/joblist"><JobList/></Route>
-          <Route path="/publishjob"><PublishJob/></Route>
+          <Route
+            path="/publishjob"
+            render={(props) => <PublishJob {...props} userId={user.id}/>}
+          />
           <Route path="/usersettings"><UserSettings/></Route>
           <Route path="/notifications"><Notifications/></Route>
           <Route path="/"><Entrance/></Route>

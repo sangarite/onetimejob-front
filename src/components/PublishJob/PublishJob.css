@@ -1,0 +1,9 @@
+#publishJob > label {
+  float: right;
+  display: block;
+}
+
+#publishJob {
+  width: 50%;
+  margin: 0px auto;
+}

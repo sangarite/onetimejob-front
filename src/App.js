@@ -4,7 +4,7 @@ import question from './question_mark.png';
 
 const initialState = {
   user: {
-    id: '',
+    id: '1',
     name: '',
     email: '',
     password: '',
@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        <Navigation isSignIn={this.state.isSignIn}/>
+        <Navigation isSignIn={this.state.isSignIn} user={this.state.user}/>
       </div>
     );
   }
