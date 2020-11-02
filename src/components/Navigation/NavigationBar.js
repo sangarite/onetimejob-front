@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 
-import Signin from '../Signin';
+import Signin from '../SignIn/Signin';
 import About from '../About';
 import Help from '../Help';
 import Register from '../Register';
