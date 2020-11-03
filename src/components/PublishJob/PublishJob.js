@@ -56,36 +56,38 @@ class PublishJob extends React.Component {
   }
 
   render() {
-    return(
-      <div className="topSpace" id="publishJob">
-        <br />
-        <p>PublishJob</p>
-        <label htmlFor="title">כותרת*</label>
-        <input name="title" id="title" onChange={this.onInputchange}/>
-        <label htmlFor="details">פרטים</label>
-        <input name="details" id="details" onChange={this.onInputchange}/>
-        <label htmlFor="category">קטגוריה*</label>
-        <select value={this.state.category} onChange={this.onCategoryChange}>
-        {
-          (this.state.categories).map(category =>
-            <option
-              value={category.category_id}
-              key={category.category_id}
-            >{category.category_name}</option>
-            )
-        }
-        </select><br/>
-        <label htmlFor="salary">שכר</label>
-        <input name="salary" id="salary" onChange={this.onInputchange}/>
-        <label htmlFor="date">תאריך תפוגה</label>
-        <input type="date" name="date" id="date" onChange={this.onInputchange}/>
-        <label htmlFor="area">אזור*</label>
-        <input name="area" id="area" onChange={this.onInputchange}/>
-        <label htmlFor="city">עיר</label>
-        <input name="city" id="city" onChange={this.onInputchange}/>
-        <input type="submit" value="פרסם" onClick={this.handleJobSubmit}/>
-      </div>
-    );
+    if (this.props.userId)
+      return(
+        <div className="topSpace" id="publishJob">
+          <br />
+          <p>PublishJob</p>
+          <label htmlFor="title">כותרת*</label>
+          <input name="title" id="title" onChange={this.onInputchange}/>
+          <label htmlFor="details">פרטים</label>
+          <input name="details" id="details" onChange={this.onInputchange}/>
+          <label htmlFor="category">קטגוריה*</label>
+          <select value={this.state.category} onChange={this.onCategoryChange}>
+          {
+            (this.state.categories).map(category =>
+              <option
+                value={category.category_id}
+                key={category.category_id}
+              >{category.category_name}</option>
+              )
+          }
+          </select><br/>
+          <label htmlFor="salary">שכר</label>
+          <input name="salary" id="salary" onChange={this.onInputchange}/>
+          <label htmlFor="date">תאריך תפוגה</label>
+          <input type="date" name="date" id="date" onChange={this.onInputchange}/>
+          <label htmlFor="area">אזור*</label>
+          <input name="area" id="area" onChange={this.onInputchange}/>
+          <label htmlFor="city">עיר</label>
+          <input name="city" id="city" onChange={this.onInputchange}/>
+          <input type="submit" value="פרסם" onClick={this.handleJobSubmit}/>
+        </div>
+      );
+      else return <div><br/><br/><br/><br/>You should first sign in</div>
   }
 }
 

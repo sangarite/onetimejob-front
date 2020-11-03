@@ -11,7 +11,7 @@ class UserSettings extends React.Component {
     super(props);
     this.state = {
       heading: 'Basic',
-      src: this.props.user.src
+      src: ''
     }
   }
 

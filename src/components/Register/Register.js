@@ -3,8 +3,8 @@ import './register.css'
 
 class Register extends React.Component
 {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       password: '',
@@ -25,7 +25,7 @@ class Register extends React.Component
       })
     })
     .then(response => response.text())
-    .then(data => console.log(data))
+    .then(data => this.props.handleUserIn(data))
   }
 
   onInputChange(event) {

@@ -1,19 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import Navigation from './components/Navigation/NavigationBar'
-import question from './question_mark.png';
 
 const initialState = {
-  user: {
-    id: '1',
-    name: '',
-    email: '',
-    password: '',
-    address: '',
-    phone: '',
-    rank: 0,
-    jobs: 0,
-    src: question
-  },
+  user: {},
   isSignIn: false
 }
 
@@ -21,15 +11,32 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
+    this.handleUserIn = this.handleUserIn.bind(this);
+    this.handleUserOut = this.handleUserOut.bind(this);
+  }
+
+  handleUserIn(user) {
+    this.setState({ user: user, isSignIn: true });
+    this.props.history.push('/');
+  }
+
+  handleUserOut() {
+    this.setState({ user: {}, isSignIn: false });
+    this.props.history.push('/');
   }
 
   render() {
     return(
       <div>
-        <Navigation isSignIn={this.state.isSignIn} user={this.state.user}/>
+        <Navigation
+          isSignIn={this.state.isSignIn}
+          user={this.state.user}
+          handleUserIn={this.handleUserIn}
+          handleUserOut={this.handleUserOut}
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -26,7 +26,7 @@ class Signin extends React.Component {
        })
      })
      .then(response => response.text())
-     .then(data => console.log(data))
+     .then(data => this.props.handleUserIn(data))
    }
 
   render() {
