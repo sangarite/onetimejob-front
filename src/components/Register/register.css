@@ -1,0 +1,16 @@
+.register > input {
+  width: 50%;
+  display: block;
+  height: 30px;
+  margin-bottom: 10px;
+  border-width: 1px;
+}
+
+.register > #send {
+  cursor: pointer;
+  width: 30%;
+}
+
+.register > label {
+  float: right;
+}

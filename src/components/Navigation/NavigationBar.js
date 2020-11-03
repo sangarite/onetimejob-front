@@ -4,7 +4,7 @@ import { Route, Switch, Link } from 'react-router-dom'
 import Signin from '../SignIn/Signin';
 import About from '../About';
 import Help from '../Help';
-import Register from '../Register';
+import Register from '../Register/Register';
 import Entrance from '../Entrance/Entrance.js';
 import JobList from '../JobList';
 import PublishJob from '../PublishJob/PublishJob.js';

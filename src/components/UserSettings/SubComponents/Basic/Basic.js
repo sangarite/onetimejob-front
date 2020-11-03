@@ -37,7 +37,7 @@ class Basic extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div id="basic">
 				<input
 					type="text"
 					id="name"
