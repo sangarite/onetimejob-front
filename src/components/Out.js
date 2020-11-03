@@ -1,6 +1,7 @@
 import React from 'react'
+import { withRouter } from 'react-router'
 
-export default class Out extends React.Component {
+class Out extends React.Component {
 
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ export default class Out extends React.Component {
 
   handleClick(event) {
     if (event.target.id === "yes") this.props.handleUserOut();
-    else window.alert('I want to stay in')
+    else this.props.history.push('/');
   }
 
   render() {
@@ -22,3 +23,5 @@ export default class Out extends React.Component {
     );
   }
 }
+
+export default withRouter(Out);

@@ -1,5 +1,7 @@
-import React from 'react';
-import './PublishJob.css';
+import React from 'react'
+import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router'
+import './PublishJob.css'
 
 class PublishJob extends React.Component {
 
@@ -32,7 +34,7 @@ class PublishJob extends React.Component {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        user: this.props.userId,
+        user: this.props.user.user_id,
         title: this.state.title,
         details: this.state.details,
         category: this.state.category,
@@ -43,7 +45,11 @@ class PublishJob extends React.Component {
       })
     })
     .then(response => response.text())
-    .then(data => console.log(data))
+    .then(data =>  {
+      window.alert(data);
+      this.props.history.push('/');
+    })
+    .catch(err => console.log(err))
   }
 
   onInputchange(event) {
@@ -56,7 +62,7 @@ class PublishJob extends React.Component {
   }
 
   render() {
-    if (this.props.userId)
+    if (this.props.isSignIn)
       return(
         <div className="topSpace" id="publishJob">
           <br />
@@ -67,6 +73,7 @@ class PublishJob extends React.Component {
           <input name="details" id="details" onChange={this.onInputchange}/>
           <label htmlFor="category">קטגוריה*</label>
           <select value={this.state.category} onChange={this.onCategoryChange}>
+            <option value=""></option>
           {
             (this.state.categories).map(category =>
               <option
@@ -87,8 +94,8 @@ class PublishJob extends React.Component {
           <input type="submit" value="פרסם" onClick={this.handleJobSubmit}/>
         </div>
       );
-      else return <div><br/><br/><br/><br/>You should first sign in</div>
+      else return <Redirect to="/signin" />
   }
 }
 
-export default PublishJob;
+export default withRouter(PublishJob);

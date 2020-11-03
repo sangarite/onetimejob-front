@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Signin.css'
 
 class Signin extends React.Component {
@@ -25,19 +26,25 @@ class Signin extends React.Component {
          password: this.state.password
        })
      })
-     .then(response => response.text())
-     .then(data => this.props.handleUserIn(data))
+     .then(response => response.json())
+     .then((data) => {
+       if (data.message)
+       window.alert(data.message)
+       else this.props.handleUserIn(data)
+     })
    }
 
   render() {
     return(
       <div className="topSpace" className="signin">
         <p>Sign In</p>
-        <label htmlFor="name"></label>
+        <label htmlFor="name">שם משתמש</label>
         <input name="name" id="name" onChange={this.onInputChange}/>
-        <label htmlFor="password"></label>
-        <input name="password" id="password" onChange={this.onInputChange}/>
+        <label htmlFor="password">סיסמה</label>
+        <input type="password" name="password" id="password" onChange={this.onInputChange}/>
         <input type="submit" value="שלח" onClick={this.handleSignIn} />
+        <p>לא רשום עדיין?</p>
+        <Link to="/register">הירשם</Link>
       </div>
     );
   }
