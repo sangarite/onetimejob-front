@@ -1,11 +1,23 @@
 import React from 'react'
 
-export default function Notifications()
+export default function Notifications(props)
 {
-    return(
-      <div className="topSpace">
-        <br />
-        <p>Notifications</p>
-      </div>
-    )
+  const [messages, setMessages] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(`http://localhost:3000/messages/${props.id}`)
+    .then(response => response.json())
+    .then(data => setMessages(data))
+    .catch(error => console.log(error))
+  }, [])
+
+  return(
+    <div className="topSpace">
+      <br />
+      <p>Notifications</p>
+      {
+        messages.map((message, i) => <p key={i}>{message.text}</p>)
+      }
+    </div>
+  )
 }

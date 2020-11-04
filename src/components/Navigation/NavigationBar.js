@@ -50,7 +50,7 @@ class NavigationBar extends React.Component {
           <Route path="/jobs"><JobList /></Route>
           <Route path="/publish"><PublishJob isSignIn={this.props.isSignIn} user={this.props.user}/></Route>
           <Route path="/settings"><UserSettings /></Route>
-          <Route path="/notifications"><Notifications /></Route>
+          <Route path="/notifications"><Notifications id={this.props.user.user_id}/></Route>
           <Route path="/out"><Out handleUserOut={this.props.handleUserOut}/></Route>
           <Route path="/"><Entrance /></Route>
         </Switch>
