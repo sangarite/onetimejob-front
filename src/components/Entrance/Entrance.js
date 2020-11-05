@@ -17,7 +17,7 @@ class Entrance extends Component {
           כדךח' דבשינו גלדד קודל קפודס רואינם חםוא כחנכחן סמהצתד דיכלדח כיד
           דיךד קיםן' דיגםכן' דיםכקן דיםקן דלחכ'ם ן נתצבץח נמץב תמילה תד'
           </p>
-          <button><Link to="/joblist">חיפוש עבודה</Link></button>
+          <button><Link to="/jobs">חיפוש עבודה</Link></button>
           <button><Link to="/publish">פרסום עבודה</Link></button>
         </div>
       </div>
