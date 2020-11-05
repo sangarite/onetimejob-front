@@ -4,6 +4,7 @@ import Basic from './SubComponents/Basic/Basic';
 import Preference from './SubComponents/Preference';
 import Out from './SubComponents/Out';
 import Password from './SubComponents/Password';
+import avatar from './avataaars.svg';
 
 class UserSettings extends React.Component {
 
@@ -11,7 +12,7 @@ class UserSettings extends React.Component {
     super(props);
     this.state = {
       heading: 'Basic',
-      src: ''
+      src: avatar
     }
   }
 
@@ -34,13 +35,14 @@ class UserSettings extends React.Component {
   render() {
     return(
       <div className="topSpace">
-        <h1>{this.props.user.name}</h1>
+        <h1>{this.state.name}</h1>
         <div className="parent">
           <div className="heading">{this.state.heading}</div>
           <div className="div2">
             <img
               src={this.state.src}
               onClick={this.onImageClick}
+              title="change avatar"
               id='Image'
               alt="avatar"
             />

@@ -6,33 +6,38 @@ class Basic extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: this.props.user.name,
+			name: this.props.user.user_name,
 			email: this.props.user.email,
-			phone: this.props.user.phone
+			phone: this.props.user.phone,
+			city: this.props.user.city,
+			country: this.props.user.country,
+			neighborhood: this.props.user.neighborhood
 		}
 	}
 
-	onNameChange = (event) => {
-		this.setState({name: event.target.value});
-	}
-
-	onEmailChange = (event) => {
-		this.setState({email: event.target.value});
-	}
-
-	onPhoneChange = (event) => {
-		this.setState({phone: event.target.value});
+	onInputChange = (event) => {
+		this.setState({[`${event.target.id}`]: event.target.value})
 	}
 
 	onButtonSubmit = () => {
-		let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-		if (!(re.test(String(this.state.email).toLowerCase())))
-			return alert("Invalid Email");
-
-		if(((this.state.phone).length !== 10 || !(/^\d+$/.test(this.state.phone))) && (this.state.phone).length)
-			return alert("Invalid Phone Number");
-		//sends the values to the server
+		if(this.state.phone.length !== 10)
+		return alert("Invalid Phone Number");
+		fetch('http://localhost:3000/settings/basic', {
+			method: 'put',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				id: this.props.user.user_id,
+				name: this.state.name,
+				password: this.state.password,
+				email: this.state.email,
+				phone: this.state.phone,
+				city: this.state.city,
+				country: this.state.country
+			})
+		})
+		.then(response => response.text())
+		.then((data) => window.alert(data))
+		.catch((err) => console.log(err))
 	}
 
 	render() {
@@ -44,15 +49,15 @@ class Basic extends React.Component {
 					name="name"
 					placeholder="שם משתמש"
 					value={this.state.name}
-					onChange={this.onNameChange}
+					onChange={this.onInputChange}
 				/><br/>
 				<input
 					type="email"
-					id="emial"
+					id="email"
 					name="email"
 					placeholder="מייל"
 					value={this.state.email}
-					onChange={this.onEmailChange}
+					onChange={this.onInputChange}
 				/><br/>
 				<input
 					type="tel"
@@ -60,7 +65,28 @@ class Basic extends React.Component {
 					name="phone"
 					placeholder="פלאפון"
 					value={this.state.phone}
-					onChange={this.onPhoneChange}
+					onChange={this.onInputChange}
+				/><br/>
+				<input
+					id="city"
+					name="city"
+					placeholder="עיר"
+					value={this.state.city}
+					onChange={this.onInputChange}
+				/><br/>
+				<input
+					id="area"
+					name="area"
+					placeholder="אזור"
+					value={this.state.area}
+					onChange={this.onInputChange}
+				/><br/>
+				<input
+					id="neighborhood"
+					name="neighborhood"
+					placeholder="שכונה"
+					value={this.state.neighborhood}
+					onChange={this.onInputChange}
 				/><br/>
 				<input
 					type="submit"
