@@ -10,7 +10,7 @@ class Password extends React.Component {
 			confirmPassword: ''
 		}
 		this.onInputChange = this.onInputChange.bind(this);
-		this.onButtonClick = this.onButtonClick.bind(this);
+		this.onButtonSubmit = this.onButtonSubmit.bind(this);
 	}
 
 	onInputChange(event) {

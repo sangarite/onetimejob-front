@@ -69,7 +69,7 @@ class UserSettings extends React.Component {
             { this.state.heading === 'Basic'
               ? <Basic user={this.props.user}/>
               : (this.state.heading === 'Password'
-                ? <Password />
+                ? <Password user={this.props.user}/>
                 : (this.state.heading === 'Preference'
                   ? <Preference />
                   : <Out />
