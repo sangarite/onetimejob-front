@@ -2,7 +2,7 @@ import React from 'react';
 import './UserSettings.css';
 import Basic from './SubComponents/Basic/Basic';
 import Preference from './SubComponents/Preference';
-import Out from './SubComponents/Out';
+import Delete from './SubComponents/Out';
 import Password from './SubComponents/Password';
 import avatar from './avataaars.svg';
 
@@ -63,7 +63,7 @@ class UserSettings extends React.Component {
             <p onClick={this.onButtonClick} id="Preference">העדפות</p>
           </div>
           <div className="div6">
-            <p onClick={this.onButtonClick} id="Out">יציאה</p>
+            <p onClick={this.onButtonClick} id="Delete">מחיקת חשבון</p>
           </div>
           <div className="div7">
             { this.state.heading === 'Basic'
@@ -72,7 +72,7 @@ class UserSettings extends React.Component {
                 ? <Password user={this.props.user}/>
                 : (this.state.heading === 'Preference'
                   ? <Preference />
-                  : <Out />
+                  : <Delete user={this.props.user} handleUserOut={this.props.handleUserOut}/>
                   )
                 )
             }
