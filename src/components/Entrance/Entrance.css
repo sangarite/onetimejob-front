@@ -1,30 +1,38 @@
-#frame {
+#entrance > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#entrance > p {
+  font-size: 35px;
+  position: absolute;
+  top: 25%;
+  right: 20px;
+}
+
+#entrance > a {
+  padding: 10px 20px;
+  background-color: #ED6A5A;
+  border-radius: 50px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 30%;
+}
+
+#benefits {
+  background-image: linear-gradient(#ED6A5A, #083D77);
+  width: 100vw;
   height: 100vh;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  align-content: center;
-  float: right;
-  padding-left: 5%;
-  padding-right: 5%;
-  grid-column-gap: 20px;
-  background-color: #fff8eb;
+}
+
+#about {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
 }
 
 @media only screen and (max-width: 992px) {
-  #frame { display: block; }
-  #image, #left { width: 100%; }
-  img { max-width: 90vw; }
-}
-
-#left > button {
-  background-color: #ec6b6b;
-  border: none;
-  width: 100px;
-  height: 50px;
-  margin: 20px;
-  padding: 10px;
-}
-
-#left > h1 {
-  text-align: right;
 }
