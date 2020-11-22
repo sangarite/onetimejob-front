@@ -1,9 +1,8 @@
 #navigation {
-    background-color: #3066BE;
+    background-color: blue;
     font-size: 25px;
     height: 70px;
     text-align: right;
-    position: fixed;
     top: 0px;
     width: 100%;
 }
