@@ -42,10 +42,9 @@ class Signin extends React.Component {
         <input name="name" id="name" onChange={this.onInputChange}/>
         <label htmlFor="password">סיסמה</label>
         <input type="password" name="password" id="password" onChange={this.onInputChange}/>
-        <input type="submit" value="שלח" onClick={this.handleSignIn} />
-        <p>לא רשום עדיין?</p>
-        <Link to="/register">הירשם</Link>
-      </div>
+        <input type="submit" value="שלח" onClick={this.handleSignIn} id="but" />
+        <p id="register">לא רשום עדיין?</p>
+        <Link to="/register" id="link">הירשם</Link></div>
     );
   }
 }
