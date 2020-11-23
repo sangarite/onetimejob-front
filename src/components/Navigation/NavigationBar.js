@@ -13,7 +13,7 @@ import Notifications from '../Notifications'
 import Out from '../Out'
 
 import './Navigation.css'
-import logo from '../../Logo.png'
+import logo from '../../images/logo.png'
 
 class NavigationBar extends React.Component {
   constructor(props) {
@@ -26,20 +26,20 @@ class NavigationBar extends React.Component {
         {
           this.props.isSignIn ?
             <div id="navigation">
-              <Link to="/">בית</Link>
-              <Link to="/about">עלינו</Link>
-              <Link to="/help">עזרה</Link>
-              <Link to="/settings">הגדרות</Link>
-              <Link to="/notifications">הודעות</Link>
-              <Link to="/out">יציאה</Link>
+              <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
+              <Link to="/about" className="link">עלינו</Link>
+              <Link to="/help" className="link">עזרה</Link>
+              <Link to="/settings" className="link">הגדרות</Link>
+              <Link to="/notifications" className="link">הודעות</Link>
+              <Link to="/out" className="link">יציאה</Link>
             </div>
           :
             <div id="navigation">
-              <Link to="/">בית</Link>
-              <Link to="/signin">כניסה</Link>
-              <Link to="/register">הרשמה</Link>
-              <Link to="/about">עלינו</Link>
-              <Link to="/help">עזרה</Link>
+              <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
+              <Link to="/signin" className="link">כניסה</Link>
+              <Link to="/register" className="link">הרשמה</Link>
+              <Link to="/about" className="link">עלינו</Link>
+              <Link to="/help" className="link">עזרה</Link>
             </div>
         }
         <Switch>

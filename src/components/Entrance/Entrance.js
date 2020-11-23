@@ -16,18 +16,7 @@ export default function Entrance() {
       <img src={background} alt="background" id="home"/>
       <img src={top_background} alt="top_background" id="top"/>
       <p>"ההוצאה הגדולה ביותר היא איבוד זמן" <br /> נצלו אותה כדי להרוויח כסף בקלות</p>
-      <Link to="/jobs" class="btn">
-        <svg width="277" height="62">
-          <defs>
-              <linearGradient id="grad1">
-                  <stop offset="0%" stop-color="#083D77"/>
-                  <stop offset="100%" stop-color="#ED6A5A" />
-              </linearGradient>
-          </defs>
-           <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="250" height="50"></rect>
-        </svg>
-        <span>מצא עבודה</span>
-      </Link>
+      <Link to='/jobs' className="button">מצא עבודה</Link>
       <div id="benefits">
         <div className="container">
           <img src={blob_money} alt="blob_money" className="blob"/>

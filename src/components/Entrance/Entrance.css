@@ -19,51 +19,24 @@
   color: #083D77;
 }
 
-.btn {
-    position: absolute;
-    top: 60vh;
-    right: 20%;
-    display: inline-block;
-    width: 250px;
-    height: 50px;
-    line-height: 60px;
-    text-align: center;
-    background-color: transparent;
-    cursor: pointer;
-    font-weight:1000;
-    font-size:30px;
+.button {
+  border-radius: 20px;
+  background-image: linear-gradient(#083D77, #ED6A5A);
+  color: white;
+  width: 100px;
+  height: 30px;
+  text-align: center;
 }
 
-.btn svg {
-    position: absolute;
-    top: 0;
-    left: 0;
+.button:hover {
+  background-color: #083D77;
 }
 
-.btn svg rect {
-    stroke-width: 5;
-    stroke-dasharray: 353, 0;
-    stroke-dashoffset: 0;
-    -webkit-transition: all 600ms ease;
-    transition: all 600ms ease;
+#entrance > .button {
+  position: absolute;
+  top: 60vh;
+  right: 20vw;
 }
-
-.btn span{
-  background: -moz-linear-gradient(left,  #083D77 0%, #ED6A5A 100%);
-  background: -webkit-linear-gradient(left,  #083D77 0%, #ED6A5A 100%);
-  background: linear-gradient(to right,  #083D77 0%, #ED6A5A 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#083D77', endColorstr='#ED6A5A',GradientType=1 );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.btn:hover svg rect {
-    stroke-width: 4;
-    stroke-dasharray: 196, 543;
-    stroke-dashoffset: 437;
-}
-
 
 #benefits {
   position: absolute;

@@ -1,20 +1,23 @@
 #navigation {
-    background-color: blue;
     font-size: 25px;
     height: 70px;
     text-align: right;
     top: 0px;
     width: 100%;
+    background-color: white;
+    position: relative;
 }
 
-#navigation > a {
+.link {
   position: relative;
-  top: 20px;
+  top: 30px;
   margin: 25px;
+  z-index: 1;
+  color: #083D77;
+  font-weight: bold;
 }
 
 a {
-  color: black;
   text-decoration-line: none;
 }
 
@@ -24,11 +27,13 @@ a {
   align-content: center;
 }
 
-.App-logo {
+.logo {
+  position: relative;
+  z-index: 1;
   float: right;
-  padding: 5px;
-  padding-top: 0px;
-  width:50px;
-  height: 50px;
-/*border-radius: 50%;*/
+  top: 10px;
+  object-fit: cover;
+  margin: auto;
+  max-height: 70px;
+  background-color: transparent;
 }
