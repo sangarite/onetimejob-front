@@ -3,7 +3,7 @@ import { Route, Switch, Link } from 'react-router-dom'
 
 import Signin from '../SignIn/Signin'
 import About from '../About'
-import Help from '../Help'
+import Help from '../Help/Help'
 import Register from '../Register/Register'
 import Entrance from '../Entrance/Entrance'
 import JobList from '../JobList'
