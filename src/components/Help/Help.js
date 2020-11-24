@@ -6,8 +6,15 @@ export default class Help extends Component
     constructor() {
       super();
       this.state = {
-        data: []
+        data: [],
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       }
+      this.onInputChange = this.onInputChange.bind(this);
+      this.resetForm = this.resetForm.bind(this);
+      this.onSend = this.onSend.bind(this);
     }
 
     componentDidMount() {
@@ -27,6 +34,42 @@ export default class Help extends Component
       }
     }
 
+    resetForm(){
+        this.setState({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+    }
+
+    onSend(event) {
+      fetch('http://localhost:3000/help/send', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          name: this.state.name,
+          email: this.state.email,
+          subject: this.state.subject,
+          message: this.state.message + '\nemail: ' + this.state.email
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.msg === 'success') {
+          alert('email sent, awesome!');
+          this.resetForm();
+        } else if (data.msg == 'fail') {
+          alert('Oops, something went wrong. Try again')
+        }
+      })
+      this.resetForm();
+    }
+
+    onInputChange(event) {
+      this.setState({[`${event.target.id}`]: event.target.value})
+    }
+
     render() {
       return(
         <div id="help">
@@ -42,18 +85,17 @@ export default class Help extends Component
                     </div>
                   </div>
                 );
-
                 }
               )
             }
             </div>
             <p>צור קשר</p>
             <div id="contact">
-              <input name="name" placeholder="שם" />
-              <input name="email" placeholder="דואר אלקטרוני" type="email" />
-              <input name="subject" placeholder="נושא" />
-              <textarea name="content" placeholder="תוכן הפניה" rows="5" cols="50"></textarea>
-              <input type="submit"  value="שלח" id="submit"/>
+              <input name="name" placeholder="שם" onChange={this.onInputChange} id="name"/>
+              <input name="email" placeholder="דואר אלקטרוני" type="email" required onChange={this.onInputChange} id="email"/>
+              <input name="subject" placeholder="נושא" onChange={this.onInputChange} id="subject"/>
+              <textarea name="content" placeholder="תוכן הפניה" rows="5" cols="50" required onChange={this.onInputChange} id="message"/>
+              <input type="submit"  value="שלח" id="submit" onClick={this.onSend}/>
             </div>
           </div>
         )

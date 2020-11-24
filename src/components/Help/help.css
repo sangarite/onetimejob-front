@@ -56,6 +56,12 @@
   opacity: 1;
 }
 
+#contact > * {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: right;
+  outline:none;
+}
+
 #contact > textarea {
   width: 20%;
   border-radius: 20px;
@@ -73,4 +79,5 @@
   background-image: linear-gradient(#083D77, #ED6A5A);
   color: white;
   border: none;
+  text-align: center;
 }
