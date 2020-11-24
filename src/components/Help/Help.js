@@ -49,6 +49,11 @@ export default class Help extends Component
             </div>
             <p>צור קשר</p>
             <div id="contact">
+              <input name="name" placeholder="שם" />
+              <input name="email" placeholder="דואר אלקטרוני" type="email" />
+              <input name="subject" placeholder="נושא" />
+              <textarea name="content" placeholder="תוכן הפניה" rows="5" cols="50"></textarea>
+              <input type="submit"  value="שלח" id="submit"/>
             </div>
           </div>
         )
