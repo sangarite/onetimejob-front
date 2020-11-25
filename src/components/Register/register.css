@@ -4,11 +4,31 @@
   height: 30px;
   margin-bottom: 10px;
   border-width: 1px;
+  border-radius: 42px;
+  position: relative;
+left: 30%;
 }
-
+.register{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight:normal;
+  font-size: 20px;
+  color: #274372;
+}
 .register > #send {
   cursor: pointer;
   width: 30%;
+  position: absolute;
+  color:white;
+  width: 100px;
+  height: 30px;
+  border-radius: 42px;
+  border: none;
+  left: 100vh;
+  margin: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight:normal;
+font-size: 20px;
+background-image: linear-gradient(180deg, #E6685A 0%, #1D4174 100%);
 }
 
 .register > label {
