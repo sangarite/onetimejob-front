@@ -1,7 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
+import './jobs.css'
+import a from '../../images/a.jpg'
 
-const App = () => {
+export default function Jobs() {
 
   const [jobs, setJobs] = React.useState([]);
   const [filter, setFilter] = React.useState('publish_date');
@@ -20,8 +22,7 @@ const App = () => {
   }
 
   return(
-    <div className="topSpace">
-      <br/>
+    <div id="jobs">
       <select onChange={handleSelectChange}>
         <option value="category">קטגוריה</option>
         <option value="salary">שכר</option>
@@ -30,11 +31,22 @@ const App = () => {
         <option value="city">עיר</option>
         <option value="publish_date">תאריך פרסום</option>
       </select>
-      {
-        jobs.map((job, i) => <p key={i}>{job.title}</p> )
-      }
+      <br/>
+      <div id="gallary">
+        {
+          jobs.map((job, i) => {
+            return(
+              <div className="container">
+                <img src={a} alt="a" className="image"/>
+                <div className="overlay">
+                  <div id="title" className="text">{job.title}</div>
+                  <div className="text">{job.details}</div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
   );
 }
-
-export default App;

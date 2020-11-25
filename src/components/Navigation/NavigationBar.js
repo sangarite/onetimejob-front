@@ -6,7 +6,7 @@ import About from '../About'
 import Help from '../Help/Help'
 import Register from '../Register/Register'
 import Entrance from '../Entrance/Entrance'
-import JobList from '../JobList'
+import Jobs from '../Jobs/Jobs'
 import PublishJob from '../PublishJob/PublishJob'
 import UserSettings from '../UserSettings/UserSettings'
 import Notifications from '../Notifications'
@@ -57,7 +57,7 @@ class NavigationBar extends React.Component {
           <Route path="/register"><Register handleUserIn={this.props.handleUserIn}/></Route>
           <Route path="/about"><About /></Route>
           <Route path="/help"><Help questions={this.state.questions}/></Route>
-          <Route path="/jobs"><JobList /></Route>
+          <Route path="/jobs"><Jobs /></Route>
           <Route path="/publish"><PublishJob isSignIn={this.props.isSignIn} user={this.props.user}/></Route>
           <Route path="/settings"><UserSettings user={this.props.user} handleUserOut={this.props.handleUserOut}/></Route>
           <Route path="/notifications"><Notifications id={this.props.user.user_id}/></Route>
