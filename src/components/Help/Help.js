@@ -1,12 +1,12 @@
 import React, { Component} from 'react'
+import Swal from 'sweetalert2'
 import './help.css'
 
 export default class Help extends Component
 {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = {
-        data: [],
         name: '',
         email: '',
         subject: '',
@@ -15,13 +15,6 @@ export default class Help extends Component
       this.onInputChange = this.onInputChange.bind(this);
       this.resetForm = this.resetForm.bind(this);
       this.onSend = this.onSend.bind(this);
-    }
-
-    componentDidMount() {
-        fetch('http://localhost:3000/help')
-        .then(response => response.json())
-        .then(data => this.setState({data: data}))
-        .catch(error => console.log(error))
     }
 
     toggle(event) {
@@ -57,10 +50,20 @@ export default class Help extends Component
       .then(response => response.json())
       .then(data => {
         if (data.msg === 'success') {
-          alert('email sent, awesome!');
+          Swal.fire({
+            text: 'הודעתך התקבלה. נחזור אליך בהקדם האפשרי.',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000
+          })
           this.resetForm();
         } else if (data.msg == 'fail') {
-          alert('Oops, something went wrong. Try again')
+          Swal.fire({
+            title: 'שגיאה',
+            text: 'הודעתך לא נשלחה כראוי. נסה שוב.',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
         }
       })
       this.resetForm();
@@ -76,7 +79,7 @@ export default class Help extends Component
           <p>שאלות נפוצות</p>
           <div id="questions">
             {
-              this.state.data.map((question) => {
+              this.props.questions.map((question) => {
                 return(
                   <div key={question.id}>
                     <button className='accordion' onClick={event => this.toggle(event)}>{question.question}</button>

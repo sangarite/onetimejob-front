@@ -18,6 +18,16 @@ import logo from '../../images/logo.png'
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      questions: []
+    }
+  }
+
+  componentDidMount() {
+      fetch('http://localhost:3000/help')
+      .then(response => response.json())
+      .then(data => this.setState({questions: data}))
+      .catch(error => console.log(error))
   }
 
   render() {
@@ -46,7 +56,7 @@ class NavigationBar extends React.Component {
           <Route path="/signin"><Signin handleUserIn={this.props.handleUserIn}/></Route>
           <Route path="/register"><Register handleUserIn={this.props.handleUserIn}/></Route>
           <Route path="/about"><About /></Route>
-          <Route path="/help"><Help /></Route>
+          <Route path="/help"><Help questions={this.state.questions}/></Route>
           <Route path="/jobs"><JobList /></Route>
           <Route path="/publish"><PublishJob isSignIn={this.props.isSignIn} user={this.props.user}/></Route>
           <Route path="/settings"><UserSettings user={this.props.user} handleUserOut={this.props.handleUserOut}/></Route>
