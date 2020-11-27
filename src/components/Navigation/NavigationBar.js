@@ -7,6 +7,7 @@ import Help from '../Help/Help'
 import Register from '../Register/Register'
 import Entrance from '../Entrance/Entrance'
 import Jobs from '../Jobs/Jobs'
+import Job from '../Job/Job'
 import PublishJob from '../PublishJob/PublishJob'
 import UserSettings from '../UserSettings/UserSettings'
 import Notifications from '../Notifications'
@@ -19,7 +20,8 @@ class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: []
+      questions: [],
+      jobs: []
     }
   }
 
@@ -27,6 +29,11 @@ class NavigationBar extends React.Component {
       fetch('http://localhost:3000/help')
       .then(response => response.json())
       .then(data => this.setState({questions: data}))
+      .catch(error => console.log(error))
+
+      fetch(`http://localhost:3000/jobs?filter='publish_date'`)
+      .then(response => response.json())
+      .then(data => this.setState({jobs: data}))
       .catch(error => console.log(error))
   }
 
@@ -57,7 +64,8 @@ class NavigationBar extends React.Component {
           <Route path="/register"><Register handleUserIn={this.props.handleUserIn}/></Route>
           <Route path="/about"><About /></Route>
           <Route path="/help"><Help questions={this.state.questions}/></Route>
-          <Route path="/jobs"><Jobs /></Route>
+          <Route path="/job/:id" render = {props => <Job {...props} jobs={this.state.jobs} user={this.props.user}/> } />
+          <Route path="/jobs"><Jobs jobs={this.state.jobs}/></Route>
           <Route path="/publish"><PublishJob isSignIn={this.props.isSignIn} user={this.props.user}/></Route>
           <Route path="/settings"><UserSettings user={this.props.user} handleUserOut={this.props.handleUserOut}/></Route>
           <Route path="/notifications"><Notifications id={this.props.user.user_id}/></Route>

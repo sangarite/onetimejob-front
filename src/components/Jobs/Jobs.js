@@ -3,22 +3,21 @@ import { useHistory } from 'react-router-dom'
 import './jobs.css'
 import a from '../../images/a.jpg'
 
-export default function Jobs() {
+export default function Jobs(props) {
 
-  const [jobs, setJobs] = React.useState([]);
-  const [filter, setFilter] = React.useState('publish_date');
+  const [jobs, setJobs] = React.useState(props.jobs);
 
   const history = useHistory();
 
-  React.useEffect(() => {
-    fetch(`http://localhost:3000/jobs?filter=${filter}`)
+  const handleSelectChange = (event) => {
+    fetch(`http://localhost:3000/jobs?filter='${event.target.value}'`)
     .then(response => response.json())
     .then(data => setJobs(data))
     .catch(err => console.log(err))
-  }, [filter]);
+  }
 
-  const handleSelectChange = (event) => {
-    setFilter(event.target.value)
+  const onJobClick = (id) => {
+    history.push(`/job/${id}`)
   }
 
   return(
@@ -34,13 +33,13 @@ export default function Jobs() {
       <br/>
       <div id="gallary">
         {
-          jobs.map((job, i) => {
+          props.jobs.map((job, i) => {
             return(
-              <div className="container">
+              <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
                 <img src={a} alt="a" className="image"/>
                 <div className="overlay">
                   <div id="title" className="text">{job.title}</div>
-                  <div className="text">{job.details}</div>
+                  <div className="text"  id={job.id}>{job.details}</div>
                 </div>
               </div>
             );
