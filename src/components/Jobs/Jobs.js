@@ -33,7 +33,7 @@ export default function Jobs(props) {
       <br/>
       <div id="gallary">
         {
-          props.jobs.map((job, i) => {
+          jobs.map((job, i) => {
             return(
               <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
                 <img src={a} alt="a" className="image"/>

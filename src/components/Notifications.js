@@ -9,7 +9,7 @@ export default function Notifications(props)
     .then(response => response.json())
     .then(data => setMessages(data))
     .catch(error => console.log(error))
-  }, [])
+  }, [props.id])
 
   return(
     <div className="topSpace">

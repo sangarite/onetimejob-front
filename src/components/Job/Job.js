@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useState } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Job.css'
 
@@ -7,7 +7,7 @@ export default function Jobs(props) {
 
   const history = useHistory();
 
-  const info = props.jobs.filter((job) => job.job_id == props.match.params.id);
+  const info = props.jobs.filter((job) => job.job_id === props.match.params.id);
 
   const [comment, setComment] = React.useState('');
 
@@ -44,8 +44,6 @@ export default function Jobs(props) {
           }))
     }
   }
-
-//don't let to click on a job if your not sign in
 
   const onTextChange = (event) => {
     setComment(event.target.value);

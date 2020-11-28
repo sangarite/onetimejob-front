@@ -57,7 +57,7 @@ export default class Help extends Component
             timer: 2000
           })
           this.resetForm();
-        } else if (data.msg == 'fail') {
+        } else if (data.msg === 'fail') {
           Swal.fire({
             title: 'שגיאה',
             text: 'הודעתך לא נשלחה כראוי. נסה שוב.',

@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Entrance.css';
 import background from '../../images/Web 1920 – 6.png';
