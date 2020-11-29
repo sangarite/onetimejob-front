@@ -36,3 +36,15 @@ a {
   max-height: 70px;
   background-color: transparent;
 }
+
+.badge {
+  height: 20px;
+  position: absolute;
+  right: -20px;
+  background: #083D77;
+  border-radius: 20%;
+  color: white;
+  width: 20px;
+  text-align: center;
+  font-size: 15px;
+}

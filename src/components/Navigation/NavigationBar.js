@@ -10,7 +10,7 @@ import Jobs from '../Jobs/Jobs'
 import Job from '../Job/Job'
 import PublishJob from '../PublishJob/PublishJob'
 import UserSettings from '../UserSettings/UserSettings'
-import Notifications from '../Notifications'
+import Notifications from '../Notifications/Notifications'
 import Out from '../Out'
 
 import './Navigation.css'
@@ -47,7 +47,10 @@ class NavigationBar extends React.Component {
               <Link to="/about" className="link">עלינו</Link>
               <Link to="/help" className="link">עזרה</Link>
               <Link to="/settings" className="link">הגדרות</Link>
-              <Link to="/notifications" className="link">הודעות</Link>
+              <Link to="/notifications" className="link">
+                <span>הודעות</span>
+                <span className="badge">{this.props.messages.length}</span>
+              </Link>
               <Link to="/out" className="link">יציאה</Link>
             </div>
           :

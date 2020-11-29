@@ -44,7 +44,7 @@
   text-align: center;
 }
 
-#contact > input {
+.input {
   display: block;
   margin: 10px auto;
   display: block;
@@ -54,6 +54,9 @@
   border: 1px solid #707070;
   border-radius: 42px;
   opacity: 1;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: right;
+  outline:none;
 }
 
 #contact > * {

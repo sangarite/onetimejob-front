@@ -1,4 +1,5 @@
 import React from 'react'
+import './notifications.css'
 
 export default function Notifications(props)
 {
@@ -12,11 +13,13 @@ export default function Notifications(props)
   }, [props.id])
 
   return(
-    <div className="topSpace">
-      <br />
-      <p>Notifications</p>
+    <div id="notifications">
       {
-        messages.map((message, i) => <p key={i}>{message.text}</p>)
+        messages.map((message, i) =>
+          <div key={i} className="message">
+            {message.text}
+          </div>
+        )
       }
     </div>
   )

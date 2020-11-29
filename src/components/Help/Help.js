@@ -37,14 +37,14 @@ export default class Help extends Component
     }
 
     onSend(event) {
-      fetch('http://localhost:3000/help/send', {
+      fetch('http://localhost:3000/send', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
           name: this.state.name,
-          email: this.state.email,
+          email: 'one11timejob@gmail.com',
           subject: this.state.subject,
-          message: this.state.message + '\nemail: ' + this.state.email
+          message: this.state.message + '\nemail: ' + this.state.email + '\nname: ' + this.state.name
         })
       })
       .then(response => response.json())
@@ -94,11 +94,11 @@ export default class Help extends Component
             </div>
             <p>צור קשר</p>
             <div id="contact">
-              <input name="name" placeholder="שם" onChange={this.onInputChange} id="name"/>
-              <input name="email" placeholder="דואר אלקטרוני" type="email" required onChange={this.onInputChange} id="email"/>
-              <input name="subject" placeholder="נושא" onChange={this.onInputChange} id="subject"/>
+              <input name="name" placeholder="שם" onChange={this.onInputChange} id="name" className="input"/>
+              <input name="email" placeholder="דואר אלקטרוני" type="email"  className="input" required onChange={this.onInputChange} id="email"/>
+              <input name="subject" placeholder="נושא"  className="input" onChange={this.onInputChange} id="subject"/>
               <textarea name="content" placeholder="תוכן הפניה" rows="5" cols="50" required onChange={this.onInputChange} id="message"/>
-              <input type="submit"  value="שלח" id="submit" onClick={this.onSend}/>
+              <input type="submit"   className="input" value="שלח" id="submit" onClick={this.onSend}/>
             </div>
           </div>
         )

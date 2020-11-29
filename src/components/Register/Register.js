@@ -34,8 +34,8 @@ class Register extends React.Component
 
   render() {
     return(
-     <div className="topSpace register">
-      <label htmlFor="name">שם משתמש</label>
+     <div className="register">
+     <br/><br/>
       <input
         id="name"
         onChange={this.onInputChange}
@@ -43,25 +43,29 @@ class Register extends React.Component
         spellCheck="false"
         maxLength="30"
         required
+        placeholder="שם משתמש"
+        className="input"
         autoFocus
       />
-      <label htmlFor="email">אמייל</label>
       <input
         id="email"
         onChange={this.onInputChange}
         type="email"
         required
+        placeholder="דואר אלקטרוני"
+        className="input"
         spellCheck="false"
       />
-      <label htmlFor="password">סיסמה</label>
       <input
         id="password"
         onChange={this.onInputChange}
         type="password"
         required
+        placeholder="סיסמה"
+        className="input"
         spellCheck="false"
       />
-      <input type="submit" onClick={this.handleRegister} value="שלח" id="send"/>
+      <input type="submit" onClick={this.handleRegister} value="שלח" className="button"/>
       </div>
     )
   }

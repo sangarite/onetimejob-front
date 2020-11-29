@@ -4,7 +4,8 @@ import Navigation from './components/Navigation/NavigationBar'
 
 const initialState = {
   user: {},
-  isSignIn: false
+  isSignIn: false,
+  messages: []
 }
 
 class App extends Component {
@@ -16,12 +17,15 @@ class App extends Component {
   }
 
   handleUserIn(user) {
+    fetch(`http://localhost:3000/messages/${user.user_id}`)
+    .then(response => response.json())
+    .then(data => this.setState({messages: data}))
     this.setState({ user: user, isSignIn: true });
     this.props.history.push('/');
   }
 
   handleUserOut() {
-    this.setState({ user: {}, isSignIn: false });
+    this.setState({ user: {}, isSignIn: false, messages: [] });
     this.props.history.push('/');
   }
 
@@ -33,6 +37,7 @@ class App extends Component {
           user={this.state.user}
           handleUserIn={this.handleUserIn}
           handleUserOut={this.handleUserOut}
+          messages={this.state.messages}
         />
       </div>
     );

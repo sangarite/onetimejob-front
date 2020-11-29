@@ -37,15 +37,11 @@ class Signin extends React.Component {
   render() {
     return(
       <div className="signin">
-        <p>Sign In</p>
-        <label htmlFor="name">שם משתמש</label>
-        <input name="name" id="name" onChange={this.onInputChange}/>
-        <label htmlFor="password">סיסמה</label>
-        <input type="password" name="password" id="password" onChange={this.onInputChange}/>
-        <input type="submit" value="שלח" onClick={this.handleSignIn} id="but" />
+        <input name="name" id="name" onChange={this.onInputChange} className="input" placeholder="שם משתמש"/>
+        <input type="password" name="password" id="password" onChange={this.onInputChange} className="input" placeholder="סיסמה"/>
+        <input type="submit" value="שלח" onClick={this.handleSignIn} id="but" className="button"/>
          <p id="register">
-          <br/><br/>
-          לא רשום עדיין?<Link to="/register" id="link"   >הירשם</Link></p>
+          לא רשום עדיין?  <Link to="/register" id="link">הירשם</Link></p>
         </div>
     );
   }

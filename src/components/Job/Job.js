@@ -35,7 +35,7 @@ export default function Jobs(props) {
               job_id: info[0].job_i,
               user: props.user,
               publisher_id: info[0].user_id,
-              comment: comment
+              text: comment
             })
           })
           .then(response => response.text())
@@ -53,6 +53,21 @@ export default function Jobs(props) {
               showConfirmButton: false,
               timer: 3000
             })
+          })
+          
+          fetch('http://localhost:3000/send', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              name: props.user.name,
+              email: props.user.email,
+              subject: 'מצאנו מישהו שמעוניין לעבוד אצלך',
+              message: `name: ${props.user.name}\n email: ${props.user.email}\n phone: ${props.user.phone}\n`
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.msg === 'fail') console.log('sending email failed');
           })
         }
       })
