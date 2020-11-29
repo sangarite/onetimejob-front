@@ -37,7 +37,7 @@ class Signin extends React.Component {
   render() {
     return(
       <div className="signin">
-        <p>Sign In</p>
+    
         <label htmlFor="name">שם משתמש</label>
         <input name="name" id="name" onChange={this.onInputChange}/>
         <label htmlFor="password">סיסמה</label>
