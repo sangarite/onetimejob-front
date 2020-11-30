@@ -66,7 +66,7 @@ class PublishJob extends React.Component {
       return(
         <div className="topSpace" id="publishJob">
           <input name="title" id="title" onChange={this.onInputchange} className="input" placeholder="כותרת"/>
-          <input name="details" id="details" onChange={this.onInputchange} className="input" placeholder="פרטים"/>
+          <input name="details" id="details" onChange={this.onInputchange} className="input" placeholder="פרטים ודרישות"/>
           <select value={this.state.category} onChange={this.onCategoryChange} className="input" placeholder="קטגוריה">
             <option value="קטגוריה"></option>
           {
@@ -79,7 +79,7 @@ class PublishJob extends React.Component {
           }
           </select><br/>
           <input name="salary" id="salary" onChange={this.onInputchange} className="input" placeholder="שכר"/>
-          <input type="date" name="date" id="date" onChange={this.onInputchange} className="input" placeholder="תאריך תפוגה"/>
+          <input type="date" name="date" id="date" onChange={this.onInputchange} className="input" placeholder="תאריך תפוגה" onchange="this.className=(this.value!=''?'has-value':'')"/>
           <input name="area" id="area" onChange={this.onInputchange} className="input" placeholder="אזור"/>
           <input name="city" id="city" onChange={this.onInputchange} className="input" placeholder="עיר"/>
           <input type="submit" value="פרסם" onClick={this.handleJobSubmit} className="button"/>

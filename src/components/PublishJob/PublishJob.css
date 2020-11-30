@@ -1,18 +1,5 @@
-#publishJob > label {
-  float: right;
-  display: block;
-}
-
-#publishJob > input {
-  display: block;
-  width: 100%;
-}
-
-#publishJob {
-  width: 50%;
-  margin: 0px auto;
-}
-
-#publishJob > select {
-  width: 100%;
+input[type="date"]:not(.has-value):before{
+  color: black;
+  content: attr(placeholder);
+  direction: rtl;
 }
