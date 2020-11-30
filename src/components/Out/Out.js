@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+import './out.css'
 
 class Out extends React.Component {
 
@@ -15,10 +16,10 @@ class Out extends React.Component {
 
   render() {
     return(
-      <div className="topSpace">
+      <div className="out">
         <p>האם אתה בטוח שברצונך לצאת?</p>
-        <button id="yes" onClick={this.handleClick}>כן</button>
-        <button id="no" onClick={this.handleClick}>לא</button>
+        <button id="yes" onClick={this.handleClick} className="button">כן</button>
+        <button id="no" onClick={this.handleClick} className="button">לא</button>
       </div>
     );
   }

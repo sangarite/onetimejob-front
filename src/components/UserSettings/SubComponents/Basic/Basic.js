@@ -50,6 +50,7 @@ class Basic extends React.Component {
 					placeholder="שם משתמש"
 					value={this.state.name}
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					type="email"
@@ -58,6 +59,7 @@ class Basic extends React.Component {
 					placeholder="מייל"
 					value={this.state.email}
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					type="tel"
@@ -66,6 +68,7 @@ class Basic extends React.Component {
 					placeholder="פלאפון"
 					value={this.state.phone}
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					id="city"
@@ -73,6 +76,7 @@ class Basic extends React.Component {
 					placeholder="עיר"
 					value={this.state.city}
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					id="area"
@@ -80,6 +84,7 @@ class Basic extends React.Component {
 					placeholder="אזור"
 					value={this.state.area}
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					id="neighborhood"
@@ -87,6 +92,7 @@ class Basic extends React.Component {
 					placeholder="שכונה"
 					value={this.state.neighborhood}
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					type="submit"
@@ -94,6 +100,7 @@ class Basic extends React.Component {
 					name="savechanges"
 					value="שמור שינויים"
 					onClick={this.onButtonSubmit}
+					className="button"
 				/>
 			</div>
 		);

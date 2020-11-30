@@ -24,8 +24,8 @@ const Delete = (props) => {
 	return(
 		<div>
 			<p>האם אתה בטוח שברצונך למחוק את החשבון שלך לחלוטין. כל הנתונים שלך יימחקו.</p>
-			<button onClick={onButtonClick} id="yes">כן</button>
-			<button onClick={onButtonClick} id="no">לא</button>
+			<button onClick={onButtonClick} id="yes" className="button">כן</button>
+			<button onClick={onButtonClick} id="no" className="button">לא</button>
 		</div>
 	);
 }

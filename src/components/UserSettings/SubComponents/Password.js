@@ -41,18 +41,21 @@ class Password extends React.Component {
 					id="oldPassword"
 					placeholder="סיסמה נוכחית"
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					type="text"
 					id="newPassword"
 					placeholder="סיסמה חדשה"
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					type="text"
 					id="confirmPassword"
 					placeholder="אימות סיסמה"
 					onChange={this.onInputChange}
+					className="input"
 				/><br/>
 				<input
 					type="submit"
@@ -60,6 +63,7 @@ class Password extends React.Component {
 					name="changePasswor"
 					value="שנה סיסמה"
 					onClick={this.onButtonSubmit}
+					className="button"
 				/>
 			</div>
 		);

@@ -11,7 +11,7 @@ import Job from '../Job/Job'
 import PublishJob from '../PublishJob/PublishJob'
 import UserSettings from '../UserSettings/UserSettings'
 import Notifications from '../Notifications/Notifications'
-import Out from '../Out'
+import Out from '../Out/Out'
 
 import './Navigation.css'
 import logo from '../../images/logo.png'
@@ -51,6 +51,8 @@ class NavigationBar extends React.Component {
                 <span>הודעות</span>
                 <span className="badge">{this.props.messages.length}</span>
               </Link>
+              <Link to="/jobs" className="link">עבודות</Link>
+              <Link to="/publish" className="link">פרסום עבודה</Link>
               <Link to="/out" className="link">יציאה</Link>
             </div>
           :
@@ -58,6 +60,7 @@ class NavigationBar extends React.Component {
               <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
               <Link to="/signin" className="link">כניסה</Link>
               <Link to="/register" className="link">הרשמה</Link>
+              <Link to="/jobs" className="link">עבודות</Link>
               <Link to="/about" className="link">עלינו</Link>
               <Link to="/help" className="link">עזרה</Link>
             </div>

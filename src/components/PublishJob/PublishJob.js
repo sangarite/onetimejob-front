@@ -65,15 +65,10 @@ class PublishJob extends React.Component {
     if (this.props.isSignIn)
       return(
         <div className="topSpace" id="publishJob">
-          <br />
-          <p>PublishJob</p>
-          <label htmlFor="title">כותרת*</label>
-          <input name="title" id="title" onChange={this.onInputchange}/>
-          <label htmlFor="details">פרטים</label>
-          <input name="details" id="details" onChange={this.onInputchange}/>
-          <label htmlFor="category">קטגוריה*</label>
-          <select value={this.state.category} onChange={this.onCategoryChange}>
-            <option value=""></option>
+          <input name="title" id="title" onChange={this.onInputchange} className="input" placeholder="כותרת"/>
+          <input name="details" id="details" onChange={this.onInputchange} className="input" placeholder="פרטים"/>
+          <select value={this.state.category} onChange={this.onCategoryChange} className="input" placeholder="קטגוריה">
+            <option value="קטגוריה"></option>
           {
             (this.state.categories).map(category =>
               <option
@@ -83,15 +78,11 @@ class PublishJob extends React.Component {
               )
           }
           </select><br/>
-          <label htmlFor="salary">שכר</label>
-          <input name="salary" id="salary" onChange={this.onInputchange}/>
-          <label htmlFor="date">תאריך תפוגה</label>
-          <input type="date" name="date" id="date" onChange={this.onInputchange}/>
-          <label htmlFor="area">אזור*</label>
-          <input name="area" id="area" onChange={this.onInputchange}/>
-          <label htmlFor="city">עיר</label>
-          <input name="city" id="city" onChange={this.onInputchange}/>
-          <input type="submit" value="פרסם" onClick={this.handleJobSubmit}/>
+          <input name="salary" id="salary" onChange={this.onInputchange} className="input" placeholder="שכר"/>
+          <input type="date" name="date" id="date" onChange={this.onInputchange} className="input" placeholder="תאריך תפוגה"/>
+          <input name="area" id="area" onChange={this.onInputchange} className="input" placeholder="אזור"/>
+          <input name="city" id="city" onChange={this.onInputchange} className="input" placeholder="עיר"/>
+          <input type="submit" value="פרסם" onClick={this.handleJobSubmit} className="button"/>
         </div>
       );
       else return <Redirect to="/signin" />

@@ -29,7 +29,7 @@ class UserSettings extends React.Component {
 			let img = event.target.files[0];
 			this.setState({ src: URL.createObjectURL(img)});
 		}
-    //save image in the data base
+    //save image in the database
   }
 
   render() {
@@ -54,16 +54,16 @@ class UserSettings extends React.Component {
             />
           </div>
           <div className="div3">
-            <p onClick={this.onButtonClick} id='Basic'>מידע בסיסי</p>
+            <p onClick={this.onButtonClick} id='Basic' className="pointer">מידע בסיסי</p>
           </div>
           <div className="div4">
-            <p onClick={this.onButtonClick} id='Password'>סיסמה</p>
+            <p onClick={this.onButtonClick} id='Password' className="pointer">סיסמה</p>
           </div>
           <div className="div5">
-            <p onClick={this.onButtonClick} id="Preference">העדפות</p>
+            <p onClick={this.onButtonClick} id="Preference" className="pointer">העדפות</p>
           </div>
           <div className="div6">
-            <p onClick={this.onButtonClick} id="Delete">מחיקת חשבון</p>
+            <p onClick={this.onButtonClick} id="Delete" className="pointer">מחיקת חשבון</p>
           </div>
           <div className="div7">
             { this.state.heading === 'Basic'

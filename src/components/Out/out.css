@@ -1,0 +1,13 @@
+.out {
+  display: block;
+  width: 50%;
+  margin: 10% auto;
+}
+
+#yes {
+  position: absolute;
+}
+
+#no {
+  background-color: gray;
+}
