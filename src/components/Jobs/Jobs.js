@@ -1,7 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import './jobs.css'
-import a from '../../images/a.jpg'
 
 export default function Jobs(props) {
 
@@ -36,7 +35,7 @@ export default function Jobs(props) {
           jobs.map((job, i) => {
             return(
               <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
-                <img src={a} alt="a" className="image"/>
+                <img src={`../images/${job.category}.png`} alt="category" className="image"/>
                 <div className="overlay">
                   <div id="title" className="text">{job.title}</div>
                   <div className="text"  id={job.id}>{job.details}</div>

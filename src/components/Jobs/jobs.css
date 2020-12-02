@@ -6,6 +6,7 @@
   cursor: pointer;
   display: inline-block;
   margin: 1.5%;
+  background-color: #083D77;
 }
 
 #gallary{
@@ -15,8 +16,10 @@
 
 .image {
   display: block;
-  width: 100%;
+  width: 100px;
+  padding: 10%;
   height: auto;
+  margin: auto;
 }
 
 .overlay {
