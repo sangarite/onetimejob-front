@@ -21,15 +21,15 @@ export default function Jobs(props) {
 
   return(
     <div id="jobs">
-      <select onChange={handleSelectChange}>
-        <option value="category">קטגוריה</option>
-        <option value="salary">שכר</option>
-        <option value="expiry_date">תאריך תפוגה</option>
-        <option value="area">אזור</option>
-        <option value="city">עיר</option>
-        <option value="publish_date">תאריך פרסום</option>
-      </select>
-      <br/>
+        <select onChange={handleSelectChange} className="select">
+          <option value="" disabled selected>מיין לפי</option>
+          <option value="category">קטגוריה</option>
+          <option value="salary">שכר</option>
+          <option value="expiry_date">תאריך תפוגה</option>
+          <option value="area">אזור</option>
+          <option value="city">עיר</option>
+          <option value="publish_date">תאריך פרסום</option>
+        </select>
       <div id="gallary">
         {
           jobs.map((job, i) => {
