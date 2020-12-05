@@ -54,7 +54,7 @@ export default function Jobs(props) {
               timer: 3000
             })
           })
-          
+
           fetch('http://localhost:3000/send', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -78,10 +78,6 @@ export default function Jobs(props) {
     <div id="job">
       <div className="icons">
         <div className="icon">
-          <img src={area} alt="area" />
-          <p>{info[0].area}</p>
-        </div>
-        <div className="icon">
           <img src={city} alt="city" />
           <p>{info[0].city}</p>
         </div>
@@ -96,7 +92,7 @@ export default function Jobs(props) {
       </div>
       <h2>{info[0].title}</h2>
       <p>{info[0].details}</p>
-      <button onClick={onButtonClick}>מעוניין</button>
+      <button onClick={onButtonClick} className="button">מעוניין</button>
     </div>
   );
 }

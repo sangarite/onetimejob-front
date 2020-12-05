@@ -1,5 +1,6 @@
 #job {
   border: 1px solid black;
+  border-radius: 25px;
   width: 80%;
   margin: 10%;
   text-align: right;
@@ -8,12 +9,13 @@
 
 .icons {
   width: 100%;
-  background-color: green;
+  position: relative;
 }
 
 .icon {
-  display: inline;
+  display: inline-block;
   width: 25%;
+  direction: rtl;
 }
 
 .icon > img {
@@ -24,6 +26,7 @@
 
 .icon > p {
   display: inline;
+  margin: auto;
 }
 
 #job > p {
