@@ -1,18 +1,27 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import './jobs.css'
+import Loader from '../Loader/Loader'
 
 export default function Jobs(props) {
 
   const [jobs, setJobs] = React.useState(props.jobs);
 
+  const [category, setCategory] = React.useState('publish_date');
+
   const history = useHistory();
 
-  const handleSelectChange = (event) => {
-    fetch(`http://localhost:3000/jobs?filter='${event.target.value}'`)
+  React.useEffect(() => {
+    props.toggleLoader();
+    fetch(`http://localhost:3000/jobs?filter='${category}'`)
     .then(response => response.json())
-    .then(data => setJobs(data))
-    .catch(err => console.log(err))
+    .then(data => {props.toggleLoader(); setJobs(data);})
+    .catch(error => console.log(error))
+  }, [category])
+
+  const handleSelectChange = (event) => {
+    setCategory(event.target.value);
+    setJobs([]);
   }
 
   const onJobClick = (id) => {
@@ -30,19 +39,20 @@ export default function Jobs(props) {
           <option value="city">עיר</option>
           <option value="publish_date">תאריך פרסום</option>
         </select>
+        <div id="j-loader">{props.displayLoader ? <Loader /> : null}</div>
       <div id="gallary">
         {
-          jobs.map((job, i) => {
-            return(
-              <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
-                <img src={`../images/${job.category}.png`} alt="category" className="image"/>
-                <div className="overlay">
-                  <div id="title" className="text">{job.title}</div>
-                  <div className="text"  id={job.id}>{job.details}</div>
+            jobs.map((job, i) => {
+              return(
+                <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
+                  <img src={`../images/${job.category}.png`} alt="category" className="image"/>
+                  <div className="overlay">
+                    <div id="title" className="text">{job.title}</div>
+                    <div className="text"  id={job.id}>{job.details}</div>
+                  </div>
                 </div>
-              </div>
-            );
-          })
+              );
+            })
         }
       </div>
     </div>

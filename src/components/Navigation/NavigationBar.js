@@ -21,8 +21,10 @@ class NavigationBar extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      jobs: []
+      jobs: [],
+      displayLoader: false
     }
+    this.toggleLoader = this.toggleLoader.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +37,10 @@ class NavigationBar extends React.Component {
       .then(response => response.json())
       .then(data => this.setState({jobs: data}))
       .catch(error => console.log(error))
+  }
+
+  toggleLoader() {
+    this.setState({displayLoader: !this.state.displayLoader})
   }
 
   render() {
@@ -66,16 +72,64 @@ class NavigationBar extends React.Component {
             </div>
         }
         <Switch>
-          <Route path="/signin"><Signin handleUserIn={this.props.handleUserIn}/></Route>
-          <Route path="/register"><Register handleUserIn={this.props.handleUserIn}/></Route>
+          <Route path="/signin">
+            <Signin
+              handleUserIn={this.props.handleUserIn}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
+            />
+          </Route>
+          <Route path="/register">
+            <Register
+              handleUserIn={this.props.handleUserIn}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
+            />
+          </Route>
           <Route path="/about"><About /></Route>
-          <Route path="/help"><Help questions={this.state.questions}/></Route>
-          <Route path="/job/:id" render = {props => <Job {...props} jobs={this.state.jobs} user={this.props.user}/> } />
-          <Route path="/jobs"><Jobs jobs={this.state.jobs}/></Route>
-          <Route path="/publish"><PublishJob isSignIn={this.props.isSignIn} user={this.props.user}/></Route>
-          <Route path="/settings"><UserSettings user={this.props.user} handleUserOut={this.props.handleUserOut}/></Route>
-          <Route path="/notifications"><Notifications id={this.props.user.user_id}/></Route>
-          <Route path="/out"><Out handleUserOut={this.props.handleUserOut}/></Route>
+          <Route path="/help">
+            <Help
+              questions={this.state.questions}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
+            />
+          </Route>
+          <Route path="/job/:id" render = {props =>
+            <Job
+              {...props}
+              jobs={this.state.jobs}
+              user={this.props.user}
+            />
+          } />
+          <Route path="/jobs">
+            <Jobs
+              jobs={this.state.jobs}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
+            />
+          </Route>
+          <Route path="/publish">
+            <PublishJob
+              isSignIn={this.props.isSignIn}
+              user={this.props.user}
+            />
+          </Route>
+          <Route path="/settings">
+            <UserSettings
+              user={this.props.user}
+              handleUserOut={this.props.handleUserOut}
+            />
+          </Route>
+          <Route path="/notifications">
+            <Notifications
+              id={this.props.user.user_id}
+            />
+          </Route>
+          <Route path="/out">
+            <Out
+              handleUserOut={this.props.handleUserOut}
+            />
+          </Route>
           <Route path="/"><Entrance /></Route>
         </Switch>
       </div>

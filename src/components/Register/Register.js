@@ -1,5 +1,6 @@
 import React from 'react'
 import './register.css'
+import Loader from '../Loader/Loader'
 
 class Register extends React.Component
 {
@@ -15,6 +16,7 @@ class Register extends React.Component
   }
 
   handleRegister() {
+    this.props.toggleLoader();
     fetch('http://localhost:3000/register', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -25,7 +27,10 @@ class Register extends React.Component
       })
     })
     .then(response => response.text())
-    .then(data => this.props.handleUserIn(data))
+    .then(data => {
+      this.props.toggleLoader();
+      this.props.handleUserIn(data);
+    })
   }
 
   onInputChange(event) {
@@ -35,7 +40,7 @@ class Register extends React.Component
   render() {
     return(
      <div className="register">
-     <br/><br/>
+      <br/><br/>
       <input
         id="name"
         onChange={this.onInputChange}
@@ -65,8 +70,14 @@ class Register extends React.Component
         className="input"
         spellCheck="false"
       />
-      <input type="submit" onClick={this.handleRegister} value="שלח" className="button"/>
-      </div>
+      <input
+        type="submit"
+        onClick={this.handleRegister}
+        value="שלח"
+        className="button"
+      />
+      <div id="r-loader">{this.props.displayLoader ? <Loader/> : null}</div>
+    </div>
     )
   }
 }

@@ -34,3 +34,9 @@
   right: 45%;
   font-size:80%;
 }
+
+.s-loader {
+  position: absolute;
+  left: 36vw;
+  top: 15vh;
+}

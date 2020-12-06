@@ -14,3 +14,9 @@
 .register > label {
   float: right;
 }
+
+#r-loader {
+  position: absolute;
+  top: 15vh;
+  left: 36vw;
+}

@@ -4,7 +4,7 @@ import React from 'react'
 export default function Loader() {
 
   return(
-    <div classNamee="loader">
+    <div className="loader">
       <article class="clock">
         <div class="hours-container">
           <div class="hours"></div>
