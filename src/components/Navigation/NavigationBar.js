@@ -21,7 +21,6 @@ class NavigationBar extends React.Component {
     super(props);
     this.state = {
       questions: [],
-      jobs: [],
       displayLoader: false
     }
     this.toggleLoader = this.toggleLoader.bind(this);
@@ -116,13 +115,11 @@ class NavigationBar extends React.Component {
           <Route path="/job/:id" render = {props =>
             <Job
               {...props}
-              jobs={this.state.jobs}
               user={this.props.user}
             />
           } />
           <Route path="/jobs">
             <Jobs
-              jobs={this.state.jobs}
               toggleLoader={this.toggleLoader}
               displayLoader={this.state.displayLoader}
             />

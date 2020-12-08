@@ -11,7 +11,6 @@ export default function Jobs(props) {
   const history = useHistory();
 
   const info = props.jobs.filter((job) => job.job_id === parseInt(props.match.params.id));
-  console.log(info);
 
   const onButtonClick = () => {
     if (Object.keys(props.user).length === 0) {

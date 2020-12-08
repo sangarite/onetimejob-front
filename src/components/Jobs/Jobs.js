@@ -5,7 +5,7 @@ import Loader from '../Loader/Loader'
 
 export default function Jobs(props) {
 
-  const [jobs, setJobs] = React.useState(props.jobs);
+  const [jobs, setJobs] = React.useState([]);
 
   const [category, setCategory] = React.useState('publish_date');
 
