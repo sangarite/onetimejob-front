@@ -30,16 +30,26 @@ export default function Jobs(props) {
 
   return(
     <div id="jobs">
-        <select onChange={handleSelectChange} className="select">
-          <option value="" disabled selected>מיין לפי</option>
-          <option value="category">קטגוריה</option>
-          <option value="salary">שכר</option>
-          <option value="expiry_date">תאריך תפוגה</option>
-          <option value="area">אזור</option>
-          <option value="city">עיר</option>
-          <option value="publish_date">תאריך פרסום</option>
-        </select>
         <div id="j-loader">{props.displayLoader ? <Loader /> : null}</div>
+
+        <div id="filter">
+          <select onChange={handleSelectChange} className="select">
+            <option value="" disabled selected>מיין לפי</option>
+            <option value="category">קטגוריה</option>
+            <option value="salary">שכר</option>
+            <option value="expiry_date">תאריך תפוגה</option>
+            <option value="area">אזור</option>
+            <option value="city">עיר</option>
+            <option value="publish_date">תאריך פרסום</option>
+          </select>
+            <input type="checkbox" id="lol-checkbox"/>
+            <label id="lol" for="lol-checkbox">
+              <div id="knob"></div>
+              <div id="down">יורד</div>
+              <div id="up">עולה</div>
+            </label>
+        </div>
+
       <div id="gallary">
         {
             jobs.map((job, i) => {

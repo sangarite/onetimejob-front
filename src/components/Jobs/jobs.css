@@ -11,7 +11,7 @@
 
 #gallary{
   margin: 0px auto;
-  width: 90%;
+  margin-right: 340px;
 }
 
 .image {
@@ -58,17 +58,86 @@
   color: white;
   outline: none;
   border: none;
-  width: 200px;
+  width: 150px;
   height: 50px;
   border-radius: 25px;
   padding: 10px;
   position: relative;
-  left: calc(95% - 240px);
   font-size: 1em;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   direction: rtl;
-  margin: 20px;
+  display: inline;
+  margin: 15px;
 }
 
-#j-loader {
+#filter {
+  width: 300px;
+  height: 500px;
+  position: fixed;
+  right: 20px;
+  margin: 10px;
+  direction: rtl;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+#lol {
+  position: relative;
+  display: inline-block;
+  top: 20px;
+  width: 100px;
+  height: 50px;
+  background-color: #083D77;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#knob {
+  width: 40px;
+  height: 40px;
+  background-image: url('./order.png');
+  background-size: 100px;
+  position: relative;
+  top: 5px;
+  left: -5px;
+  border-radius: 40px;
+  transition: 0.4s ease left, 0.4s ease background-position;
+  z-index: 2;
+}
+
+#down,  #up {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 15px;
+  margin-left: -15px;
+  text-align: center;
+  z-index: 1;
+}
+
+#up {
+  margin-left: 30px;
+}
+
+#lol-checkbox:checked + #lol #knob {
+  right: 55px;
+  background-position: -50px 0;
+}
+
+.temp {
+  display: inline-block;
+  position: relative;
+  height: 200px;
+  top: 0px;
+  right: 0px;
 }
