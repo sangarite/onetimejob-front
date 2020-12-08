@@ -25,6 +25,8 @@ class NavigationBar extends React.Component {
       displayLoader: false
     }
     this.toggleLoader = this.toggleLoader.bind(this);
+    this.unSeenCount = this.unSeenCount.bind(this);
+    this.updateMessages = this.updateMessages.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +45,23 @@ class NavigationBar extends React.Component {
     this.setState({displayLoader: !this.state.displayLoader})
   }
 
+  unSeenCount() {
+    let count = 0;
+    this.props.messages.map((message) => {
+      if(!message.seen) count++;
+    })
+    return count;
+  }
+
+  updateMessages() {
+    fetch(`http://localhost:3000/messages/${this.props.id}`, {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+  }
+
   render() {
     return(
       <div>
@@ -53,9 +72,9 @@ class NavigationBar extends React.Component {
               <Link to="/about" className="link">עלינו</Link>
               <Link to="/help" className="link">עזרה</Link>
               <Link to="/settings" className="link">הגדרות</Link>
-              <Link to="/notifications" className="link">
+              <Link to="/notifications" className="link" onClick={this.updateMessages}>
                 <span>הודעות</span>
-                <span className="badge">{this.props.messages.length}</span>
+                <span className="badge">{this.unSeenCount()}</span>
               </Link>
               <Link to="/jobs" className="link">עבודות</Link>
               <Link to="/publish" className="link">פרסום עבודה</Link>
