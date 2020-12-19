@@ -21,6 +21,7 @@ class NavigationBar extends React.Component {
     super(props);
     this.state = {
       questions: [],
+      jobs: [],
       displayLoader: false
     }
     this.toggleLoader = this.toggleLoader.bind(this);
@@ -34,7 +35,7 @@ class NavigationBar extends React.Component {
       .then(data => this.setState({questions: data}))
       .catch(error => console.log(error))
 
-      fetch(`http://localhost:3000/jobs?filter='publish_date'`)
+      fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
       .then(response => response.json())
       .then(data => this.setState({jobs: data}))
       .catch(error => console.log(error))
@@ -59,6 +60,10 @@ class NavigationBar extends React.Component {
     })
     .then(response => response.json())
     .then(data => console.log(data))
+  }
+
+  updateJobs(jobs) {
+    this.setState({jobs})
   }
 
   render() {
@@ -115,6 +120,7 @@ class NavigationBar extends React.Component {
           <Route path="/job/:id" render = {props =>
             <Job
               {...props}
+              jobs={this.state.jobs}
               user={this.props.user}
             />
           } />

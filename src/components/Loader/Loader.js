@@ -5,12 +5,12 @@ export default function Loader() {
 
   return(
     <div className="loader">
-      <article class="clock">
-        <div class="hours-container">
-          <div class="hours"></div>
+      <article className="clock">
+        <div className="hours-container">
+          <div className="hours"></div>
         </div>
-        <div class="minutes-container">
-          <div class="minutes"></div>
+        <div className="minutes-container">
+          <div className="minutes"></div>
         </div>
       </article>
     </div>
