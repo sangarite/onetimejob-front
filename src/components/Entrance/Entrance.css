@@ -10,27 +10,37 @@
   height: 100vh;
 }
 
+#entrance {
+  color: #083D77;
+}
+
 #entrance > p {
   width: 50%;
-  font-size: 130%;
+  font-size: 2vw;
   position: absolute;
   top: 30vh;
   right: 20px;
-  color: #083D77;
+}
+
+#entrance > .button{
+  width: 130px;
+  height: 30px;
+  text-align: center;
 }
 
 .button {
   border-radius: 20px;
   background-image: linear-gradient(#083D77, #ED6A5A);
   color: white;
-  width: 100px;
-  height: 30px;
-  text-align: center;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  border: none;
+  border-radius: 40vw;
+  padding: 5px;
   outline: none;
 }
 
 .button:hover {
-  background-color: #083D77;
+  opacity: 85%;
 }
 
 #entrance > .button {
@@ -47,8 +57,9 @@
 
 .container {
   display: inline-block;
-  width: 30%;
+  width: 25%;
   position: relative;
+  padding: 2%;
   margin: 1.5%;
 }
 

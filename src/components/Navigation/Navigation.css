@@ -17,6 +17,10 @@
   font-weight: bold;
 }
 
+.link:hover {
+  border-bottom: 3px solid #083D77;
+}
+
 a {
   text-decoration-line: none;
 }

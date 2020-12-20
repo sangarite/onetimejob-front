@@ -5,13 +5,14 @@
   float: right;
   cursor: pointer;
   display: inline-block;
+  background-color: #f8f4f4;
+  box-shadow: 2px 2px 10px #888888;
   margin: 1.5%;
-  background-image: linear-gradient(#083D77, #ED6A5A);
 }
 
 #gallary{
   margin: 0px auto;
-  margin-right: 340px;
+  margin-right: 360px;
 }
 
 .image {
@@ -27,9 +28,8 @@
   bottom: 0;
   left: 0;
   right: 0;
+  border-top: 1px solid gray;
   background-color: white;
-  border-bottom: 1px solid #083D77;
-  border-right: 1px solid #083D77;
   overflow: hidden;
   width: 100%;
   height: 50px;
@@ -72,7 +72,8 @@
 
 #filter {
   width: 300px;
-  position: fixed;
+  display: inline-block;
+  position: absolute;
   right: 20px;
   margin: 10px;
   padding: 10px;
@@ -83,6 +84,20 @@
 #filter > p {
   padding: 0px;
   margin: 2px;
+  position: relative;
+  right: 15px;
+}
+
+#filter > input {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 42px;
+  opacity: 1;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: right;
+  outline:none;
+  position: relative;
+  right: 15px;
 }
 
 body {
@@ -140,17 +155,44 @@ input[type="checkbox"] {
 }
 
 .cat {
-  background-image: linear-gradient(#083D77, #ED6A5A);
   width: 50px;
   height: 50px;
-  border-radius: 50px;
   padding: 5px;
   margin: 5px;
-  box-shadow: 0 5px #999;
+  cursor: pointer;
 }
 
-.clicked{
-  background: #ED6A5A;
-  box-shadow: 0 0px #666;
-  transform: translateY(4px);
+.cat:hover {
+
+}
+
+.num {
+  display: inline;
+  width: 80px;
+  margin-left: 10px;
+}
+
+select {
+  cursor: pointer;
+}
+
+#filter > .date {
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 42px;
+  opacity: 1;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-align: right;
+  outline:none;
+  position: relative;
+  right: 15px;
+}
+
+#filter > .filter {
+  display: block;
+  cursor: pointer;
+  width: 265px;
+  height: 50px;
+  margin: 15px;
+  font-size: 20px;
 }

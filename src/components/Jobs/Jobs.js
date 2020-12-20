@@ -44,13 +44,9 @@ export default function Jobs(props) {
   }
 
   const onCatClick = (event) => {
-    if(event.target.classList.contains("clicked")) {
-      event.target.classList.remove("clicked");
-      setCategories(categories.filter((cat) => cat !== event.target.id));
-    } else {
-      event.target.classList.add("clicked");
-      setCategories([...categories, event.target.id]);
-    }
+    if(event.target.src === `http://localhost:3001/images/${event.target.id}.png`) {
+      event.target.src = `../images/${event.target.id}+.png`
+    } else event.target.src = `../images/${event.target.id}.png`
   }
 
   const changeOrder = (event) => {
@@ -147,18 +143,18 @@ export default function Jobs(props) {
           </div>
 
           <p>שכר</p>
-          <input type="number" onChange={onSalaryChange} id="min" placeholder="מינימום"/>
-          <input type="number" onChange={onSalaryChange} id="max" placeholder="מקסימום"/>
+          <input type="number" onChange={onSalaryChange} id="min" placeholder="מינימום" className="num"/>
+          <input type="number" onChange={onSalaryChange} id="max" placeholder="מקסימום" className="num"/>
 
           <p>פורסם ב</p>
-          <select onChange={onDateChange}>
+          <select onChange={onDateChange} className="date">
             <option value="10">כל זמן</option>
             <option value="1">24 שעות אחרונות</option>
             <option value="3">שלוש ימים אחרונים</option>
             <option value="7">שבוע אחרון</option>
           </select>
 
-          <button onClick={filterJobs}>סנן</button>
+          <button onClick={filterJobs} className="button filter">סנן</button>
       </div>
 
       <div id="gallary">

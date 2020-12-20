@@ -7,8 +7,10 @@
 
 .register > .button {
   display: block;
-  width: 300px;
   margin: 10px auto;
+  width: 40vw;
+  height: 5vh;
+  font-size: 2vh;
 }
 
 .register > label {
