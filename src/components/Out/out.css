@@ -6,8 +6,19 @@
 
 #yes {
   position: absolute;
+  right: 50%;
 }
 
 #no {
   background-color: gray;
+}
+
+.out > button {
+  width: 15vh;
+  text-align: center;
+  font-size: 1vw;
+}
+
+.out > p {
+  font-size: 2vw;
 }

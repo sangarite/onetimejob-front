@@ -1,7 +1,10 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import Loader from '../Loader/Loader'
+import Swal from 'sweetalert2'
 import './PublishJob.css'
+import locations from '../../areas.js'
 
 class PublishJob extends React.Component {
 
@@ -30,6 +33,7 @@ class PublishJob extends React.Component {
   }
 
   handleJobSubmit() {
+    this.props.toggleLoader();
     fetch('http://localhost:3000/publish', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
@@ -46,10 +50,14 @@ class PublishJob extends React.Component {
     })
     .then(response => response.text())
     .then(data =>  {
-      window.alert(data);
-      this.props.history.push('/');
+      this.props.toggleLoader();
+      Swal.fire({
+        text: data,
+        icon: 'information',
+        confirmButtonText: 'OK'
+      })
     })
-    .catch(err => console.log(err))
+    .catch(err => {console.log(err);this.props.toggleLoader();})
   }
 
   onInputchange(event) {
@@ -64,7 +72,8 @@ class PublishJob extends React.Component {
   render() {
     if (this.props.isSignIn)
       return(
-        <div className="topSpace" id="publishJob">
+        <div id="publishJob">
+          <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
           <input name="title" id="title" onChange={this.onInputchange} className="input" placeholder="כותרת"/>
           <input name="details" id="details" onChange={this.onInputchange} className="input" placeholder="פרטים ודרישות"/>
           <select value={this.state.category} onChange={this.onCategoryChange} className="input" placeholder="קטגוריה">
@@ -77,11 +86,25 @@ class PublishJob extends React.Component {
               >{category.category_name}</option>
               )
           }
-          </select><br/>
+          </select>
           <input name="salary" id="salary" onChange={this.onInputchange} className="input" placeholder="שכר"/>
           <input type="date" name="date" id="date" onChange={this.onInputchange} className="input" placeholder="תאריך תפוגה" onchange="this.className=(this.value!=''?'has-value':'')"/>
-          <input name="area" id="area" onChange={this.onInputchange} className="input" placeholder="אזור"/>
-          <input name="city" id="city" onChange={this.onInputchange} className="input" placeholder="עיר"/>
+          <input type="search" list="areas" onChange={this.onInputchange} placeholder="אזור" className="input" id="area"/>
+          <datalist id="areas">
+          {
+            locations.AREAS.map((area) => {
+              return <option value={area} key={area}/>
+            })
+          }
+          </datalist>
+          <input type="search" list="cities" onChange={this.onInputchange} placeholder="עיר" className="input" id="city"/>
+          <datalist id="cities">
+          {
+            locations.CITIES.map((city) => {
+              return <option value={city} key={city}/>
+            })
+          }
+          </datalist>
           <input type="submit" value="פרסם" onClick={this.handleJobSubmit} className="button"/>
         </div>
       );

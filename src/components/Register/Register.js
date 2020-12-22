@@ -1,5 +1,6 @@
 import React from 'react'
 import './register.css'
+import Swal from 'sweetalert2'
 import Loader from '../Loader/Loader'
 
 class Register extends React.Component
@@ -16,6 +17,13 @@ class Register extends React.Component
   }
 
   handleRegister() {
+    if (!this.state.name || !this.state.password || !this.state.email) {
+      Swal.fire({
+        text: 'יש למלא את כל השדות',
+        icon: 'warning'
+      })
+      return;
+    }
     this.props.toggleLoader();
     fetch('http://localhost:3000/register', {
       method: 'post',
@@ -26,10 +34,15 @@ class Register extends React.Component
         email: this.state.email
       })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
       this.props.toggleLoader();
-      this.props.handleUserIn(data);
+      if (data.message) {
+        Swal.fire({
+          text: data.message,
+          icon: 'warning'
+        })
+      } else this.props.handleUserIn(data);
     })
   }
 

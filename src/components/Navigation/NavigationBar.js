@@ -126,6 +126,7 @@ class NavigationBar extends React.Component {
           } />
           <Route path="/jobs">
             <Jobs
+              jobs={this.state.jobs}
               toggleLoader={this.toggleLoader}
               displayLoader={this.state.displayLoader}
             />
@@ -134,6 +135,8 @@ class NavigationBar extends React.Component {
             <PublishJob
               isSignIn={this.props.isSignIn}
               user={this.props.user}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
             />
           </Route>
           <Route path="/settings">
@@ -145,6 +148,8 @@ class NavigationBar extends React.Component {
           <Route path="/notifications">
             <Notifications
               id={this.props.user.user_id}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
             />
           </Route>
           <Route path="/out">

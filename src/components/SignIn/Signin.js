@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import Loader from '../Loader/Loader'
 import './Signin.css'
 
@@ -32,7 +33,10 @@ class Signin extends React.Component {
      .then((data) => {
        if (data.message) {
          this.props.toggleLoader();
-         window.alert(data.message);
+         Swal.fire({
+           text: data.message,
+           icon: 'warning'
+         })
        } else {
          this.props.toggleLoader();
          this.props.handleUserIn(data);

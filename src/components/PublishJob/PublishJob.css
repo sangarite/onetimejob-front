@@ -3,3 +3,15 @@ input[type="date"]:not(.has-value):before{
   content: attr(placeholder);
   direction: rtl;
 }
+
+#publishJob {
+  direction: rtl;
+}
+
+#publishJob > .button {
+  width: 40vw;
+  display: block;
+  height: 5vh;
+  font-size: 2vh;
+  margin: 0px auto;
+}

@@ -6,7 +6,7 @@ import locations from '../../areas.js'
 
 export default function Jobs(props) {
 
-  const [jobs, setJobs] = React.useState([]);
+  const [jobs, setJobs] = React.useState(props.jobs);
 
   const [order, setOrder] = React.useState('publish_date');
 
@@ -23,8 +23,6 @@ export default function Jobs(props) {
   const [date, setDate] = React.useState('10');
 
   const history = useHistory();
-
-  React.useEffect(() => {filterJobs()}, [])
 
   const filterJobs = () => {
     props.toggleLoader();
@@ -84,7 +82,6 @@ export default function Jobs(props) {
 
   return(
     <div id="jobs">
-
       <div id="j-loader">{props.displayLoader ? <Loader /> : null}</div>
       <div id="filter">
         <select onChange={handleSelectChange} className="select">
@@ -164,8 +161,8 @@ export default function Jobs(props) {
                 <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
                   <img src={`../images/${job.category}.png`} alt="category" className="image"/>
                   <div className="overlay">
-                    <div id="title" className="text">{job.title}</div>
-                    <div className="text" id={job.id}>{job.details}<br/>...עוד</div>
+                    <div id="title" className="txt">{job.title}</div>
+                    <div className="txt" id={job.id}>{job.details}<br/>...עוד</div>
                   </div>
                 </div>
               );

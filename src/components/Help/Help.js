@@ -1,5 +1,6 @@
 import React, { Component} from 'react'
 import Swal from 'sweetalert2'
+import Loader from '../Loader/Loader'
 import './help.css'
 
 export default class Help extends Component
@@ -37,35 +38,45 @@ export default class Help extends Component
     }
 
     onSend(event) {
-      fetch('http://localhost:3000/send', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          name: this.state.name,
-          email: 'one11timejob@gmail.com',
-          subject: this.state.subject,
-          message: this.state.message + '\nemail: ' + this.state.email + '\nname: ' + this.state.name
+      if (!this.state.email || !this.state.message) {
+        Swal.fire({
+          text: 'יש להכניס מייל ותוכן בגוף ההודעה',
+          icon: 'warning',
+          confirmButtonText: 'OK'
         })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.msg === 'success') {
-          Swal.fire({
-            text: 'הודעתך התקבלה. נחזור אליך בהקדם האפשרי.',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 2000
+      } else {
+        this.props.toggleLoader();
+        fetch('http://localhost:3000/send', {
+          method: 'post',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            name: this.state.name,
+            email: 'one11timejob@gmail.com',
+            subject: this.state.subject,
+            message: this.state.message + '\nemail: ' + this.state.email + '\nname: ' + this.state.name
           })
-          this.resetForm();
-        } else if (data.msg === 'fail') {
-          Swal.fire({
-            title: 'שגיאה',
-            text: 'הודעתך לא נשלחה כראוי. נסה שוב.',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-          })
-        }
-      })
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.props.toggleLoader();
+          if (data.msg === 'success') {
+            Swal.fire({
+              text: 'הודעתך התקבלה. נחזור אליך בהקדם האפשרי.',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 2000
+            })
+            this.resetForm();
+          } else if (data.msg === 'fail') {
+            Swal.fire({
+              title: 'שגיאה',
+              text: 'הודעתך לא נשלחה כראוי. נסה שוב.',
+              icon: 'error',
+              confirmButtonText: 'Cool'
+            })
+          }
+        })
+      }
       this.resetForm();
     }
 
@@ -75,7 +86,8 @@ export default class Help extends Component
 
     render() {
       return(
-        <div id="help">
+        <div id="help"> 
+          <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
           <p>שאלות נפוצות</p>
           <div id="questions">
             {

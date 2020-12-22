@@ -3,13 +3,14 @@
   height: 100vh;
   background-color: rgba(200, 200, 200, .4);
   position: fixed;
+  z-index: 99 !important;
   top: 0px;
   left: 0px;
 }
 
 .loader {
   opacity: 100%;
-  z-index: 99 !important;
+  z-index: 90 !important;
   position: absolute;
   top: calc((100vh - 7em) / 2);
   right: calc((100vw - 5em) /2);
