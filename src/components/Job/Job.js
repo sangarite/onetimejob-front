@@ -74,22 +74,35 @@ export default function Jobs(props) {
 
   return(
     <div id="job">
+      <h1>{info[0].title}</h1>
+      <p>{info[0].details}</p>
       <div className="icons">
+
         <div className="icon">
-          <img src={city} alt="city" />
-          <p>{info[0].city}</p>
+          <div className="img">
+            <img src={city} alt="city"/>
+            <p>עיר</p>
+          </div>
+          <p>{info[0].area}</p>
         </div>
+
         <div className="icon">
-          <img src={expiry_date} alt="expiry_date" />
+          <div className="img">
+            <img src={expiry_date} alt="expiry_date"/>
+            <p>תפוגה</p>
+          </div>
           <p>{info[0].expiry_date}</p>
         </div>
+
         <div className="icon">
-          <img src={salary} alt="salary" />
-          <p>{info[0].salary}</p>
+          <div className="img">
+            <img src={salary} alt="salary"/>
+            <p>שכר</p>
+          </div>
+          <p>{info[0].salary} &#8362;</p>
         </div>
+
       </div>
-      <h2>{info[0].title}</h2>
-      <p>{info[0].details}</p>
       <button onClick={onButtonClick} className="button">מעוניין</button>
     </div>
   );
