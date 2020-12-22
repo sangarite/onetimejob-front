@@ -1,8 +1,18 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, .4);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
 .loader {
+  opacity: 100%;
   z-index: 99 !important;
   position: absolute;
-  top: calc((100vh - 20em) / 2);
-  right: calc((100% - 20em) /2);
+  top: calc((100vh - 7em) / 2);
+  right: calc((100vw - 5em) /2);
 }
 
 .clock {
