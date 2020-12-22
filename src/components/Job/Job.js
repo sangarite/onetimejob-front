@@ -17,13 +17,15 @@ export default function Jobs(props) {
       Swal.fire({
         text: 'יש להיכנס תחילה',
         icon: 'warning',
-        confirmButtonText: 'העבר אותי לכניסה'
+        confirmButtonText: 'העבר אותי לכניסה',
+        confirmButtonColor: '#083D77'
       }).then((res) => { if(res.value) history.push('../signin')})
     } else {
       Swal.fire({
         title: 'שכנע את המעסיק שהעבודה מתאימה לך (עד 50 תווים)',
         input: 'text',
         confirmButtonText: 'שלח',
+        confirmButtonColor: '#083D77',
         showLoaderOnConfirm: true,
         preConfirm: (comment) => {
           fetch('http://localhost:3000/job/apply', {

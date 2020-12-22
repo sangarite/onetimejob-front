@@ -165,7 +165,7 @@ export default function Jobs(props) {
                   <img src={`../images/${job.category}.png`} alt="category" className="image"/>
                   <div className="overlay">
                     <div id="title" className="text">{job.title}</div>
-                    <div className="text" id={job.id}>{job.details}</div>
+                    <div className="text" id={job.id}>{job.details}<br/>...עוד</div>
                   </div>
                 </div>
               );
