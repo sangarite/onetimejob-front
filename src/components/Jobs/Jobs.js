@@ -24,6 +24,10 @@ export default function Jobs(props) {
 
   const history = useHistory();
 
+  React.useEffect(() => {
+    setJobs(props.jobs);
+  }, [props.jobs]);
+
   const filterJobs = () => {
     props.toggleLoader();
     fetch(`http://localhost:3000/jobs?order='${order}'&by=${by}&categories=${categories}&area=${area}&city=${city}&date=${date}&min=${salary[0]}&max=${salary[1]}`)

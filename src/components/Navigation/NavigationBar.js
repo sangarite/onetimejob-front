@@ -27,6 +27,7 @@ class NavigationBar extends React.Component {
     this.toggleLoader = this.toggleLoader.bind(this);
     this.unSeenCount = this.unSeenCount.bind(this);
     this.updateMessages = this.updateMessages.bind(this);
+    this.updateJobs = this.updateJobs.bind(this);
   }
 
   componentDidMount() {
@@ -62,8 +63,12 @@ class NavigationBar extends React.Component {
     .then(data => console.log(data))
   }
 
-  updateJobs(jobs) {
-    this.setState({jobs})
+  updateJobs() {
+    fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
+    .then(response => response.json())
+    .then(data => this.setState({jobs: data}))
+    .catch(error => console.log(error))
+    console.log(this.state.jobs);
   }
 
   render() {
@@ -135,6 +140,7 @@ class NavigationBar extends React.Component {
             <PublishJob
               isSignIn={this.props.isSignIn}
               user={this.props.user}
+              updateJobs={this.updateJobs}
               toggleLoader={this.toggleLoader}
               displayLoader={this.state.displayLoader}
             />

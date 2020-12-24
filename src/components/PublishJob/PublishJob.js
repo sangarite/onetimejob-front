@@ -56,6 +56,7 @@ class PublishJob extends React.Component {
         icon: 'information',
         confirmButtonText: 'OK'
       })
+      this.props.updateJobs();
     })
     .catch(err => {console.log(err);this.props.toggleLoader();})
   }
