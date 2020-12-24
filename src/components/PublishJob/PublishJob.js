@@ -23,6 +23,7 @@ class PublishJob extends React.Component {
     this.onInputchange = this.onInputchange.bind(this);
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.onCategoryChange = this.onCategoryChange.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +71,12 @@ class PublishJob extends React.Component {
     this.setState({category: event.target.value});
   }
 
+  onDateChange(event) {
+    const date = new Date(event.target.value);
+    this.setState({date: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:00`});
+    console.log(this.state.date);
+  }
+
   render() {
     if (this.props.isSignIn)
       return(
@@ -89,7 +96,7 @@ class PublishJob extends React.Component {
           }
           </select>
           <input name="salary" id="salary" onChange={this.onInputchange} className="input" placeholder="שכר"/>
-          <input type="date" name="date" id="date" onChange={this.onInputchange} className="input" placeholder="תאריך תפוגה" onchange="this.className=(this.value!=''?'has-value':'')"/>
+          <input type="datetime-local" name="date" id="date" onChange={this.onDateChange} className="input" placeholder="תאריך תפוגה" onchange="this.className=(this.value!=''?'has-value':'')"/>
           <input type="search" list="areas" onChange={this.onInputchange} placeholder="אזור" className="input" id="area"/>
           <datalist id="areas">
           {

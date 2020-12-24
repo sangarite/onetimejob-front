@@ -16,6 +16,17 @@ class App extends Component {
     this.handleUserOut = this.handleUserOut.bind(this);
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/delete', {
+      method: 'delete',
+      headers: { 'Content-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err))
+    console.log('deleted jobs');
+  }
+
   handleUserIn(user) {
     fetch(`http://localhost:3000/messages/${user.user_id}`)
     .then(response => response.json())
