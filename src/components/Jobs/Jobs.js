@@ -49,6 +49,7 @@ export default function Jobs(props) {
     if(event.target.src === `http://localhost:3001/images/${event.target.id}.png`) {
       event.target.src = `../images/${event.target.id}+.png`
     } else event.target.src = `../images/${event.target.id}.png`
+    setCategories([...categories, event.target.id]);
   }
 
   const changeOrder = (event) => {

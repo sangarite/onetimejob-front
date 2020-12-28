@@ -1,0 +1,9 @@
+#out > p {
+  font-size: 20px;
+  direction: rtl;
+}
+
+#out > button {
+  margin-top: 5vh;
+  width: 100px;
+}

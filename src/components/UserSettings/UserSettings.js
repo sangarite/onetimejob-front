@@ -1,18 +1,20 @@
-import React from 'react';
-import './UserSettings.css';
-import Basic from './SubComponents/Basic/Basic';
-import Preference from './SubComponents/Preference';
-import Delete from './SubComponents/Out';
-import Password from './SubComponents/Password';
-import avatar from './avataaars.svg';
+import React from 'react'
+import './UserSettings.css'
+import Basic from './SubComponents/Basic/Basic'
+import Preference from './SubComponents/Preference'
+import Delete from './SubComponents/out/Out'
+import Password from './SubComponents/password/Password'
+import avatar from './avataaars.svg'
+import Loader from '../Loader/Loader'
+import Swal from 'sweetalert2'
 
 class UserSettings extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      heading: 'Basic',
-      src: avatar
+      heading: 'basic',
+      src: this.props.user.photo || avatar
     }
   }
 
@@ -25,24 +27,51 @@ class UserSettings extends React.Component {
   }
 
   onImageChange = (event) => {
-    if (event.target.files[0]) {
-			let img = event.target.files[0];
-			this.setState({ src: URL.createObjectURL(img)});
-		}
-    //save image in the database
+    var img = event.target.files[0];
+    this.setState({src: URL.createObjectURL(img)});
+    fetch('http://localhost:3000/settings/avatar', {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: this.props.user.user_id,
+        src: URL.createObjectURL(img)
+      })
+    })
+    .then(response => response.text())
+    .then(data => Swal.fire({text: data}))
+    .catch(err => Swal.fire({text: err}))
+  }
+
+  selected = (event) => {
+    const selected = document.getElementsByClassName('width');
+    if (selected.length) selected[0].classList.remove('width');
+    event.target.parentElement.classList.add("width");
   }
 
   render() {
     return(
-      <div className="topSpace">
-        <h1>{this.state.name}</h1>
-        <div className="parent">
-          <div className="heading">{this.state.heading}</div>
-          <div className="div2">
+      <div id="settings">
+        <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
+        <div id="content">
+          <div className="div7">
+            { this.state.heading === 'basic'
+              ? <Basic user={this.props.user} displayLoader={this.props.displayLoader} toggleLoader={this.props.toggleLoader}/>
+              : (this.state.heading === 'password'
+                ? <Password user={this.props.user} displayLoader={this.props.displayLoader} toggleLoader={this.props.toggleLoader}/>
+                : (this.state.heading === 'preference'
+                  ? <Preference />
+                  : <Delete user={this.props.user} handleUserOut={this.props.handleUserOut} displayLoader={this.props.displayLoader} toggleLoader={this.props.toggleLoader}/>
+                  )
+                )
+            }
+          </div>
+        </div>
+        <div id="menu">
+          <div>
             <img
               src={this.state.src}
               onClick={this.onImageClick}
-              title="change avatar"
+              title="שינוי תמונת פרופיל"
               id='Image'
               alt="avatar"
             />
@@ -53,29 +82,17 @@ class UserSettings extends React.Component {
               onChange={this.onImageChange}
             />
           </div>
-          <div className="div3">
-            <p onClick={this.onButtonClick} id='Basic' className="pointer">מידע בסיסי</p>
+          <div className="menu" onClick={this.selected}>
+            <p onClick={this.onButtonClick} id='basic' className="pointer">מידע בסיסי</p>
           </div>
-          <div className="div4">
-            <p onClick={this.onButtonClick} id='Password' className="pointer">סיסמה</p>
+          <div className="menu" onClick={this.selected}>
+            <p onClick={this.onButtonClick} id='password' className="pointer">סיסמה</p>
           </div>
-          <div className="div5">
-            <p onClick={this.onButtonClick} id="Preference" className="pointer">העדפות</p>
+          <div className="menu" onClick={this.selected}>
+            <p onClick={this.onButtonClick} id="preference" className="pointer">העדפות</p>
           </div>
-          <div className="div6">
-            <p onClick={this.onButtonClick} id="Delete" className="pointer">מחיקת חשבון</p>
-          </div>
-          <div className="div7">
-            { this.state.heading === 'Basic'
-              ? <Basic user={this.props.user}/>
-              : (this.state.heading === 'Password'
-                ? <Password user={this.props.user}/>
-                : (this.state.heading === 'Preference'
-                  ? <Preference />
-                  : <Delete user={this.props.user} handleUserOut={this.props.handleUserOut}/>
-                  )
-                )
-            }
+          <div className="menu" onClick={this.selected}>
+            <p onClick={this.onButtonClick} id="out" className="pointer">מחיקת חשבון</p>
           </div>
         </div>
       </div>

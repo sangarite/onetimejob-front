@@ -1,4 +1,6 @@
 import React from 'react';
+import Swal from 'sweetalert2'
+import Loader from '../../../Loader/Loader'
 import './Basic.css';
 
 class Basic extends React.Component {
@@ -21,7 +23,12 @@ class Basic extends React.Component {
 
 	onButtonSubmit = () => {
 		if(this.state.phone.length !== 10)
-		return alert("Invalid Phone Number");
+		Swal.fire({
+			text: 'פלאפון לא חוקי',
+			icon: 'warning',
+			confirmButtonText: 'בסדר'
+		});
+		this.props.toggleLoader();
 		fetch('http://localhost:3000/settings/basic', {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
@@ -36,8 +43,8 @@ class Basic extends React.Component {
 			})
 		})
 		.then(response => response.text())
-		.then((data) => window.alert(data))
-		.catch((err) => console.log(err))
+		.then((data) => {Swal.fire({text: data}); this.props.toggleLoader();})
+		.catch((err) => {console.log(err); this.props.toggleLoader();})
 	}
 
 	render() {
@@ -66,7 +73,7 @@ class Basic extends React.Component {
 					id="phone"
 					name="phone"
 					placeholder="פלאפון"
-					value={this.state.phone}
+					value={this.state.phone || "פלאפון"}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>

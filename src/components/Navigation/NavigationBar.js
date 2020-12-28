@@ -12,6 +12,7 @@ import PublishJob from '../PublishJob/PublishJob'
 import UserSettings from '../UserSettings/UserSettings'
 import Notifications from '../Notifications/Notifications'
 import Out from '../Out/Out'
+import NotFound from '../notFound/not_found'
 
 import './Navigation.css'
 import logo from '../../images/logo.png'
@@ -149,6 +150,8 @@ class NavigationBar extends React.Component {
             <UserSettings
               user={this.props.user}
               handleUserOut={this.props.handleUserOut}
+              toggleLoader={this.toggleLoader}
+              displayLoader={this.state.displayLoader}
             />
           </Route>
           <Route path="/notifications">
@@ -163,6 +166,7 @@ class NavigationBar extends React.Component {
               handleUserOut={this.props.handleUserOut}
             />
           </Route>
+          <Route path="/404"><NotFound /></Route>
           <Route path="/"><Entrance /></Route>
         </Switch>
       </div>

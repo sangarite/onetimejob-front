@@ -133,6 +133,6 @@ const AREAS = [
   'ישובי הנגב',
   'הנגב המערבי',
   'דרום ים המלח',
-]
+];
 
 export default { CITIES, AREAS }

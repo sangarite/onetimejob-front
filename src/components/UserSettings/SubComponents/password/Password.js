@@ -1,4 +1,7 @@
-import React from 'react';
+import React from 'react'
+import './password.css'
+import Swal from 'sweetalert2'
+import Loader from '../../../Loader/Loader'
 
 class Password extends React.Component {
 
@@ -18,6 +21,7 @@ class Password extends React.Component {
 	}
 
 	onButtonSubmit(event) {
+		this.props.toggleLoader();
 		fetch('http://localhost:3000/settings/password', {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
@@ -29,13 +33,14 @@ class Password extends React.Component {
 			})
 		})
 		.then(response => response.json())
-		.then(data => console.log(data))
-		.catch(err => console.log(err))
+		.then(data => {Swal.fire({text: 'הסיסמה שונתה'}); this.props.toggleLoader();})
+		.catch(err => {Swal.fire({text: 'ישנה בעיה. נסה שוב מאוחר יותר.'}); this.props.toggleLoader();})
 	}
 
 	render() {
 		return (
-			<div>
+			<div id="password">
+				<div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
 				<input
 					type="text"
 					id="oldPassword"
