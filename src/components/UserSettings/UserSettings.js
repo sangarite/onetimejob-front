@@ -4,17 +4,17 @@ import Basic from './SubComponents/Basic/Basic'
 import Preference from './SubComponents/Preference'
 import Delete from './SubComponents/out/Out'
 import Password from './SubComponents/password/Password'
-import avatar from './avataaars.svg'
 import Loader from '../Loader/Loader'
 import Swal from 'sweetalert2'
+import get from './get.gif'
+import avatar from './avatar.svg'
 
 class UserSettings extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      heading: 'basic',
-      src: this.props.user.photo || avatar
+      heading: 'basic'
     }
   }
 
@@ -27,19 +27,23 @@ class UserSettings extends React.Component {
   }
 
   onImageChange = (event) => {
-    var img = event.target.files[0];
-    this.setState({src: URL.createObjectURL(img)});
-    fetch('http://localhost:3000/settings/avatar', {
-      method: 'put',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: this.props.user.user_id,
-        src: URL.createObjectURL(img)
+    const img = event.target.files[0];
+    if (img.type.startsWith('image')) {
+      const name = `${this.props.user.user_id}`;
+      var formData = new FormData();
+      formData.append('photo', img, name);
+
+      fetch('http://localhost:3000/avatar', {
+        method: 'POST',
+        body: formData
       })
-    })
-    .then(response => response.text())
-    .then(data => Swal.fire({text: data}))
-    .catch(err => Swal.fire({text: err}))
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+      document.getElementById('Image').src = get;
+      setTimeout(() => {document.getElementById('Image').src = `http://localhost:3000/${this.props.user.user_id}?${Math.random()}`;}, 1000)
+    } else {
+      Swal.fire({text: 'יש לבחור קובץ בפורמט של תמונה'})
+    }
   }
 
   selected = (event) => {
@@ -69,8 +73,9 @@ class UserSettings extends React.Component {
         <div id="menu">
           <div>
             <img
-              src={this.state.src}
+              src={`http://localhost:3000/${this.props.user.user_id}`}
               onClick={this.onImageClick}
+              onError={(e) => e.target.src = avatar }
               title="שינוי תמונת פרופיל"
               id='Image'
               alt="avatar"
