@@ -135,4 +135,6 @@ const AREAS = [
   'דרום ים המלח',
 ];
 
-export default { CITIES, AREAS }
+const LOCATIONS = { CITIES, AREAS };
+
+export default LOCATIONS;

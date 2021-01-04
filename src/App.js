@@ -2,36 +2,41 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import Navigation from './components/Navigation/NavigationBar'
 
-const initialState = {
-  user: {},
-  isSignIn: false,
-  messages: []
-}
-
 class App extends Component {
   constructor() {
     super();
-    this.state = initialState;
+    this.state = {
+      user: {},
+      isSignIn: false,
+      messages: []
+    };
+    this.updateMessages = this.updateMessages.bind(this);
     this.handleUserIn = this.handleUserIn.bind(this);
     this.handleUserOut = this.handleUserOut.bind(this);
   }
 
   componentDidMount() {
+    //deleting expired jobs
     fetch('http://localhost:3000/delete', {
       method: 'delete',
       headers: { 'Content-Type': 'application/json'}
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
-    console.log('deleted jobs');
+    .then(data => console.log('deleted expired jobs'))
+    .catch(err => console.log('error deleting expired jobs'))
+  }
+
+  updateMessages() {
+    console.log('updateMessages');
+    fetch(`http://localhost:3000/messages/${this.state.user.user_id}`)
+    .then(response => response.json())
+    .then(data => this.setState({messages: data}))
+    .catch(err => console.log('could not get user messages. err: ', err))
   }
 
   handleUserIn(user) {
-    fetch(`http://localhost:3000/messages/${user.user_id}`)
-    .then(response => response.json())
-    .then(data => this.setState({messages: data}))
     this.setState({ user: user, isSignIn: true });
+    this.updateMessages();
     this.props.history.push('/');
   }
 
@@ -49,6 +54,7 @@ class App extends Component {
           handleUserIn={this.handleUserIn}
           handleUserOut={this.handleUserOut}
           messages={this.state.messages}
+          updateMessages={this.updateMessages}
         />
       </div>
     );

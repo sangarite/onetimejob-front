@@ -50,6 +50,9 @@ class Basic extends React.Component {
 	render() {
 		return (
 			<div id="basic">
+				<div className="s-loader">
+					{this.props.displayLoader ? <Loader /> : null}
+				</div>
 				<input
 					type="text"
 					id="name"

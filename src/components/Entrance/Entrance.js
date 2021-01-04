@@ -15,7 +15,8 @@ export default function Entrance() {
     <div id="entrance">
       <img src={background} alt="background" id="home"/>
       <img src={top_background} alt="top_background" id="top"/>
-      <p>"ההוצאה הגדולה ביותר היא איבוד זמן" <br /> נצלו אותה כדי להרוויח כסף בקלות</p>
+      <p>"ההוצאה הגדולה ביותר היא איבוד זמן"
+      <br /> נצלו אותה כדי להרוויח כסף בקלות</p>
       <Link to='/jobs' className="button">מצא עבודה</Link>
       <div id="benefits">
         <div className="container">

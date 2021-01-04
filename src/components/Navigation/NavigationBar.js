@@ -23,24 +23,25 @@ class NavigationBar extends React.Component {
     this.state = {
       questions: [],
       jobs: [],
-      displayLoader: false
+      displayLoader: false,
+      seen: 0
     }
     this.toggleLoader = this.toggleLoader.bind(this);
     this.unSeenCount = this.unSeenCount.bind(this);
-    this.updateMessages = this.updateMessages.bind(this);
     this.updateJobs = this.updateJobs.bind(this);
+    this.seeMessages = this.seeMessages.bind(this);
   }
 
   componentDidMount() {
-      fetch('http://localhost:3000/help')
-      .then(response => response.json())
-      .then(data => this.setState({questions: data}))
-      .catch(error => console.log(error))
+    fetch('http://localhost:3000/help')
+    .then(response => response.json())
+    .then(data => this.setState({questions: data}))
+    .catch(error => console.log('error getting questions. err: ', error))
 
-      fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
-      .then(response => response.json())
-      .then(data => this.setState({jobs: data}))
-      .catch(error => console.log(error))
+    fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
+    .then(response => response.json())
+    .then(data => this.setState({jobs: data}))
+    .catch(error => console.log('error getting jobs. err: ', error))
   }
 
   toggleLoader() {
@@ -51,17 +52,20 @@ class NavigationBar extends React.Component {
     let count = 0;
     this.props.messages.map((message) => {
       if(!message.seen) count++;
+      return message;
     })
-    return count;
+    this.setState({seen: count});
   }
 
-  updateMessages() {
-    fetch(`http://localhost:3000/messages/${this.props.id}`, {
+  seeMessages() {
+    console.log('seeMessages');
+    fetch(`http://localhost:3000/messages/${this.props.user.user_id}`, {
       method: 'put',
       headers: {'Content-Type': 'application/json'}
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
+    .then(res => res.json())
+    .then(data => this.setState({seen: 0}))
+    .catch(err => console.log(err))
   }
 
   updateJobs() {
@@ -84,7 +88,7 @@ class NavigationBar extends React.Component {
               <Link to="/settings" className="link">הגדרות</Link>
               <Link to="/notifications" className="link" onClick={this.updateMessages}>
                 <span>הודעות</span>
-                <span className="badge">{this.unSeenCount()}</span>
+                <span className="badge">{this.state.seen}</span>
               </Link>
               <Link to="/jobs" className="link">עבודות</Link>
               <Link to="/publish" className="link">פרסום עבודה</Link>
@@ -159,6 +163,9 @@ class NavigationBar extends React.Component {
               id={this.props.user.user_id}
               toggleLoader={this.toggleLoader}
               displayLoader={this.state.displayLoader}
+              messages={this.props.messages}
+              updateMessages={this.props.updateMessages}
+              seeMessages={this.seeMessages}
             />
           </Route>
           <Route path="/out">
