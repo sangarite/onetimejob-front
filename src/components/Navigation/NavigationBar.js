@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 
 import Signin from '../SignIn/Signin'
-import About from '../About'
+import About from '../About/About'
 import Help from '../Help/Help'
 import Register from '../Register/Register'
 import Entrance from '../Entrance/Entrance'
@@ -72,38 +72,35 @@ class NavigationBar extends React.Component {
     fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
     .then(response => response.json())
     .then(data => this.setState({jobs: data}))
-    .catch(error => console.log(error))
-    console.log(this.state.jobs);
+    .catch(error => console.log('error update jobs. error: ', error))
   }
 
   render() {
     return(
       <div>
-        {
-          this.props.isSignIn ?
-            <div id="navigation">
-              <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
-              <Link to="/about" className="link">עלינו</Link>
-              <Link to="/help" className="link">עזרה</Link>
+        <div id="navigation">
+          <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
+          <Link to="jobs" className="link">עבודות</Link>
+          <Link to="/about" className="link">עלינו</Link>
+          <Link to="/help" className="link">עזרה</Link>
+          {
+            this.props.isSignIn?
+            <div>
               <Link to="/settings" className="link">הגדרות</Link>
               <Link to="/notifications" className="link" onClick={this.updateMessages}>
                 <span>הודעות</span>
                 <span className="badge">{this.state.seen}</span>
               </Link>
-              <Link to="/jobs" className="link">עבודות</Link>
               <Link to="/publish" className="link">פרסום עבודה</Link>
               <Link to="/out" className="link">יציאה</Link>
             </div>
-          :
-            <div id="navigation">
-              <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
+            :
+            <div>
               <Link to="/signin" className="link">כניסה</Link>
               <Link to="/register" className="link">הרשמה</Link>
-              <Link to="/jobs" className="link">עבודות</Link>
-              <Link to="/about" className="link">עלינו</Link>
-              <Link to="/help" className="link">עזרה</Link>
             </div>
-        }
+          }
+        </div>
         <Switch>
           <Route path="/signin">
             <Signin
@@ -119,7 +116,9 @@ class NavigationBar extends React.Component {
               displayLoader={this.state.displayLoader}
             />
           </Route>
-          <Route path="/about"><About /></Route>
+          <Route path="/about">
+            <About />
+          </Route>
           <Route path="/help">
             <Help
               questions={this.state.questions}
@@ -173,8 +172,8 @@ class NavigationBar extends React.Component {
               handleUserOut={this.props.handleUserOut}
             />
           </Route>
-          <Route path="/404"><NotFound /></Route>
-          <Route path="/"><Entrance /></Route>
+          <Route path="/" exact><Entrance /></Route>
+          <Route path="/*"><NotFound /></Route>
         </Switch>
       </div>
     );

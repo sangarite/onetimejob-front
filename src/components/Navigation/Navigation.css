@@ -8,6 +8,10 @@
     position: relative;
 }
 
+#navigation > div {
+  display: inline;
+}
+
 .link {
   position: relative;
   top: 30px;

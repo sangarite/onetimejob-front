@@ -5,13 +5,13 @@ export default function NotFound() {
     return(
       <div>
         <section id="not-found">
-          <div class="circles">
+          <div className="circles">
             <p>404<br/>
              <small>העמוד לא נמצא</small>
             </p>
-            <span class="circle big"></span>
-            <span class="circle med"></span>
-            <span class="circle small"></span>
+            <span className="circle big"></span>
+            <span className="circle med"></span>
+            <span className="circle small"></span>
           </div>
         </section>
       </div>

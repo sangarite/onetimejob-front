@@ -1,0 +1,23 @@
+#about > .text{
+  background: linear-gradient( #ED6A5A,#083D77 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
+
+#about {
+  margin-top: 50px;
+  margin-right: 50px;
+  text-align: right;
+  direction: rtl;
+}
+
+#about > p > img {
+  width: 150px;
+  position: relative;
+  bottom: -15px;
+  display: inline;
+}
+
+#about > a {
+  margin-left: 20px;
+}

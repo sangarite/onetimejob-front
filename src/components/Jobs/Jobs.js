@@ -163,10 +163,10 @@ export default function Jobs(props) {
         {
             jobs.map((job, i) => {
               return(
-                <div className="job" key={job.id} onClick={() => onJobClick(job.job_id)}>
+                <div key={i} className="job" onClick={() => onJobClick(job.job_id)}>
                   <img src={`../images/${job.category}.png`} alt="category" className="image"/>
                   <div className="overlay">
-                    <div id="title" className="txt">{job.title}</div>
+                    <div id="job_title" className="txt">{job.title}</div>
                     <div className="txt" id={job.id}>{job.details}<br/>...עוד</div>
                   </div>
                 </div>
