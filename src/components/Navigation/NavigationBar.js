@@ -58,7 +58,6 @@ class NavigationBar extends React.Component {
   }
 
   seeMessages() {
-    console.log('seeMessages');
     fetch(`http://localhost:3000/messages/${this.props.user.user_id}`, {
       method: 'put',
       headers: {'Content-Type': 'application/json'}

@@ -27,7 +27,6 @@ class App extends Component {
   }
 
   updateMessages() {
-    console.log('updateMessages');
     fetch(`http://localhost:3000/messages/${this.state.user.user_id}`)
     .then(response => response.json())
     .then(data => this.setState({messages: data}))

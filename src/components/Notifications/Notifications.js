@@ -4,16 +4,18 @@ import Loader from '../Loader/Loader'
 
 export default function Notifications(props) {
 
+  const { updateMessages, seeMessages, displayLoader, messages } = props;
+
   React.useEffect(() => {
-    props.updateMessages();
-    props.seeMessages();
-  }, [])
+    updateMessages();
+    seeMessages();
+  }, [updateMessages, seeMessages])
 
   return(
     <div id="notifications">
-      <div id="j-loader">{props.displayLoader ? <Loader /> : null}</div>
+      <div id="j-loader">{displayLoader ? <Loader /> : null}</div>
       {
-        props.messages.map((message, i) =>
+        messages.map((message, i) =>
           <div key={i} className="message">
             {message.text}
           </div>
