@@ -74,7 +74,8 @@ export default function Jobs(props) {
     }
   }
 
-  return(
+  if(props.isSignIn)
+    return(
     <div id="job">
       <h1>{info[0].title}</h1>
       <p>{info[0].details}</p>
@@ -93,7 +94,7 @@ export default function Jobs(props) {
             <img src={expiry_date} alt="expiry_date"/>
             <p>תפוגה</p>
           </div>
-          <p>{info[0].expiry_date}</p>
+          <p>{info[0].expiry_date || 'לא נקבע'}</p>
         </div>
 
         <div className="icon">
@@ -108,4 +109,8 @@ export default function Jobs(props) {
       <button onClick={onButtonClick} className="button">מעוניין</button>
     </div>
   );
+  else {
+    history.push('/jobs');
+    return null;
+  }
 }

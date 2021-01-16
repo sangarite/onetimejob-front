@@ -22,12 +22,14 @@ class Basic extends React.Component {
 	}
 
 	onButtonSubmit = () => {
-		if(this.state.phone.length !== 10)
-		Swal.fire({
-			text: 'פלאפון לא חוקי',
-			icon: 'warning',
-			confirmButtonText: 'בסדר'
-		});
+		if(this.state.phone.length !== 10) {
+			Swal.fire({
+				text: 'פלאפון לא חוקי',
+				icon: 'warning',
+				confirmButtonText: 'בסדר'
+			});
+			return;
+		}
 		this.props.toggleLoader();
 		fetch('http://localhost:3000/settings/basic', {
 			method: 'put',
@@ -57,8 +59,7 @@ class Basic extends React.Component {
 					type="text"
 					id="name"
 					name="name"
-					placeholder="שם משתמש"
-					value={this.state.name}
+					value={(this.state.name == null) ? "שם משתמש" : this.state.name}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
@@ -66,8 +67,7 @@ class Basic extends React.Component {
 					type="email"
 					id="email"
 					name="email"
-					placeholder="מייל"
-					value={this.state.email}
+					value={(this.state.email == null) ? "מייל" : this.state.email}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
@@ -75,32 +75,28 @@ class Basic extends React.Component {
 					type="tel"
 					id="phone"
 					name="phone"
-					placeholder="פלאפון"
-					value={this.state.phone || "פלאפון"}
+					value={(this.state.phone) ? "פלאפון" : this.state.phone}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
 				<input
 					id="city"
 					name="city"
-					placeholder="עיר"
-					value={this.state.city}
+					value={(this.state.city) ? "עיר" : this.state.city}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
 				<input
 					id="area"
 					name="area"
-					placeholder="אזור"
-					value={this.state.area}
+					value={(this.state.area == null) ? "אזור" : this.state.area}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
 				<input
 					id="neighborhood"
 					name="neighborhood"
-					placeholder="שכונה"
-					value={this.state.neighborhood}
+					value={(this.state.neighborhood === 'undefined') ? "שכונה" : this.state.neighborhood}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>

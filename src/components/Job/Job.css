@@ -55,6 +55,9 @@
   margin: 0px;
   color: white;
   text-align: center;
+  position: relative;
+  top: -10px;
+  font-size: 14px;
 }
 
 .img > img {

@@ -16,6 +16,7 @@ import NotFound from '../notFound/not_found'
 
 import './Navigation.css'
 import logo from '../../images/logo.png'
+import menu from './menu.png'
 
 class NavigationBar extends React.Component {
   constructor(props) {
@@ -74,6 +75,22 @@ class NavigationBar extends React.Component {
     .catch(error => console.log('error update jobs. error: ', error))
   }
 
+  responsive() {
+    const nav = document.getElementById('navigation');
+    const logo = document.getElementsByClassName('logo')[0];
+    const icon = document.getElementById('menu');
+    if (nav.className === "responsive") {
+      nav.className = "";
+      logo.className = "logo";
+      icon.className = "";
+    }
+    else {
+      nav.className = "responsive";
+      logo.className = "logo res";
+      icon.className = "margin";
+    }
+  }
+
   render() {
     return(
       <div>
@@ -99,6 +116,9 @@ class NavigationBar extends React.Component {
               <Link to="/register" className="link">הרשמה</Link>
             </div>
           }
+          <button onClick={this.responsive}>
+            <img src={menu} alt="menu" id="menu"/>
+          </button>
         </div>
         <Switch>
           <Route path="/signin">
@@ -130,6 +150,7 @@ class NavigationBar extends React.Component {
               {...props}
               jobs={this.state.jobs}
               user={this.props.user}
+              isSignIn={this.props.isSignIn}
             />
           } />
           <Route path="/jobs">
@@ -150,6 +171,7 @@ class NavigationBar extends React.Component {
           </Route>
           <Route path="/settings">
             <UserSettings
+              isSignIn={this.props.isSignIn}
               user={this.props.user}
               handleUserOut={this.props.handleUserOut}
               toggleLoader={this.toggleLoader}
@@ -158,6 +180,7 @@ class NavigationBar extends React.Component {
           </Route>
           <Route path="/notifications">
             <Notifications
+              isSignIn={this.props.isSignIn}
               id={this.props.user.user_id}
               toggleLoader={this.toggleLoader}
               displayLoader={this.state.displayLoader}
@@ -169,6 +192,7 @@ class NavigationBar extends React.Component {
           <Route path="/out">
             <Out
               handleUserOut={this.props.handleUserOut}
+              isSignIn={this.props.isSignIn}
             />
           </Route>
           <Route path="/" exact><Entrance /></Route>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import './UserSettings.css'
 import Basic from './SubComponents/Basic/Basic'
 import Preference from './SubComponents/Preference'
@@ -53,7 +54,8 @@ class UserSettings extends React.Component {
   }
 
   render() {
-    return(
+    if (this.props.isSignIn)
+      return(
       <div id="settings">
         <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
         <div id="content">
@@ -102,6 +104,7 @@ class UserSettings extends React.Component {
         </div>
       </div>
     );
+    else return <Redirect to="/signin" />
   }
 }
 

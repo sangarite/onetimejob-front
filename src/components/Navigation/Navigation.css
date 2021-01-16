@@ -1,11 +1,12 @@
 #navigation {
-    font-size: 25px;
-    height: 70px;
-    text-align: right;
-    top: 0px;
-    width: 100%;
-    background-color: white;
-    position: relative;
+  font-size: 25px;
+  height: 70px;
+  text-align: right;
+  top: 0px;
+  width: 100%;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
 }
 
 #navigation > div {
@@ -55,4 +56,52 @@ a {
   width: 20px;
   text-align: center;
   font-size: 15px;
+}
+
+#menu {
+  z-index: 1;
+  position: absolute;
+  width: 50px;
+  top: 10px;
+  left: 10px;
+  margin: 10px;
+  display: none;
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.responsive {
+  height: 100vh !important;
+  width: 200px !important;
+  background-color: rgba(100, 100, 100, 0.7) !important;
+  position: fixed !important;
+  z-index: 1;
+  text-align: center;
+}
+
+.res {
+  position: fixed;
+  object-fit: cover;
+  right: 0px;
+}
+
+.margin {
+  margin-left: 60px !important;
+}
+
+#navigation > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+@media screen and (max-width: 1200px) {
+  #menu {
+    display: inline-block;
+  }
+
+  .link {
+    display: block;
+    margin-top: 50px;
+  }
 }

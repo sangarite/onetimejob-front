@@ -24,6 +24,13 @@ class Register extends React.Component
       })
       return;
     }
+    if (!this.state.email.includes("@")) {
+      Swal.fire({
+        text: 'מייל לא חוקי',
+        icon: 'warning'
+      })
+      return;
+    }
     this.props.toggleLoader();
     fetch('http://localhost:3000/register', {
       method: 'post',

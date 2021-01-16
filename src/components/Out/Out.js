@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+import { Redirect } from 'react-router-dom'
 import './out.css'
 
 class Out extends React.Component {
@@ -15,13 +16,15 @@ class Out extends React.Component {
   }
 
   render() {
-    return(
+    if (this.props.isSignIn)
+      return(
       <div className="out">
         <p>?האם הינך בטוח שברצונך לצאת</p>
         <button id="yes" onClick={this.handleClick} className="button">כן</button>
         <button id="no" onClick={this.handleClick} className="button">לא</button>
       </div>
     );
+    else return <Redirect to="/" />
   }
 }
 

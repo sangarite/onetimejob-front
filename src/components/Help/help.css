@@ -64,6 +64,7 @@
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   text-align: right;
   outline:none;
+  direction: rtl;
 }
 
 #contact > * {
@@ -78,6 +79,7 @@
   border-radius: 20px;
   display: block;
   margin: 10px auto;
+  direction: rtl;
 }
 
 ::-webkit-input-placeholder {
@@ -91,4 +93,5 @@
   color: white;
   border: none;
   text-align: center;
+  cursor: pointer;
 }

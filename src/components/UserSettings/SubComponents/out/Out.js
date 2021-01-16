@@ -17,12 +17,18 @@ const Delete = (props) => {
 				body: JSON.stringify({ id: props.user.user_id })
 			})
 			.then(response => response.json())
-			.then(data => {console.log(data); props.toggleLoader();})
-			.catch(err => {console.log(err); props.toggleLoader(); return;})
-			Swal.fire({
-				text: 'החשבון שלך נמחק',
-				icon: 'success',
-				confirmButtonText: 'תודה'
+			.then(data => {
+				props.toggleLoader();
+				Swal.fire({
+					text: 'החשבון שלך נמחק',
+					icon: 'success',
+					confirmButtonText: 'תודה'
+				})
+			})
+			.catch(err => {
+				console.log('error deleteing account'); 
+				props.toggleLoader();
+				return;
 			})
 			props.handleUserOut();
 		}
