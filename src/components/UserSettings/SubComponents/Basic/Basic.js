@@ -75,14 +75,14 @@ class Basic extends React.Component {
 					type="tel"
 					id="phone"
 					name="phone"
-					value={(this.state.phone) ? "פלאפון" : this.state.phone}
+					value={(this.state.phone == null) ? "פלאפון" : this.state.phone}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
 				<input
 					id="city"
 					name="city"
-					value={(this.state.city) ? "עיר" : this.state.city}
+					value={(this.state.city == null) ? "עיר" : this.state.city}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>
@@ -96,7 +96,7 @@ class Basic extends React.Component {
 				<input
 					id="neighborhood"
 					name="neighborhood"
-					value={(this.state.neighborhood === 'undefined') ? "שכונה" : this.state.neighborhood}
+					value={(this.state.neighborhood  == null) ? "שכונה" : this.state.neighborhood}
 					onChange={this.onInputChange}
 					className="input"
 				/><br/>

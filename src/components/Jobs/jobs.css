@@ -43,6 +43,7 @@
   text-align: right;
   padding: 5px;
   text-overflow: ellipsis;
+  direction: rtl;
 }
 
 #job_title {

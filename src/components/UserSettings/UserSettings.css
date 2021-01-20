@@ -57,7 +57,7 @@
 #settings > #menu {
   box-shadow: 5px 5px 15px gray;
   width: 20vw;
-  height: 60vh;
+  height: 550px;
   display: inline-block;
   position: absolute;
   top: 15vh;
@@ -72,7 +72,7 @@
   top: 15vh;
   left: 8vw;
   width: 40vw;
-  height: 40vh;
+  height: calc(550px - 20vh);
   padding: 10vh 10vw;
   display: inline-block;
 }

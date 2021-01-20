@@ -11,6 +11,7 @@ export default function Jobs(props) {
   const history = useHistory();
 
   const info = props.jobs.filter((job) => job.job_id === parseInt(props.match.params.id));
+  const date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
 
   const onButtonClick = () => {
     if (Object.keys(props.user).length === 0) {
@@ -35,7 +36,7 @@ export default function Jobs(props) {
               job_id: info[0].job_i,
               user: props.user,
               publisher_id: info[0].user_id,
-              text: comment
+              text: 'מצאנו מישהו שמעוניין לעבוד אצלך\nמס פלאפון:' + props.user.phone + '\nכתובת מייל: ' + props.user.mail + '\nהערות: ' + comment
             })
           })
           .then(response => response.text())
@@ -59,10 +60,9 @@ export default function Jobs(props) {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              name: props.user.name,
-              email: props.user.email,
+              email_to: info[0].user_id,
               subject: 'מצאנו מישהו שמעוניין לעבוד אצלך',
-              message: `name: ${props.user.name}\n email: ${props.user.email}\n phone: ${props.user.phone}\n`
+              message: `מצאנו מישהו שמעוניין לעבוד בעבודה שהעלית\n כותרת העבודה: ${info[0].title} \n שם: ${props.user.user_name} \n מייל: ${props.user.email} \n פלאפון: ${props.user.phone}`
             })
           })
           .then(response => response.json())
@@ -94,7 +94,7 @@ export default function Jobs(props) {
             <img src={expiry_date} alt="expiry_date"/>
             <p>תפוגה</p>
           </div>
-          <p>{info[0].expiry_date || 'לא נקבע'}</p>
+          <p>{date || 'לא נקבע'}</p>
         </div>
 
         <div className="icon">
@@ -110,7 +110,7 @@ export default function Jobs(props) {
     </div>
   );
   else {
-    history.push('/jobs');
+    onButtonClick();
     return null;
   }
 }

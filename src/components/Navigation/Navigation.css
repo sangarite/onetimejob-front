@@ -58,7 +58,7 @@ a {
   font-size: 15px;
 }
 
-#menu {
+#nMenu {
   z-index: 1;
   position: absolute;
   width: 50px;
@@ -66,7 +66,7 @@ a {
   left: 10px;
   margin: 10px;
   display: none;
-  opacity: 80%;
+  opacity: 50%;
   cursor: pointer;
 }
 
@@ -96,7 +96,7 @@ a {
 }
 
 @media screen and (max-width: 1200px) {
-  #menu {
+  #nMenu {
     display: inline-block;
   }
 

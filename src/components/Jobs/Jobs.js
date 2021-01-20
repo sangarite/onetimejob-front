@@ -39,8 +39,8 @@ export default function Jobs(props) {
                 <div key={i} className="job" onClick={() => onJobClick(job.job_id)}>
                   <img src={`../images/${job.category}.png`} alt="category" className="image"/>
                   <div className="overlay">
-                    <div id="job_title" className="txt">{job.title}</div>
-                    <div className="txt" id={job.id}>{job.details}<br/>...עוד</div>
+                    <div id="job_title" className="txt"><b>{job.title}</b></div>
+                    <div className="txt" id={job.id}>{job.details}<br/><b>עוד...</b></div>
                   </div>
                 </div>
               );

@@ -61,7 +61,6 @@ class Filter extends React.Component {
       await this.setState({categories: this.state.categories.filter((cat) => {
           return cat !== event.id
       })});
-      console.log(this.state.categories);
     }
   }
 
@@ -174,12 +173,12 @@ class Filter extends React.Component {
           <div className="catext">
             <span>תכנות</span>
             <img src="../images/cat14.png" alt="תכנות" title="תכנות" className="cat" id="cat14" onClick={this.onCategoryClick} />
-          </div>7ophkl
+          </div>
           <div className="catext">
             <span>תמיכה</span>
             <img src="../images/cat15.png" alt="תמיכה" title="תמיכה" className="cat" id="cat15" onClick={this.onCategoryClick} />
           </div>
-        </div>x
+        </div>
 
         <p>שכר</p>
         <input

@@ -78,7 +78,7 @@ class NavigationBar extends React.Component {
   responsive() {
     const nav = document.getElementById('navigation');
     const logo = document.getElementsByClassName('logo')[0];
-    const icon = document.getElementById('menu');
+    const icon = document.getElementById('nMenu');
     if (nav.className === "responsive") {
       nav.className = "";
       logo.className = "logo";
@@ -117,7 +117,7 @@ class NavigationBar extends React.Component {
             </div>
           }
           <button onClick={this.responsive}>
-            <img src={menu} alt="menu" id="menu"/>
+            <img src={menu} alt="menu" id="nMenu"/>
           </button>
         </div>
         <Switch>
