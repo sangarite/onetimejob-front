@@ -5,11 +5,10 @@
   padding: 18px;
   width: 100%;
   border: none;
-  text-align: left;
+  text-align: right;
   outline: none;
   font-size: 20px;
   transition: 0.4s;
-  direction: rtl;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -22,7 +21,7 @@
   content: '\002B';
   color: #777;
   font-weight: bold;
-  float: right;
+  float: left;
   margin-left: 5px;
 }
 
