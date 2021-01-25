@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import './Job.css'
 import city from '../../images/city.png'
@@ -11,7 +12,10 @@ export default function Jobs(props) {
   const history = useHistory();
 
   const info = props.jobs.filter((job) => job.job_id === parseInt(props.match.params.id));
-  const date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
+  if (info.length)
+    date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
+  var date;
+
 
   const onButtonClick = () => {
     if (Object.keys(props.user).length === 0) {

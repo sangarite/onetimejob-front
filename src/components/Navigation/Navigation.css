@@ -66,14 +66,13 @@ a {
   left: 10px;
   margin: 10px;
   display: none;
-  opacity: 50%;
   cursor: pointer;
 }
 
 .responsive {
   height: 100vh !important;
   width: 200px !important;
-  background-color: rgba(100, 100, 100, 0.7) !important;
+  background-color: rgba(100, 100, 100, 0.5) !important;
   position: fixed !important;
   z-index: 1;
   text-align: center;
