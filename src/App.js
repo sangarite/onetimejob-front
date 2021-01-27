@@ -17,7 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     //deleting expired jobs
-    fetch('http://localhost:3000/delete', {
+    fetch('https://onetimejob-server.herokuapp.com/delete', {
       method: 'delete',
       headers: { 'Content-Type': 'application/json'}
     })
@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   updateMessages() {
-    fetch(`http://localhost:3000/messages/${this.state.user.user_id}`)
+    fetch(`https://onetimejob-server.herokuapp.com/messages/${this.state.user.user_id}`)
     .then(response => response.json())
     .then(data => this.setState({messages: data}))
     .catch(err => console.log('could not get user messages. err: ', err))

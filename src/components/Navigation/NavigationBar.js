@@ -34,12 +34,12 @@ class NavigationBar extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/help')
+    fetch('https://onetimejob-server.herokuapp.com/help')
     .then(response => response.json())
     .then(data => this.setState({questions: data}))
     .catch(error => console.log('error getting questions. err: ', error))
 
-    fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
+    fetch(`https://onetimejob-server.herokuapp.com/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
     .then(response => response.json())
     .then(data => this.setState({jobs: data}))
     .catch(error => console.log('error getting jobs. err: ', error))
@@ -59,7 +59,7 @@ class NavigationBar extends React.Component {
   }
 
   seeMessages() {
-    fetch(`http://localhost:3000/messages/${this.props.user.user_id}`, {
+    fetch(`https://onetimejob-server.herokuapp.com/messages/${this.props.user.user_id}`, {
       method: 'put',
       headers: {'Content-Type': 'application/json'}
     })
@@ -69,7 +69,7 @@ class NavigationBar extends React.Component {
   }
 
   updateJobs() {
-    fetch(`http://localhost:3000/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
+    fetch(`https://onetimejob-server.herokuapp.com/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
     .then(response => response.json())
     .then(data => this.setState({jobs: data}))
     .catch(error => console.log('error update jobs. error: ', error))

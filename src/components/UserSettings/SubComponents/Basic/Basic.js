@@ -31,7 +31,7 @@ class Basic extends React.Component {
 			return;
 		}
 		this.props.toggleLoader();
-		fetch('http://localhost:3000/settings/basic', {
+		fetch('https://onetimejob-server.herokuapp.com/settings/basic', {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

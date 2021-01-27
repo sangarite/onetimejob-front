@@ -33,7 +33,7 @@ export default function Jobs(props) {
         confirmButtonColor: '#083D77',
         showLoaderOnConfirm: true,
         preConfirm: (comment) => {
-          fetch('http://localhost:3000/job/apply', {
+          fetch('https://onetimejob-server.herokuapp.com/job/apply', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -60,7 +60,7 @@ export default function Jobs(props) {
             })
           })
 
-          fetch('http://localhost:3000/send', {
+          fetch('https://onetimejob-server.herokuapp.com/send', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

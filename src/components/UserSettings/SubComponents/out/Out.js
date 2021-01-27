@@ -11,7 +11,7 @@ const Delete = (props) => {
 	const onButtonClick = (event) => {
 		if (event.target.id === 'yes') {
 			props.toggleLoader();
-			fetch('http://localhost:3000/settings/delete', {
+			fetch('https://onetimejob-server.herokuapp.com/settings/delete', {
 				method: 'delete',
 				headers: { 'Content-Type': 'application/json'},
 				body: JSON.stringify({ id: props.user.user_id })
@@ -26,7 +26,7 @@ const Delete = (props) => {
 				})
 			})
 			.catch(err => {
-				console.log('error deleteing account'); 
+				console.log('error deleteing account');
 				props.toggleLoader();
 				return;
 			})

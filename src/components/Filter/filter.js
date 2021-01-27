@@ -50,7 +50,7 @@ class Filter extends React.Component {
 
   async onCategoryClick(event) {
     event = event.target;
-    if (event.src === `http://localhost:3001/images/${event.id}.png`) {
+    if (event.src === `https://onetimejob-server.herokuapp.com/images/${event.id}.png`) {
       event.src = `../images/${event.id}+.png`;
       await this.setState(state => ({
           categories: [...state.categories, event.id]

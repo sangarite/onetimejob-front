@@ -34,14 +34,14 @@ class UserSettings extends React.Component {
       var formData = new FormData();
       formData.append('photo', img, name);
 
-      fetch('http://localhost:3000/avatar', {
+      fetch('https://onetimejob-server.herokuapp.com/avatar', {
         method: 'POST',
         body: formData
       })
       .then(data => console.log(data))
       .catch(err => console.log(err))
       document.getElementById('Image').src = get;
-      setTimeout(() => {document.getElementById('Image').src = `http://localhost:3000/${this.props.user.user_id}?${Math.random()}`;}, 1000)
+      setTimeout(() => {document.getElementById('Image').src = `https://onetimejob-server.herokuapp.com/${this.props.user.user_id}?${Math.random()}`;}, 1000)
     } else {
       Swal.fire({text: 'יש לבחור קובץ בפורמט של תמונה'})
     }
@@ -75,7 +75,7 @@ class UserSettings extends React.Component {
         <div id="menu">
           <div>
             <img
-              src={`http://localhost:3000/${this.props.user.user_id}`}
+              src={`https://onetimejob-server.herokuapp.com/${this.props.user.user_id}`}
               onClick={this.onImageClick}
               onError={(e) => e.target.src = avatar }
               title="שינוי תמונת פרופיל"

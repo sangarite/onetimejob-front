@@ -22,7 +22,7 @@ class Password extends React.Component {
 
 	onButtonSubmit(event) {
 		this.props.toggleLoader();
-		fetch('http://localhost:3000/settings/password', {
+		fetch('https://onetimejob-server.herokuapp.com/settings/password', {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

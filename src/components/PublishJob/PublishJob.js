@@ -27,7 +27,7 @@ class PublishJob extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/categories')
+    fetch('https://onetimejob-server.herokuapp.com/categories')
     .then(response => response.json())
     .then(data => this.setState({ categories: data }))
     .catch(error => console.log(error))
@@ -35,7 +35,7 @@ class PublishJob extends React.Component {
 
   handleJobSubmit() {
     this.props.toggleLoader();
-    fetch('http://localhost:3000/publish', {
+    fetch('https://onetimejob-server.herokuapp.com/publish', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

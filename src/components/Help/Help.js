@@ -46,7 +46,7 @@ export default class Help extends Component
         })
       } else {
         this.props.toggleLoader();
-        fetch('http://localhost:3000/send', {
+        fetch('https://onetimejob-server.herokuapp.com/send', {
           method: 'post',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -86,7 +86,7 @@ export default class Help extends Component
 
     render() {
       return(
-        <div id="help"> 
+        <div id="help">
           <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
           <p>שאלות נפוצות</p>
           <div id="questions">
