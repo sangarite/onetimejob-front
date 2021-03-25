@@ -12,11 +12,11 @@ export default function Jobs(props) {
   const history = useHistory();
 
   const info = props.jobs.filter((job) => job.job_id === parseInt(props.match.params.id));
+  var date;
   if (info.length)
     date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
-  var date;
 
-
+  //handle job click
   const onButtonClick = () => {
     if (Object.keys(props.user).length === 0) {
       Swal.fire({

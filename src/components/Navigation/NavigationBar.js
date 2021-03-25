@@ -33,6 +33,7 @@ class NavigationBar extends React.Component {
     this.seeMessages = this.seeMessages.bind(this);
   }
 
+  //get questions and jobs
   componentDidMount() {
     fetch('https://onetimejob-server.herokuapp.com/help')
     .then(response => response.json())
@@ -45,10 +46,12 @@ class NavigationBar extends React.Component {
     .catch(error => console.log('error getting jobs. err: ', error))
   }
 
+  //toggle loader
   toggleLoader() {
     this.setState({displayLoader: !this.state.displayLoader})
   }
 
+  //count unseen messages
   unSeenCount() {
     let count = 0;
     this.props.messages.map((message) => {
@@ -58,6 +61,7 @@ class NavigationBar extends React.Component {
     this.setState({seen: count});
   }
 
+  //update unseen messages
   seeMessages() {
     fetch(`https://onetimejob-server.herokuapp.com/messages/${this.props.user.user_id}`, {
       method: 'put',
@@ -68,6 +72,7 @@ class NavigationBar extends React.Component {
     .catch(err => console.log(err))
   }
 
+  //update jobs
   updateJobs() {
     fetch(`https://onetimejob-server.herokuapp.com/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
     .then(response => response.json())
@@ -75,6 +80,7 @@ class NavigationBar extends React.Component {
     .catch(error => console.log('error update jobs. error: ', error))
   }
 
+  //navigation bar for small screens
   responsive() {
     const nav = document.getElementById('navigation');
     const logo = document.getElementsByClassName('logo')[0];

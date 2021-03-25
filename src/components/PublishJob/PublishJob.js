@@ -26,6 +26,7 @@ class PublishJob extends React.Component {
     this.onDateChange = this.onDateChange.bind(this);
   }
 
+  //get categories
   componentDidMount() {
     fetch('https://onetimejob-server.herokuapp.com/categories')
     .then(response => response.json())
@@ -33,6 +34,7 @@ class PublishJob extends React.Component {
     .catch(error => console.log(error))
   }
 
+  //publish job
   handleJobSubmit() {
     this.props.toggleLoader();
     fetch('https://onetimejob-server.herokuapp.com/publish', {

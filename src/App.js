@@ -26,6 +26,7 @@ class App extends Component {
     .catch(err => console.log('error deleting expired jobs'))
   }
 
+  //get user messages
   updateMessages() {
     fetch(`https://onetimejob-server.herokuapp.com/messages/${this.state.user.user_id}`)
     .then(response => response.json())
@@ -33,12 +34,14 @@ class App extends Component {
     .catch(err => console.log('could not get user messages. err: ', err))
   }
 
+  //handle user sign in
   handleUserIn(user) {
     this.setState({ user: user, isSignIn: true });
     this.updateMessages();
     this.props.history.push('/');
   }
 
+  //handle user sign out
   handleUserOut() {
     this.setState({ user: {}, isSignIn: false, messages: [] });
     this.props.history.push('/');

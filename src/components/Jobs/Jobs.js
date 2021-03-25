@@ -16,6 +16,7 @@ export default function Jobs(props) {
     setJobs(props.jobs);
   }, [props.jobs]);
 
+  //filter jobs
   const filterJobs = (order = 'publish_date', by = 'DESC', categories = [], area = '', city = '', date = '10', salary = [0,10000]) => {
     toggleLoader();
     fetch(`https://onetimejob-server.herokuapp.com/jobs?order='${order}'&by=${by}&categories=${categories}&area=${area}&city=${city}&date=${date}&min=${salary[0]}&max=${salary[1]}`)

@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Entrance.css';
-import background from '../../images/Web 1920 – 6.png';
-import top_background from '../../images/top_background.png';
-import blob_money from '../../images/blob_money.png';
-import blob_power from '../../images/blob_power.png';
-import blob_workers from '../../images/blob_workers.png';
-import money from '../../images/money.png';
-import power from '../../images/power.png';
-import workers from '../../images/workers.png';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Entrance.css'
+import background from '../../images/Web 1920 – 6.png'
+import top_background from '../../images/top_background.png'
+import blob_money from '../../images/blob_money.png'
+import blob_power from '../../images/blob_power.png'
+import blob_workers from '../../images/blob_workers.png'
+import money from '../../images/money.png'
+import power from '../../images/power.png'
+import workers from '../../images/workers.png'
 
 export default function Entrance() {
   return(

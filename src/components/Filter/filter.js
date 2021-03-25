@@ -24,30 +24,36 @@ class Filter extends React.Component {
     this.filter = this.filter.bind(this);
   }
 
+  //filter jobs
   filter() {
     const {order, by, categories, area, city, salary, date} = this.state;
     this.props.filterJobs(order, by, categories, area, city, date, salary);
   }
 
+  //handle sort by change
   async handleSelectChange(event) {
     await this.setState({order: event.target.value});
     this.filter();
   }
 
+  //handle order by change
   async handleByChange(event) {
     if (event.target.checked) await this.setState({by: 'ASC'})
     else await this.setState({by: 'DESC'})
     this.filter();
   }
 
+  //handle area change
   async handleAreaChange(event) {
     await this.setState({area: event.target.value})
   }
 
+  //handle city change
   async handleCityChange(event) {
     await this.setState({city: event.target.value})
   }
 
+  //hanlde category click
   async onCategoryClick(event) {
     event = event.target;
     if (event.src === `https://onetimejob-server.herokuapp.com/images/${event.id}.png`) {
@@ -64,6 +70,7 @@ class Filter extends React.Component {
     }
   }
 
+  //hanle salary range change
   async handleSalaryChange(event) {
     let value = event.target.value;
     if (!(value > 0)) value = 0;
@@ -76,6 +83,7 @@ class Filter extends React.Component {
     }
   }
 
+  //handle since change
   async handleDateChange(event) {
     await this.setState({date: event.target.value})
   }
