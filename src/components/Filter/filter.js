@@ -1,6 +1,7 @@
 import React from 'react'
 import locations from '../../areas'
 import './filter.css'
+import { URL } from '../../config'
 
 class Filter extends React.Component {
   constructor(props) {
@@ -56,12 +57,11 @@ class Filter extends React.Component {
   //hanlde category click
   async onCategoryClick(event) {
     event = event.target;
-    if (event.src === `https://onetimejob-server.herokuapp.com/images/${event.id}.png`) {
+    if (event.src === `${URL}/images/${event.id}.png`) {
       event.src = `../images/${event.id}+.png`;
       await this.setState(state => ({
           categories: [...state.categories, event.id]
       }));
-      console.log(this.state.categories);
     } else {
       event.src = `../images/${event.id}.png`
       await this.setState({categories: this.state.categories.filter((cat) => {
@@ -122,9 +122,11 @@ class Filter extends React.Component {
         <input type="search" list="cities" onChange={this.handleCityChange}/>
         <datalist id="cities">
         {
-          locations.CITIES.map((city) => {
+          this.state.area ?
+          locations.CITIES[this.state.area].map((city) => {
             return <option value={city} key={city}/>
           })
+          : <option value='יש לבחור אזור'/>
         }
         </datalist>
 

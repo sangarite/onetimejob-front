@@ -161,7 +161,3 @@ input[type="checkbox"] {
 .catext:hover > span {
   display: inline-block;
 }
-
-.catext:hover {
-  padding: 5px;
-}
