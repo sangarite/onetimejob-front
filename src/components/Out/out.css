@@ -1,24 +1,31 @@
 .out {
-  display: block;
-  width: 50%;
-  margin: 10% auto;
+  position: relative;
 }
 
-#yes {
+.out > .part1 {
+  width: 60%;
   position: absolute;
-  right: 50%;
+  height: 100vh;
+  direction: rtl;
 }
 
-#no {
-  background-color: gray;
+.out > .part2 {
+  width: 40%;
+  position: absolute;
+  left: 60%;
+  height: 100vh;
 }
 
-.out > button {
-  width: 15vh;
-  text-align: center;
-  font-size: 1vw;
+#out {
+  width: 50vw;
 }
 
-.out > p {
-  font-size: 2vw;
+.part1 > h1 {
+  margin: 30vh 0px 0px 0px;
+  color: #083d77;
+}
+
+.part1 > button {
+  width: 150px;
+  margin: 10%;
 }
