@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import './jobs.css'
 import Loader from '../Loader/Loader'
 import Filter from '../Filter/filter'
+import { API_URL } from '../../config'
 
 export default function Jobs(props) {
 
@@ -19,7 +20,7 @@ export default function Jobs(props) {
   //filter jobs
   const filterJobs = (order = 'publish_date', by = 'DESC', categories = [], area = '', city = '', date = '10', salary = [0,10000]) => {
     toggleLoader();
-    fetch(`https://onetimejob-server.herokuapp.com/jobs?order='${order}'&by=${by}&categories=${categories}&area=${area}&city=${city}&date=${date}&min=${salary[0]}&max=${salary[1]}`)
+    fetch(`${API_URL}/jobs?order='${order}'&by=${by}&categories=${categories}&area=${area}&city=${city}&date=${date}&min=${salary[0]}&max=${salary[1]}`)
     .then(response => response.json())
     .then(data => {toggleLoader(); setJobs(data);})
     .catch(error => {toggleLoader(); console.log(error);})

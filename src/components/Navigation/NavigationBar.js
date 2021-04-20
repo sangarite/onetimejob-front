@@ -122,7 +122,7 @@ class NavigationBar extends React.Component {
               <Link to="/register" className="link">הרשמה</Link>
             </div>
           }
-          <button onClick={this.responsive}>
+          <button onMouseEnter={this.responsive}>
             <img src={menu} alt="menu" id="nMenu"/>
           </button>
         </div>
@@ -148,6 +148,7 @@ class NavigationBar extends React.Component {
             <Help
               questions={this.state.questions}
               toggleLoader={this.toggleLoader}
+              user={this.props.user}
               displayLoader={this.state.displayLoader}
             />
           </Route>

@@ -1,9 +1,11 @@
 import React, { Component} from 'react'
 import Swal from 'sweetalert2'
 import Loader from '../Loader/Loader'
+import { API_URL } from '../../config'
+import { withRouter } from 'react-router-dom'
 import './help.css'
 
-export default class Help extends Component {
+class Help extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,12 +50,11 @@ export default class Help extends Component {
       })
     } else {
       this.props.toggleLoader();
-      fetch('https://onetimejob-server.herokuapp.com/send', {
+      fetch(`${API_URL}/send`, {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          name: this.state.name,
-          email: 'one11timejob@gmail.com',
+          email_to: this.props.user.user_id,
           subject: this.state.subject,
           message: this.state.message + '\nemail: ' + this.state.email + '\nname: ' + this.state.name
         })
@@ -78,13 +79,25 @@ export default class Help extends Component {
           })
         }
       })
+      .catch(err => {
+        console.log(err);
+        this.props.toggleLoader();
+      })
     }
     this.resetForm();
   }
 
   //handle input change
   onInputChange(event) {
-    this.setState({[`${event.target.id}`]: event.target.value})
+    if (Object.keys(this.props.user).length === 0) {
+      Swal.fire({
+        text: 'יש להיכנס תחילה',
+        icon: 'warning',
+        confirmButtonText: 'העבר אותי לכניסה',
+        confirmButtonColor: '#A2A7A5'
+      }).then((res) => { if(res.value) this.props.history.push('/signin')})
+    } else
+      this.setState({[`${event.target.id}`]: event.target.value})
   }
 
   render() {
@@ -119,3 +132,5 @@ export default class Help extends Component {
       )
   }
 }
+
+export default withRouter(Help);
