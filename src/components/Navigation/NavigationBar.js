@@ -17,6 +17,7 @@ import NotFound from '../notFound/not_found'
 import './Navigation.css'
 import logo from '../../images/logo.png'
 import menu from './menu.png'
+import { API_URL } from '../../config'
 
 class NavigationBar extends React.Component {
   constructor(props) {
@@ -35,12 +36,12 @@ class NavigationBar extends React.Component {
 
   //get questions and jobs
   componentDidMount() {
-    fetch('https://onetimejob-server.herokuapp.com/help')
+    fetch(`${API_URL}/help`)
     .then(response => response.json())
     .then(data => this.setState({questions: data}))
     .catch(error => console.log('error getting questions. err: ', error))
 
-    fetch(`https://onetimejob-server.herokuapp.com/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
+    fetch(`${API_URL}/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
     .then(response => response.json())
     .then(data => this.setState({jobs: data}))
     .catch(error => console.log('error getting jobs. err: ', error))
@@ -63,7 +64,7 @@ class NavigationBar extends React.Component {
 
   //update unseen messages
   seeMessages() {
-    fetch(`https://onetimejob-server.herokuapp.com/messages/${this.props.user.user_id}`, {
+    fetch(`${API_URL}/messages/${this.props.user.user_id}`, {
       method: 'put',
       headers: {'Content-Type': 'application/json'}
     })
@@ -74,7 +75,7 @@ class NavigationBar extends React.Component {
 
   //update jobs
   updateJobs() {
-    fetch(`https://onetimejob-server.herokuapp.com/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
+    fetch(`${API_URL}/jobs?order='publish_date'&by=DESC&categories=&area=&city=&date='10'&min=0&max=10000`)
     .then(response => response.json())
     .then(data => this.setState({jobs: data}))
     .catch(error => console.log('error update jobs. error: ', error))
@@ -102,7 +103,7 @@ class NavigationBar extends React.Component {
       <div>
         <div id="navigation">
           <Link to="/"><img src={logo} alt="logo" className="logo"/></Link>
-          <Link to="jobs" className="link">עבודות</Link>
+          <Link to="/jobs" className="link">עבודות</Link>
           <Link to="/about" className="link">עלינו</Link>
           <Link to="/help" className="link">עזרה</Link>
           {

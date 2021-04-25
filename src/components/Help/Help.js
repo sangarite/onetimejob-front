@@ -46,7 +46,8 @@ class Help extends Component {
       Swal.fire({
         text: 'יש להכניס מייל ותוכן בגוף ההודעה',
         icon: 'warning',
-        confirmButtonText: 'OK'
+        showConfirmButton: false,
+        timer: 2000
       })
     } else {
       this.props.toggleLoader();
@@ -75,7 +76,8 @@ class Help extends Component {
             title: 'שגיאה',
             text: 'הודעתך לא נשלחה כראוי. נסה שוב.',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            showConfirmButton: false,
+            timer: 2000
           })
         }
       })
@@ -94,7 +96,7 @@ class Help extends Component {
         text: 'יש להיכנס תחילה',
         icon: 'warning',
         confirmButtonText: 'העבר אותי לכניסה',
-        confirmButtonColor: '#A2A7A5'
+        confirmButtonColor: '#083D77'
       }).then((res) => { if(res.value) this.props.history.push('/signin')})
     } else
       this.setState({[`${event.target.id}`]: event.target.value})

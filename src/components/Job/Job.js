@@ -5,6 +5,7 @@ import './Job.css'
 import city from '../../images/city.png'
 import expiry_date from '../../images/expiry_date.png'
 import salary from '../../images/salary.png'
+import { API_URL } from '../../config'
 
 export default function Jobs(props) {
 
@@ -12,8 +13,7 @@ export default function Jobs(props) {
 
   const info = props.jobs.filter((job) => job.job_id === parseInt(props.match.params.id));
   var date;
-  if (info.length)
-    date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
+  if (info.length) date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
 
   //handle job click
   const onButtonClick = () => {
@@ -32,7 +32,7 @@ export default function Jobs(props) {
         confirmButtonColor: '#083D77',
         showLoaderOnConfirm: true,
         preConfirm: (comment) => {
-          fetch('https://onetimejob-server.herokuapp.com/job/apply', {
+          fetch(`${API_URL}/job/apply`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -49,17 +49,17 @@ export default function Jobs(props) {
               text: 'בקשתך התקבלה. פרטייך נשלחו בהצלחה',
               icon: 'success',
               showConfirmButton: false,
-              timer: 3000
+              timer: 2000
             }) :
             Swal.fire({
               text: 'ישנה בעיה. נסה שוב או דווח על הבעיה  בעזרה',
               icon: 'error',
               showConfirmButton: false,
-              timer: 3000
+              timer: 2000
             })
           })
 
-          fetch('https://onetimejob-server.herokuapp.com/send', {
+          fetch(`${API_URL}/send`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

@@ -2,6 +2,7 @@ import React from 'react'
 import './register.css'
 import Swal from 'sweetalert2'
 import Loader from '../Loader/Loader'
+import { API_URL } from '../../config'
 
 class Register extends React.Component
 {
@@ -20,19 +21,23 @@ class Register extends React.Component
     if (!this.state.name || !this.state.password || !this.state.email) {
       Swal.fire({
         text: 'יש למלא את כל השדות',
-        icon: 'warning'
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 2000
       })
       return;
     }
     if (!this.state.email.includes("@")) {
       Swal.fire({
         text: 'מייל לא חוקי',
-        icon: 'warning'
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 2000
       })
       return;
     }
     this.props.toggleLoader();
-    fetch('https://onetimejob-server.herokuapp.com/register', {
+    fetch(`${API_URL}/register`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -47,7 +52,9 @@ class Register extends React.Component
       if (data.message) {
         Swal.fire({
           text: data.message,
-          icon: 'warning'
+          icon: 'warning',
+          showConfirmButton: false,
+          timer: 2000
         })
       } else this.props.handleUserIn(data);
     })

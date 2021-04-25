@@ -1,6 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2'
 import Loader from '../../../Loader/Loader'
+import { API_URL } from '../../../../config'
 import './Basic.css';
 
 class Basic extends React.Component {
@@ -12,7 +13,7 @@ class Basic extends React.Component {
 			email: this.props.user.email,
 			phone: this.props.user.phone,
 			city: this.props.user.city,
-			country: this.props.user.country,
+			area: this.props.user.area,
 			neighborhood: this.props.user.neighborhood
 		}
 	}
@@ -22,16 +23,17 @@ class Basic extends React.Component {
 	}
 
 	onButtonSubmit = () => {
-		if(this.state.phone.length !== 10) {
+		if(this.state.phone && this.state.phone.length !== 10) {
 			Swal.fire({
 				text: 'פלאפון לא חוקי',
 				icon: 'warning',
-				confirmButtonText: 'בסדר'
+				showConfirmButton: false,
+  				timer: 2000
 			});
 			return;
 		}
 		this.props.toggleLoader();
-		fetch('https://onetimejob-server.herokuapp.com/settings/basic', {
+		fetch(`${API_URL}/settings/basic`, {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -41,11 +43,20 @@ class Basic extends React.Component {
 				email: this.state.email,
 				phone: this.state.phone,
 				city: this.state.city,
-				country: this.state.country
+				area: this.state.area,
+				neighborhood: this.state.neighborhood
 			})
 		})
 		.then(response => response.text())
-		.then((data) => {Swal.fire({text: data}); this.props.toggleLoader();})
+		.then((data) => {
+			Swal.fire({
+				icon: 'success', 
+				text: data,
+				showConfirmButton: false,
+  				timer: 2000
+			}); 
+			this.props.toggleLoader();
+		})
 		.catch((err) => {console.log(err); this.props.toggleLoader();})
 	}
 
@@ -59,9 +70,10 @@ class Basic extends React.Component {
 					type="text"
 					id="name"
 					name="name"
-					value={(this.state.name == null) ? "שם משתמש" : this.state.name}
+					value={(this.state.name === null) ? "שם משתמש" : this.state.name}
 					onChange={this.onInputChange}
 					className="input"
+					placeholder="שם משתמש"
 				/><br/>
 				<input
 					type="email"
@@ -70,35 +82,40 @@ class Basic extends React.Component {
 					value={(this.state.email == null) ? "מייל" : this.state.email}
 					onChange={this.onInputChange}
 					className="input"
+					placeholder="אמייל"
 				/><br/>
 				<input
 					type="tel"
 					id="phone"
 					name="phone"
-					value={(this.state.phone == null) ? "פלאפון" : this.state.phone}
+					value={(this.state.phone === null) ? "פלאפון" : this.state.phone}
 					onChange={this.onInputChange}
 					className="input"
+					placeholder="פלאפון"
 				/><br/>
 				<input
 					id="city"
 					name="city"
-					value={(this.state.city == null) ? "עיר" : this.state.city}
+					value={(this.state.city === null) ? "עיר" : this.state.city}
 					onChange={this.onInputChange}
 					className="input"
+					placeholder="עיר"
 				/><br/>
 				<input
 					id="area"
 					name="area"
-					value={(this.state.area == null) ? "אזור" : this.state.area}
+					value={(this.state.area === null) ? "אזור" : this.state.area}
 					onChange={this.onInputChange}
 					className="input"
+					placeholder="אזור"
 				/><br/>
 				<input
 					id="neighborhood"
 					name="neighborhood"
-					value={(this.state.neighborhood  == null) ? "שכונה" : this.state.neighborhood}
+					value={(this.state.neighborhood === null) ? "שכונה" : this.state.neighborhood}
 					onChange={this.onInputChange}
 					className="input"
+					placeholder="שכונה"
 				/><br/>
 				<input
 					type="submit"

@@ -2,6 +2,7 @@ import React from 'react'
 import './password.css'
 import Swal from 'sweetalert2'
 import Loader from '../../../Loader/Loader'
+import { API_URL } from '../../../../config'
 
 class Password extends React.Component {
 
@@ -22,7 +23,7 @@ class Password extends React.Component {
 
 	onButtonSubmit(event) {
 		this.props.toggleLoader();
-		fetch('https://onetimejob-server.herokuapp.com/settings/password', {
+		fetch(`${API_URL}/settings/password`, {
 			method: 'put',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -33,8 +34,24 @@ class Password extends React.Component {
 			})
 		})
 		.then(response => response.json())
-		.then(data => {Swal.fire({text: 'הסיסמה שונתה'}); this.props.toggleLoader();})
-		.catch(err => {Swal.fire({text: 'ישנה בעיה. נסה שוב מאוחר יותר.'}); this.props.toggleLoader();})
+		.then(data => {
+			Swal.fire({
+				text: 'הסיסמה שונתה',
+				icon: 'success',
+				showConfirmButton: false,
+            	timer: 2000
+			}); 
+			this.props.toggleLoader();
+		})
+		.catch(err => {
+			Swal.fire({
+				text: 'ישנה בעיה. נסה שוב מאוחר יותר.',
+				icon: 'error',
+				showConfirmButton: false,
+            	timer: 2000
+			}); 
+			this.props.toggleLoader();
+		})
 	}
 
 	render() {

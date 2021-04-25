@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
 import Navigation from './components/Navigation/NavigationBar'
+import { API_URL } from './config'
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     //deleting expired jobs
-    fetch('https://onetimejob-server.herokuapp.com/delete', {
+    fetch(`${API_URL}/delete`, {
       method: 'delete',
       headers: { 'Content-Type': 'application/json'}
     })
@@ -28,7 +29,7 @@ class App extends Component {
 
   //get user messages
   updateMessages() {
-    fetch(`https://onetimejob-server.herokuapp.com/messages/${this.state.user.user_id}`)
+    fetch(`${API_URL}/messages/${this.state.user.user_id}`)
     .then(response => response.json())
     .then(data => this.setState({messages: data}))
     .catch(err => console.log('could not get user messages. err: ', err))

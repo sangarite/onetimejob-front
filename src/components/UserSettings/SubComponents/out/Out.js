@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { API_URL } from '../../../../config';
 import Loader from '../../../Loader/Loader'
 import './out.css'
 
@@ -11,7 +12,7 @@ const Delete = (props) => {
 	const onButtonClick = (event) => {
 		if (event.target.id === 'yes') {
 			props.toggleLoader();
-			fetch('https://onetimejob-server.herokuapp.com/settings/delete', {
+			fetch(`${API_URL}/settings/delete`, {
 				method: 'delete',
 				headers: { 'Content-Type': 'application/json'},
 				body: JSON.stringify({ id: props.user.user_id })
@@ -22,7 +23,8 @@ const Delete = (props) => {
 				Swal.fire({
 					text: 'החשבון שלך נמחק',
 					icon: 'success',
-					confirmButtonText: 'תודה'
+					showConfirmButton: false,
+            		timer: 2000
 				})
 			})
 			.catch(err => {

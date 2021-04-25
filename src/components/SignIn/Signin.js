@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Loader from '../Loader/Loader'
 import './Signin.css'
+import { API_URL } from '../../config'
 
 class Signin extends React.Component {
    constructor() {
@@ -21,7 +22,7 @@ class Signin extends React.Component {
 
    handleSignIn() {
      this.props.toggleLoader();
-     fetch('https://onetimejob-server.herokuapp.com/signin', {
+     fetch(`${API_URL}/signin`, {
        method: 'post',
        headers: {'Content-Type': 'application/json'},
        body: JSON.stringify({
@@ -34,11 +35,14 @@ class Signin extends React.Component {
        if (data.message) {
          this.props.toggleLoader();
          Swal.fire({
-           text: data.message,
-           icon: 'warning'
+            text: data.message,
+            icon: 'warning',
+            showConfirmButton: false,
+            timer: 2000
          })
        } else {
          this.props.toggleLoader();
+         console.log(data);
          this.props.handleUserIn(data);
        }
      })

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Entrance.css'
+import Slideshow from '../Slider/slider'
 import background from '../../images/Web 1920 – 6.png'
 import top_background from '../../images/top_background.png'
 import blob_money from '../../images/blob_money.png'
@@ -37,6 +38,9 @@ export default function Entrance() {
           <h1>כוח עבודה זול</h1>
           <h2>על עבודות חד פעמיות משלמים פחות</h2>
         </div>
+      </div>
+      <div id="social_proof">
+        <Slideshow />
       </div>
     </div>
   );

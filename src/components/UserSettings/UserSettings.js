@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader'
 import Swal from 'sweetalert2'
 import get from './get.gif'
 import avatar from './avatar.svg'
+import { API_URL } from '../../config'
 
 class UserSettings extends React.Component {
 
@@ -34,16 +35,21 @@ class UserSettings extends React.Component {
       var formData = new FormData();
       formData.append('photo', img, name);
 
-      fetch('https://onetimejob-server.herokuapp.com/avatar', {
+      fetch(`${API_URL}/avatar`, {
         method: 'POST',
         body: formData
       })
       .then(data => console.log(data))
       .catch(err => console.log(err))
       document.getElementById('Image').src = get;
-      setTimeout(() => {document.getElementById('Image').src = `https://onetimejob-server.herokuapp.com/${this.props.user.user_id}?${Math.random()}`;}, 1000)
+      setTimeout(() => {document.getElementById('Image').src = `${API_URL}/${this.props.user.user_id}?${Math.random()}`;}, 1000)
     } else {
-      Swal.fire({text: 'יש לבחור קובץ בפורמט של תמונה'})
+      Swal.fire({
+        icon: 'warning', 
+        text: 'יש לבחור קובץ בפורמט של תמונה',
+        showConfirmButton: false,
+        timer: 2000
+      })
     }
   }
 
@@ -75,7 +81,7 @@ class UserSettings extends React.Component {
         <div id="menu">
           <div>
             <img
-              src={`https://onetimejob-server.herokuapp.com/${this.props.user.user_id}`}
+              src={`${API_URL}/${this.props.user.user_id}`}
               onClick={this.onImageClick}
               onError={(e) => e.target.src = avatar }
               title="שינוי תמונת פרופיל"

@@ -5,6 +5,7 @@ import Loader from '../Loader/Loader'
 import Swal from 'sweetalert2'
 import './PublishJob.css'
 import locations from '../../areas.js'
+import { API_URL } from '../../config'
 
 class PublishJob extends React.Component {
 
@@ -28,7 +29,7 @@ class PublishJob extends React.Component {
 
   //get categories
   componentDidMount() {
-    fetch('https://onetimejob-server.herokuapp.com/categories')
+    fetch(`${API_URL}/categories`)
     .then(response => response.json())
     .then(data => this.setState({ categories: data }))
     .catch(error => console.log(error))
@@ -37,7 +38,7 @@ class PublishJob extends React.Component {
   //publish job
   handleJobSubmit() {
     this.props.toggleLoader();
-    fetch('https://onetimejob-server.herokuapp.com/publish', {
+    fetch(`${API_URL}/publish`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -57,7 +58,8 @@ class PublishJob extends React.Component {
       Swal.fire({
         text: data,
         icon: 'info',
-        confirmButtonText: 'OK'
+        showConfirmButton: false,
+        timer: 2000
       })
       this.props.updateJobs();
     })
