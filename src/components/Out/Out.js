@@ -11,6 +11,7 @@ class Out extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  //מרוקן את המשתמש והולך לעמוד הבית
   handleClick(event) {
     if (event.target.id === "yes") this.props.handleUserOut();
     else this.props.history.push('/');

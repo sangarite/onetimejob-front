@@ -57,13 +57,18 @@ class Filter extends React.Component {
   //hanlde category click
   async onCategoryClick(event) {
     event = event.target;
+    //בודק עם אין פלוס בכתובת של התמונ
     if (event.src === `${URL}/images/${event.id}.png`) {
+      //מוסיף פלוס - צובע את התמונה
       event.src = `../images/${event.id}+.png`;
+      //מוסיף את השם של הקטגוריה למערך של הקטגוריות במצב
       await this.setState(state => ({
           categories: [...state.categories, event.id]
       }));
     } else {
+      //משנה את התמונה ללא צבועה
       event.src = `../images/${event.id}.png`
+      //מסיר את השם של הקטגוריה מהמערך של הקטגוריות - עובר על המערך ומחזיר רק את הקטגוריות שלא שווה לזה שלחצו עליו
       await this.setState({categories: this.state.categories.filter((cat) => {
           return cat !== event.id
       })});

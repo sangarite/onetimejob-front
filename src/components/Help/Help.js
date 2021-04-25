@@ -21,6 +21,8 @@ class Help extends Component {
 
   //toggle question (show and hide answer)
   toggle(event) {
+    //כל פעם שלוחצים על השאלה הוא מסיר או מוסיף את העיצוב שמראה את התשובה
+    //אקטיב גורם לכל שרואים או מסתירים את התשובה
     event.target.classList.toggle("active");
     var panel = event.target.nextElementSibling;
     if (panel.style.maxHeight) {
@@ -31,6 +33,7 @@ class Help extends Component {
   }
 
   //reset help form
+  //מרוקן את האינפוטים כשלוחצים על הכפתור של שליחה להודות
   resetForm(){
       this.setState({
         name: '',
@@ -41,6 +44,7 @@ class Help extends Component {
   }
 
   //send user's question
+  //שולח את השאלה של המשתמש למייל של המערכת
   onSend(event) {
     if (!this.state.email || !this.state.message) {
       Swal.fire({
@@ -107,6 +111,7 @@ class Help extends Component {
       <div id="help">
         <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
         <p>שאלות נפוצות</p>
+        {/*עובר על המערך של השאלות והתשובות. עבור כל שאלה מציג כפתור שפותח את התשובה */}
         <div id="questions">
           {
             this.props.questions.map((question) => {

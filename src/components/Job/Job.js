@@ -11,12 +11,14 @@ export default function Jobs(props) {
 
   const history = useHistory();
 
+  //מכניס לפה את כל המידע על המשרה
   const info = props.jobs.filter((job) => job.job_id === parseInt(props.match.params.id));
   var date;
   if (info.length) date = info[0].expiry_date.slice(0,10) + '\n' + info[0].expiry_date.slice(11,16)
 
   //handle job click
   const onButtonClick = () => {
+    //הופך את האובייקט של המידע על המשתמש למערך ובודק אם יש בו משהו - אם אין מבקש להיכנס
     if (Object.keys(props.user).length === 0) {
       Swal.fire({
         text: 'יש להיכנס תחילה',
@@ -31,6 +33,7 @@ export default function Jobs(props) {
         confirmButtonText: 'שלח',
         confirmButtonColor: '#083D77',
         showLoaderOnConfirm: true,
+        //מוסיף הודעה באזור האישי של מפרסם העבודה
         preConfirm: (comment) => {
           fetch(`${API_URL}/job/apply`, {
             method: 'post',
@@ -59,6 +62,7 @@ export default function Jobs(props) {
             })
           })
 
+          //שולח הודעה במייל למפרסם העבודה
           fetch(`${API_URL}/send`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -77,6 +81,7 @@ export default function Jobs(props) {
     }
   }
 
+  //בודק אם המשתמש בפנים, אם כן מציג את המודעה, אם לא מפעיל את הפונקציה של הכפתור
   if(props.isSignIn)
     return(
     <div id="job">

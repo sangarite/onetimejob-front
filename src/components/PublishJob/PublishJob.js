@@ -107,6 +107,7 @@ class PublishJob extends React.Component {
             })
           }
           </datalist>
+          {/*לסדר את זה  */}
           <input type="search" list="cities" onChange={this.onInputchange} placeholder="עיר" className="input" id="city"/>
           <datalist id="cities">
           {

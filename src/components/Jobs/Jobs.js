@@ -18,6 +18,7 @@ export default function Jobs(props) {
   }, [props.jobs]);
 
   //filter jobs
+  //מחזיר רק את העובודת שהמשתמש מיין
   const filterJobs = (order = 'publish_date', by = 'DESC', categories = [], area = '', city = '', date = '10', salary = [0,10000]) => {
     toggleLoader();
     fetch(`${API_URL}/jobs?order='${order}'&by=${by}&categories=${categories}&area=${area}&city=${city}&date=${date}&min=${salary[0]}&max=${salary[1]}`)
@@ -26,10 +27,12 @@ export default function Jobs(props) {
     .catch(error => {toggleLoader(); console.log(error);})
   }
 
+  //כשלוחצים על מודעה - הולך לעמוד של המודעה
   const onJobClick = (id) => {
     history.push(`/job/${id}`)
   }
 
+  //עובר על המערך של עבודות ומציג אותם
   return(
     <div id="jobs">
       <div id="j-loader">{displayLoader ? <Loader /> : null}</div>
