@@ -1,2 +1,2 @@
-export const URL = 'http://localhost:3001';
-export const API_URL = 'http://localhost:3000';
+export const URL = 'https://one-time-job.herokuapp.com';
+export const API_URL = 'https://one-time-job-server.herokuapp.com';
