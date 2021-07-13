@@ -25,6 +25,7 @@ class PublishJob extends React.Component {
     this.handleJobSubmit = this.handleJobSubmit.bind(this);
     this.onCategoryChange = this.onCategoryChange.bind(this);
     this.onDateChange = this.onDateChange.bind(this);
+    this.onAreaChange = this.onAreaChange.bind(this);
   }
 
   //get categories
@@ -33,6 +34,12 @@ class PublishJob extends React.Component {
     .then(response => response.json())
     .then(data => this.setState({ categories: data }))
     .catch(error => console.log(error))
+
+    var dtt = document.getElementById('date')
+    dtt.onfocus = function (event) {
+      this.type = 'datetime-local';
+      this.focus();
+    }
   }
 
   //publish job
@@ -79,15 +86,20 @@ class PublishJob extends React.Component {
     this.setState({date: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:00`});
   }
 
+  async onAreaChange(event) {
+    await this.setState({area: event.target.value})
+    await this.setState({city: ''})
+  }
+
   render() {
     if (this.props.isSignIn)
     return(
         <div id="publishJob">
           <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
-          <input name="title" id="title" onChange={this.onInputchange} className="input" placeholder="כותרת"/>
+          <input name="title" id="title" onChange={this.onInputchange} className="input" placeholder="*כותרת"/>
           <textarea name="details" id="details" onChange={this.onInputchange} className="input" placeholder="פרטים ודרישות"/>
           <select defaultValue={'DEFAULT'} onChange={this.onCategoryChange} className="input">
-            <option value="DEFAULT" disabled hidden>קטגוריה</option>
+            <option value="DEFAULT" disabled hidden>*קטגוריה</option>
             {
               (this.state.categories).map(category =>
                 <option
@@ -98,8 +110,8 @@ class PublishJob extends React.Component {
             }
           </select>
           <input name="salary" id="salary" onChange={this.onInputchange} className="input" placeholder="שכר"/>
-          <input type="datetime-local" name="date" id="date" onChange={this.onDateChange} className="input" placeholder="תאריך תפוגה"/>
-          <input type="search" list="areas" onChange={this.onInputchange} placeholder="אזור" className="input" id="area"/>
+          <input name="date" id="date" onChange={this.onDateChange} className="input" placeholder="תאריך תפוגה"/>
+          <input type="search" autocomplete="off" list="areas" onChange={this.onAreaChange} placeholder="*אזור" className="input" id="area"/>
           <datalist id="areas">
           {
             locations.AREAS.map((area) => {
@@ -107,13 +119,14 @@ class PublishJob extends React.Component {
             })
           }
           </datalist>
-          {/*לסדר את זה  */}
-          <input type="search" list="cities" onChange={this.onInputchange} placeholder="עיר" className="input" id="city"/>
+          <input type="search" autocomplete="off" list="cities" onChange={this.onInputchange} placeholder="עיר" className="input" id="city" value={this.state.city}/>
           <datalist id="cities">
           {
-            locations.CITIES.map((city) => {
+            this.state.area ?
+            locations.CITIES[this.state.area].map((city) => {
               return <option value={city} key={city}/>
             })
+            : <option value='יש לבחור אזור' disabled/>
           }
           </datalist>
           <input type="submit" value="פרסם" onClick={this.handleJobSubmit} className="button"/>

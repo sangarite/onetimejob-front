@@ -75,7 +75,7 @@ class Register extends React.Component
         spellCheck="false"
         maxLength="30"
         required
-        placeholder="שם משתמש"
+        placeholder="*שם משתמש"
         className="input"
         autoFocus
       />
@@ -84,7 +84,7 @@ class Register extends React.Component
         onChange={this.onInputChange}
         type="email"
         required
-        placeholder="דואר אלקטרוני"
+        placeholder="*דואר אלקטרוני"
         className="input"
         spellCheck="false"
       />
@@ -93,14 +93,14 @@ class Register extends React.Component
         onChange={this.onInputChange}
         type="password"
         required
-        placeholder="סיסמה"
+        placeholder="*סיסמה"
         className="input"
         spellCheck="false"
       />
       <input
         type="submit"
         onClick={this.handleRegister}
-        value="שלח"
+        value="הרשמה"
         className="button"
       />
       <div id="r-loader">{this.props.displayLoader ? <Loader/> : null}</div>

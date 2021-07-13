@@ -21,8 +21,6 @@ class Help extends Component {
 
   //toggle question (show and hide answer)
   toggle(event) {
-    //כל פעם שלוחצים על השאלה הוא מסיר או מוסיף את העיצוב שמראה את התשובה
-    //אקטיב גורם לכל שרואים או מסתירים את התשובה
     event.target.classList.toggle("active");
     var panel = event.target.nextElementSibling;
     if (panel.style.maxHeight) {
@@ -33,7 +31,6 @@ class Help extends Component {
   }
 
   //reset help form
-  //מרוקן את האינפוטים כשלוחצים על הכפתור של שליחה להודות
   resetForm(){
       this.setState({
         name: '',
@@ -44,7 +41,6 @@ class Help extends Component {
   }
 
   //send user's question
-  //שולח את השאלה של המשתמש למייל של המערכת
   onSend(event) {
     if (!this.state.email || !this.state.message) {
       Swal.fire({
@@ -59,9 +55,9 @@ class Help extends Component {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
-          email_to: this.props.user.user_id,
+          email_to: 1,
           subject: this.state.subject,
-          message: this.state.message + '\nemail: ' + this.state.email + '\nname: ' + this.state.name
+          message: this.state.message + '\nemail: ' + this.state.email + '\nname: ' + this.state.name + '\nuserId: ' + this.props.user.user_id
         })
       })
       .then(response => response.json())
@@ -78,7 +74,7 @@ class Help extends Component {
         } else if (data.msg === 'fail') {
           Swal.fire({
             title: 'שגיאה',
-            text: 'הודעתך לא נשלחה כראוי. נסה שוב.',
+            text: 'הודעתך לא התקבלה כראוי. נסה שוב.',
             icon: 'error',
             showConfirmButton: false,
             timer: 2000
@@ -111,7 +107,6 @@ class Help extends Component {
       <div id="help">
         <div id="j-loader">{this.props.displayLoader ? <Loader /> : null}</div>
         <p>שאלות נפוצות</p>
-        {/*עובר על המערך של השאלות והתשובות. עבור כל שאלה מציג כפתור שפותח את התשובה */}
         <div id="questions">
           {
             this.props.questions.map((question) => {
@@ -130,9 +125,9 @@ class Help extends Component {
           <p>צור קשר</p>
           <div id="contact">
             <input name="name" placeholder="שם" onChange={this.onInputChange} id="name" className="input"/>
-            <input name="email" placeholder="דואר אלקטרוני" type="email"  className="input" required onChange={this.onInputChange} id="email"/>
+            <input name="email" placeholder="*דואר אלקטרוני" type="email"  className="input" required onChange={this.onInputChange} id="email"/>
             <input name="subject" placeholder="נושא"  className="input" onChange={this.onInputChange} id="subject"/>
-            <textarea name="content" placeholder="תוכן הפניה" rows="5" cols="50" required onChange={this.onInputChange} id="message"/>
+            <textarea name="content" placeholder="*תוכן הפניה" rows="5" cols="50" required onChange={this.onInputChange} id="message"/>
             <input type="submit"   className="input" value="שלח" id="submit" onClick={this.onSend}/>
           </div>
         </div>

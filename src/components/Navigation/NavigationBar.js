@@ -26,7 +26,7 @@ class NavigationBar extends React.Component {
       questions: [],
       jobs: [],
       displayLoader: false,
-      seen: 0
+      unseen: 0
     }
     this.toggleLoader = this.toggleLoader.bind(this);
     this.unSeenCount = this.unSeenCount.bind(this);
@@ -45,6 +45,9 @@ class NavigationBar extends React.Component {
     .then(response => response.json())
     .then(data => this.setState({jobs: data}))
     .catch(error => console.log('error getting jobs. err: ', error))
+
+    this.unSeenCount();
+    setInterval(this.unSeenCount, 30000);
   }
 
   //toggle loader
@@ -54,12 +57,13 @@ class NavigationBar extends React.Component {
 
   //count unseen messages
   unSeenCount() {
+    console.log('unSeenCount')
     let count = 0;
     this.props.messages.map((message) => {
       if(!message.seen) count++;
       return message;
     })
-    this.setState({seen: count});
+    this.setState({unseen: count});
   }
 
   //update unseen messages
@@ -112,7 +116,7 @@ class NavigationBar extends React.Component {
               <Link to="/settings" className="link">הגדרות</Link>
               <Link to="/notifications" className="link" onClick={this.updateMessages}>
                 <span>הודעות</span>
-                <span className="badge">{this.state.seen}</span>
+                <span className="badge">{this.state.unseen}</span>
               </Link>
               <Link to="/publish" className="link">פרסום עבודה</Link>
               <Link to="/out" className="link">יציאה</Link>

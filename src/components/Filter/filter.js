@@ -47,6 +47,7 @@ class Filter extends React.Component {
   //handle area change
   async handleAreaChange(event) {
     await this.setState({area: event.target.value})
+    await this.setState({city: ''})
   }
 
   //handle city change
@@ -57,7 +58,7 @@ class Filter extends React.Component {
   //hanlde category click
   async onCategoryClick(event) {
     event = event.target;
-    //בודק עם אין פלוס בכתובת של התמונ
+    //בודק עם אין פלוס בכתובת של התמונה
     if (event.src === `${URL}/images/${event.id}.png`) {
       //מוסיף פלוס - צובע את התמונה
       event.src = `../images/${event.id}+.png`;
@@ -124,10 +125,10 @@ class Filter extends React.Component {
         </datalist>
 
         <p>עיר</p>
-        <input type="search" list="cities" onChange={this.handleCityChange}/>
+        <input type="search" list="cities" onChange={this.handleCityChange} value={this.state.city}/>
         <datalist id="cities">
         {
-          this.state.area ?
+          this.state.area.length ?
           locations.CITIES[this.state.area].map((city) => {
             return <option value={city} key={city}/>
           })

@@ -39,15 +39,14 @@ export default function Jobs(props) {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-              job_id: info[0].job_i,
-              user: props.user,
               publisher_id: info[0].user_id,
-              text: 'מצאנו מישהו שמעוניין לעבוד אצלך\nמס פלאפון:' + props.user.phone + '\nכתובת מייל: ' + props.user.mail + '\nהערות: ' + comment
+              text: 'מצאנו מישהו שמעוניין לעבוד אצלך\nמס פלאפון:' + props.user.phone + '\nכתובת מייל: ' + props.user.email + '\nהערות: ' + comment
             })
           })
           .then(response => response.text())
           .then(data => {
-            data === 'success' ?
+            console.log(data);
+            data === 'message was inserted' ?
             Swal.fire({
               text: 'בקשתך התקבלה. פרטייך נשלחו בהצלחה',
               icon: 'success',

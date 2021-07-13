@@ -14,7 +14,7 @@ export default function Notifications(props) {
     seeMessages();
   }, [updateMessages, seeMessages])
 
-  //בודק אם המשתמש רשום עם כן - עובר על המערך של ההודעות ומציג אותן
+  //בודק אם המשתמש רשום אם כן - עובר על המערך של ההודעות ומציג אותן
   if (props.isSignIn)
     return(
       <div id="notifications">

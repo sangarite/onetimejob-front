@@ -147,18 +147,14 @@ input[type="checkbox"] {
   height: 70px;
   margin: 5px;
   position: relative;
+  margin-bottom: 25px;
 }
 
 .catext > span {
   text-align: center;
-  display: none;
   position: absolute;
   width: 60px;
   top: 60px;
   border-radius: 15px;
   color: #5b5b5b;
-}
-
-.catext:hover > span {
-  display: inline-block;
 }

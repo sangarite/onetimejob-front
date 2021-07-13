@@ -56,7 +56,7 @@ class Signin extends React.Component {
           id="name"
           onChange={this.onInputChange}
           className="input"
-          placeholder="שם משתמש"
+          placeholder="*שם משתמש"
         />
         <input
           type="password"
@@ -64,11 +64,11 @@ class Signin extends React.Component {
           id="password"
           onChange={this.onInputChange}
           className="input"
-          placeholder="סיסמה"
+          placeholder="*סיסמה"
         />
         <input
           type="submit"
-          value="שלח"
+          value="כניסה"
           onClick={this.handleSignIn}
           id="but"
           className="button"
