@@ -1,1 +1,1 @@
-You can see the app at the following link: https://onetimejob.herokuapp.com
+You can see the app at the following link: https://one-time-job.herokuapp.com
